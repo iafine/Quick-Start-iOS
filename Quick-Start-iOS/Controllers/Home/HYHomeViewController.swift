@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HYHomeViewController.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/13.
@@ -8,18 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HYHomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        title = "首页"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

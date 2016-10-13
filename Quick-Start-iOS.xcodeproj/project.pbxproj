@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */; };
-		965408E21DAF5BA500F5D0F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408E11DAF5BA500F5D0F9 /* ViewController.swift */; };
 		965408E51DAF5BA500F5D0F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E31DAF5BA500F5D0F9 /* Main.storyboard */; };
 		965408E71DAF5BA500F5D0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965408E61DAF5BA500F5D0F9 /* Assets.xcassets */; };
 		965408EA1DAF5BA500F5D0F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E81DAF5BA500F5D0F9 /* LaunchScreen.storyboard */; };
+		965408FE1DAF817200F5D0F9 /* HYHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FC1DAF817200F5D0F9 /* HYHomeViewController.swift */; };
+		965408FF1DAF817200F5D0F9 /* HYTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* HYTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		965408DC1DAF5BA500F5D0F9 /* Quick-Start-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-Start-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		965408E11DAF5BA500F5D0F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		965408E41DAF5BA500F5D0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		965408E61DAF5BA500F5D0F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965408E91DAF5BA500F5D0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		965408EB1DAF5BA500F5D0F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		965408FC1DAF817200F5D0F9 /* HYHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYHomeViewController.swift; sourceTree = "<group>"; };
+		965408FD1DAF817200F5D0F9 /* HYTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,55 @@
 		965408DE1DAF5BA500F5D0F9 /* Quick-Start-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				965408FA1DAF817200F5D0F9 /* Controllers */,
+				965408F21DAF7FE200F5D0F9 /* Views */,
+				965408F31DAF7FE900F5D0F9 /* Models */,
+				965408F41DAF7FEF00F5D0F9 /* Venders */,
 				965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */,
-				965408E11DAF5BA500F5D0F9 /* ViewController.swift */,
 				965408E31DAF5BA500F5D0F9 /* Main.storyboard */,
 				965408E61DAF5BA500F5D0F9 /* Assets.xcassets */,
 				965408E81DAF5BA500F5D0F9 /* LaunchScreen.storyboard */,
 				965408EB1DAF5BA500F5D0F9 /* Info.plist */,
 			);
 			path = "Quick-Start-iOS";
+			sourceTree = "<group>";
+		};
+		965408F21DAF7FE200F5D0F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		965408F31DAF7FE900F5D0F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		965408F41DAF7FEF00F5D0F9 /* Venders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Venders;
+			sourceTree = "<group>";
+		};
+		965408FA1DAF817200F5D0F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				965408FB1DAF817200F5D0F9 /* Home */,
+				965408FD1DAF817200F5D0F9 /* HYTabBarViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		965408FB1DAF817200F5D0F9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				965408FC1DAF817200F5D0F9 /* HYHomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				965408E21DAF5BA500F5D0F9 /* ViewController.swift in Sources */,
+				965408FE1DAF817200F5D0F9 /* HYHomeViewController.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
+				965408FF1DAF817200F5D0F9 /* HYTabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +341,7 @@
 				965408F01DAF5BA500F5D0F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
