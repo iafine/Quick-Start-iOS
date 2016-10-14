@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow (frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        let baseVC: HYTabBarViewController = HYTabBarViewController()
+        let baseVC: TabBarViewController = TabBarViewController()
         window?.rootViewController = baseVC
         window?.makeKeyAndVisible()
         

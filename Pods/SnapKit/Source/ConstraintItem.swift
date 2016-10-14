@@ -28,42 +28,34 @@
 #endif
 
 
-public class ConstraintDescription {
+public class ConstraintItem: Equatable {
     
-    internal let item: LayoutConstraintItem
-    internal var attributes: ConstraintAttributes
-    internal var relation: ConstraintRelation? = nil
-    internal var sourceLocation: (String, UInt)? = nil
-    internal var label: String? = nil
-    internal var related: ConstraintItem? = nil
-    internal var multiplier: ConstraintMultiplierTarget = 1.0
-    internal var constant: ConstraintConstantTarget = 0.0
-    internal var priority: ConstraintPriorityTarget = 1000.0
-    internal lazy var constraint: Constraint? = {
-        guard let relation = self.relation,
-              let related = self.related,
-              let sourceLocation = self.sourceLocation else {
-            return nil
-        }
-        let from = ConstraintItem(target: self.item as AnyObject, attributes: self.attributes)
-        
-        return Constraint(
-            from: from,
-            to: related,
-            relation: relation,
-            sourceLocation: sourceLocation,
-            label: self.label,
-            multiplier: self.multiplier,
-            constant: self.constant,
-            priority: self.priority
-        )
-    }()
+    internal weak var target: AnyObject?
+    internal let attributes: ConstraintAttributes
     
-    // MARK: Initialization
-    
-    internal init(item: LayoutConstraintItem, attributes: ConstraintAttributes) {
-        self.item = item
+    internal init(target: AnyObject?, attributes: ConstraintAttributes) {
+        self.target = target
         self.attributes = attributes
     }
     
+    internal var view: ConstraintView? {
+        return self.target as? ConstraintView
+    }
+    
+}
+
+public func ==(lhs: ConstraintItem, rhs: ConstraintItem) -> Bool {
+    // pointer equality
+    guard lhs !== rhs else {
+        return true
+    }
+    
+    // must both have valid targets and identical attributes
+    guard let target1 = lhs.target,
+          let target2 = rhs.target,
+          target1 === target2 && lhs.attributes == rhs.attributes else {
+            return false
+    }
+    
+    return true
 }

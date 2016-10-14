@@ -1,0 +1,6 @@
+framework module Pods_Quick_Start_iOS {
+  umbrella header "Pods-Quick-Start-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

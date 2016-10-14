@@ -28,39 +28,30 @@
 #endif
 
 
-@available(iOS 9.0, OSX 10.11, *)
-public struct ConstraintLayoutGuideDSL: ConstraintAttributesDSL {
+public class LayoutConstraint: NSLayoutConstraint {
     
-    @discardableResult
-    public func prepareConstraints(_ closure: (_ make: ConstraintMaker) -> Void) -> [Constraint] {
-        return ConstraintMaker.prepareConstraints(item: self.guide, closure: closure)
+    public var label: String? {
+        get {
+            return self.identifier
+        }
+        set {
+            self.identifier = newValue
+        }
     }
     
-    public func makeConstraints(_ closure: (_ make: ConstraintMaker) -> Void) {
-        ConstraintMaker.makeConstraints(item: self.guide, closure: closure)
+    internal weak var constraint: Constraint? = nil
+    
+}
+
+internal func ==(lhs: LayoutConstraint, rhs: LayoutConstraint) -> Bool {
+    guard lhs.firstItem === rhs.firstItem &&
+          lhs.secondItem === rhs.secondItem &&
+          lhs.firstAttribute == rhs.firstAttribute &&
+          lhs.secondAttribute == rhs.secondAttribute &&
+          lhs.relation == rhs.relation &&
+          lhs.priority == rhs.priority &&
+          lhs.multiplier == rhs.multiplier else {
+        return false
     }
-    
-    public func remakeConstraints(_ closure: (_ make: ConstraintMaker) -> Void) {
-        ConstraintMaker.remakeConstraints(item: self.guide, closure: closure)
-    }
-    
-    public func updateConstraints(_ closure: (_ make: ConstraintMaker) -> Void) {
-        ConstraintMaker.updateConstraints(item: self.guide, closure: closure)
-    }
-    
-    public func removeConstraints() {
-        ConstraintMaker.removeConstraints(item: self.guide)
-    }
-    
-    public var target: AnyObject? {
-        return self.guide
-    }
-    
-    internal let guide: ConstraintLayoutGuide
-    
-    internal init(guide: ConstraintLayoutGuide) {
-        self.guide = guide
-        
-    }
-    
+    return true
 }

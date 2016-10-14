@@ -1,5 +1,5 @@
 //
-//  HYTabBarViewController.swift
+//  TabBarViewController.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/13.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class HYTabBarViewController: UITabBarController {
+class TabBarViewController: UITabBarController {
 
     // MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let homeVC: HYHomeViewController = HYHomeViewController()
+        let homeVC: HomeViewController = HomeViewController()
         
         setupChildVC(vc: homeVC, title: "首页", imageName: "home", selectedImageName: "home_selected")
     }
