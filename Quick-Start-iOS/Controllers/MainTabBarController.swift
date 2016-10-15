@@ -1,5 +1,5 @@
 //
-//  TabBarViewController.swift
+//  MainTabBarController.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/13.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController {
+class MainTabBarController: UITabBarController {
 
     // MARK: life cycle
     override func viewDidLoad() {
@@ -46,5 +46,6 @@ class TabBarViewController: UITabBarController {
     
     func setupTabBarAttributes() {
         UITabBar.appearance().tintColor = UIColor (red: 146/255, green: 185/255, blue: 74/255, alpha: 1.0)
+//        UITabBar.appearance().isTranslucent = false // 取消TabBar默认透明效果
     }
 }

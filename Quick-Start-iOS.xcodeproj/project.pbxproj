@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9612E6381DB0C0F700756149 /* RootViewController.swift */; };
 		965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */; };
 		965408E51DAF5BA500F5D0F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E31DAF5BA500F5D0F9 /* Main.storyboard */; };
 		965408E71DAF5BA500F5D0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965408E61DAF5BA500F5D0F9 /* Assets.xcassets */; };
 		965408EA1DAF5BA500F5D0F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E81DAF5BA500F5D0F9 /* LaunchScreen.storyboard */; };
 		965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FC1DAF817200F5D0F9 /* HomeViewController.swift */; };
-		965408FF1DAF817200F5D0F9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* TabBarViewController.swift */; };
+		965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */; };
 		96BC6AC91DB0760500D917E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6AC81DB0760500D917E4 /* HomeView.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
+		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
 		C160F53A12490EF6D976BBDE /* Pods_Quick_Start_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87565C35535F6A2116B3B0BE /* Pods-Quick-Start-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		9612E6381DB0C0F700756149 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		965408DC1DAF5BA500F5D0F9 /* Quick-Start-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-Start-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		965408E41DAF5BA500F5D0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,9 +30,10 @@
 		965408E91DAF5BA500F5D0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		965408EB1DAF5BA500F5D0F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965408FC1DAF817200F5D0F9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		965408FD1DAF817200F5D0F9 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		96BC6AC81DB0760500D917E4 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = Views/Home/HomeView.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
+		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_Start_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC950D9B2325503F3968EA59 /* Pods-Quick-Start-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				965408FB1DAF817200F5D0F9 /* Home */,
-				965408FD1DAF817200F5D0F9 /* TabBarViewController.swift */,
+				965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */,
+				96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */,
+				9612E6381DB0C0F700756149 /* RootViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,7 +293,9 @@
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				96BC6AC91DB0760500D917E4 /* HomeView.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
-				965408FF1DAF817200F5D0F9 /* TabBarViewController.swift in Sources */,
+				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
+				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
+				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
