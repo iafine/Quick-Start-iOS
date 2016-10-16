@@ -35,14 +35,31 @@ class RootViewController: UIViewController {
     
     // MARK: Events
     func panHandler(sender: UIPanGestureRecognizer) {
-        let translatedPoint: CGPoint = sender.translation(in: mainVC.view)
-        if translatedPoint.x < 0 {
-            // 右滑
+        let x = sender.translation(in: mainVC.view).x
+        
+        // 手势结束
+        if sender.state == UIGestureRecognizerState.ended {
+            if x > Constants.Rect.ScreenWidth * 1/2 {
+                // 右滑
+                showLeft()
+            }else {
+                // 左滑
+                showHome()
+            }
+        }
+    }
+    
+    func showLeft() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.leftVC.view.center = CGPoint (x: 0, y: self.view.center.y)
             self.mainVC.view.center = CGPoint (x: Constants.Rect.ScreenWidth, y: self.view.center.y)
-        }else {
+            }, completion: nil)
+    }
+    
+    func showHome() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
             self.mainVC.view.center = CGPoint (x: self.view.center.x, y: self.view.center.y)
-        }
+            }, completion: nil)
     }
 }
