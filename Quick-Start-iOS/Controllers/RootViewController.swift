@@ -31,19 +31,34 @@ class RootViewController: UIViewController {
         self.addChildViewController(mainVC)
         self.view.addSubview(mainVC.view)
         mainVC.view.addGestureRecognizer(panGR)
+        self.view.bringSubview(toFront: mainVC.view)
     }
     
     // MARK: Events
     func panHandler(sender: UIPanGestureRecognizer) {
         let x = sender.translation(in: mainVC.view).x
         
+//        let location = sender.location(in: mainVC.view).x
+//        
+//        // 手势开始
+//        if sender.state == UIGestureRecognizerState.began {
+//            if location > 10 {
+//                return
+//            }
+//        }
+        // 平移
+        if x > 0 {
+            mainVC.view.center = CGPoint (x: self.view.center.x + x, y: self.view.center.y)
+            leftVC.view.center = CGPoint (x: -self.view.center.x + x, y: self.view.center.y)
+        }
+        
         // 手势结束
         if sender.state == UIGestureRecognizerState.ended {
-            if x > Constants.Rect.ScreenWidth * 1/2 {
-                // 右滑
+            if x > Constants.Rect.ScreenWidth * 1/3 {
+                // 显示左视图
                 showLeft()
             }else {
-                // 左滑
+                // 返回首页
                 showHome()
             }
         }
