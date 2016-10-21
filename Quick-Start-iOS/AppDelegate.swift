@@ -20,8 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         
         let rootVC: RootViewController = RootViewController()
+        
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
+        
+        // 加载广告
+        loadAd()
         
         return true
     }
@@ -48,6 +52,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - 私有方法
+    
+    /// 加载广告内容
+    private func loadAd() {
+        if AdHelper.isNeedShow() {
+            // 显示公告页面
+            print(AdHelper.adImagePath())
+        }
+        // 每次启动，都更新广告
+        AdHelper.refreshAdvertisingImage()
+    }
 
 }
 

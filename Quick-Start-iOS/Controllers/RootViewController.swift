@@ -14,6 +14,8 @@ class RootViewController: UIViewController {
     let mainVC: MainTabBarController = MainTabBarController()
     let leftVC: LeftViewController = LeftViewController()
     
+    let distance: CGFloat = 0
+    
     // MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,33 +25,23 @@ class RootViewController: UIViewController {
     
     /// 添加控制器和视图
     func initUI() {
-        // 添加滑动手势
-        let panGR: UIPanGestureRecognizer = UIPanGestureRecognizer (target: self, action: #selector(panHandler(sender:)))
-        self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
-        self.addChildViewController(leftVC)
-        self.view.addSubview(leftVC.view)
         self.addChildViewController(mainVC)
         self.view.addSubview(mainVC.view)
-        mainVC.view.addGestureRecognizer(panGR)
-        self.view.bringSubview(toFront: mainVC.view)
+        // 添加滑动手势
+//        let panGR: UIPanGestureRecognizer = UIPanGestureRecognizer (target: self, action: #selector(panHandler(sender:)))
+//        self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
+//        self.addChildViewController(leftVC)
+//        self.view.addSubview(leftVC.view)
+//        mainVC.view.addGestureRecognizer(panGR)
+//        self.view.bringSubview(toFront: mainVC.view)
     }
     
     // MARK: Events
     func panHandler(sender: UIPanGestureRecognizer) {
         let x = sender.translation(in: mainVC.view).x
         
-//        let location = sender.location(in: mainVC.view).x
-//        
-//        // 手势开始
-//        if sender.state == UIGestureRecognizerState.began {
-//            if location > 10 {
-//                return
-//            }
-//        }
-        // 平移
         if x > 0 {
-            mainVC.view.center = CGPoint (x: self.view.center.x + x, y: self.view.center.y)
-            leftVC.view.center = CGPoint (x: -self.view.center.x + x, y: self.view.center.y)
+            sender.view?.center = CGPoint (x: self.view.center.x + x, y: self.view.center.y)
         }
         
         // 手势结束
