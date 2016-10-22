@@ -15,6 +15,8 @@
 		965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FC1DAF817200F5D0F9 /* HomeViewController.swift */; };
 		965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */; };
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
+		966A1FE51DBA285E00AE005C /* AdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE41DBA285E00AE005C /* AdPageView.swift */; };
+		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
 		96BC6AC91DB0760500D917E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6AC81DB0760500D917E4 /* HomeView.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
@@ -33,6 +35,8 @@
 		965408FC1DAF817200F5D0F9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
+		966A1FE41DBA285E00AE005C /* AdPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageView.swift; path = Views/AdvertisingPage/AdPageView.swift; sourceTree = "<group>"; };
+		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
 		96BC6AC81DB0760500D917E4 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = Views/Home/HomeView.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		965408F21DAF7FE200F5D0F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				966A1FE31DBA281300AE005C /* AdvertisingPage */,
 				96BC6AC71DB075DE00D917E4 /* Home */,
 			);
 			name = Views;
@@ -122,6 +127,7 @@
 		965408FA1DAF817200F5D0F9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				966A1FE61DBA286900AE005C /* AdvertisingPage */,
 				965408FB1DAF817200F5D0F9 /* Home */,
 				965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */,
 				96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */,
@@ -144,6 +150,22 @@
 				9665BDD11DB7443B00E395F9 /* AdHelper.swift */,
 			);
 			name = AdHelper;
+			sourceTree = "<group>";
+		};
+		966A1FE31DBA281300AE005C /* AdvertisingPage */ = {
+			isa = PBXGroup;
+			children = (
+				966A1FE41DBA285E00AE005C /* AdPageView.swift */,
+			);
+			name = AdvertisingPage;
+			sourceTree = "<group>";
+		};
+		966A1FE61DBA286900AE005C /* AdvertisingPage */ = {
+			isa = PBXGroup;
+			children = (
+				966A1FE71DBA28C100AE005C /* AdPageViewController.swift */,
+			);
+			name = AdvertisingPage;
 			sourceTree = "<group>";
 		};
 		96BC6A821DB05E8000D917E4 /* Vendors */ = {
@@ -306,6 +328,8 @@
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
+				966A1FE51DBA285E00AE005C /* AdPageView.swift in Sources */,
+				966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */,
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,

@@ -36,6 +36,10 @@ class RootViewController: UIViewController {
 //        self.view.bringSubview(toFront: mainVC.view)
     }
     
+    // MARK: publi methods
+    func show() {
+        
+    }
     // MARK: Events
     func panHandler(sender: UIPanGestureRecognizer) {
         let x = sender.translation(in: mainVC.view).x

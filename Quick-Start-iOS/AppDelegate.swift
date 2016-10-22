@@ -58,7 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func loadAd() {
         if AdHelper.isNeedShow() {
             // 显示公告页面
-            print(AdHelper.adImagePath())
+            let adView: AdPageView = AdPageView (imageFilePath: AdHelper.adImagePath()!)
+            adView.show()
+            
         }
         // 每次启动，都更新广告
         AdHelper.refreshAdvertisingImage()
