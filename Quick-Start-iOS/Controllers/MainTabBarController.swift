@@ -26,22 +26,10 @@ class MainTabBarController: UITabBarController {
     
     // MARK: private methods
     func setupChildVC(vc: UIViewController, title: NSString, imageName: NSString, selectedImageName: NSString) {
-        let nav: UINavigationController! = UINavigationController (rootViewController: vc)
-        nav.tabBarItem.title = title as String
-        nav.tabBarItem.image = UIImage (named: imageName as String)
-        nav.tabBarItem.selectedImage = UIImage (named: selectedImageName as String)
-        nav.navigationBar.isTranslucent = false // 取消导航栏默认透明效果
-        
+        let nav: HYNavigationController = HYNavigationController (vc: vc, title: title, imageName: imageName, selectedImageName: selectedImageName)
         addChildViewController(nav)
         
-        setupNavigationBarAttributes()
         setupTabBarAttributes()
-    }
-    
-    func setupNavigationBarAttributes() {
-        UINavigationBar.appearance().barTintColor = UIColor (red: 146/255, green: 185/255, blue: 74/255, alpha: 1.0)    // 背景颜色
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white] // 文字颜色
     }
     
     func setupTabBarAttributes() {

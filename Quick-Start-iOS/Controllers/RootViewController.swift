@@ -19,7 +19,6 @@ class RootViewController: UIViewController {
     // MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initUI()
     }
     
