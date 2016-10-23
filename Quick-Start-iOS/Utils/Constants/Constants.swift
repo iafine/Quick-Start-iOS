@@ -9,9 +9,13 @@
 import UIKit
 
 class Constants: NSObject {
+    
     struct Rect {
         static let ScreenWidth = UIScreen.main.bounds.size.width
         static let ScreenHeight = UIScreen.main.bounds.size.height
     }
-
+    
+    struct Notification {
+        static let DISPATCH_AD_PAGE = NSNotification.Name("dispatch_ad_page")   // 广告跳转通知
+    }
 }

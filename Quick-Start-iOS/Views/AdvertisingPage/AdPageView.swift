@@ -12,13 +12,10 @@ private let ad_time: NSInteger = 5  // 广告显示时间
 
 class AdPageView: UIView {
 
-    var imageFilePath: String {
-        didSet(newImageFilePath) {
-            
-        }
-    }
+    // MARK: - property
+    var imageFilePath: String
     
-    private var adImageView: UIImageView {
+    private lazy var adImageView: UIImageView = {
         let imageView: UIImageView = UIImageView ()
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = UIViewContentMode.scaleAspectFill
@@ -26,23 +23,28 @@ class AdPageView: UIView {
         let tapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(openAdWebView))
         imageView.addGestureRecognizer(tapGR)
         return imageView
-    }
+    }()
     
-    private var skipBtn: UIButton {
+    private lazy var skipBtn: UIButton = {
         let btn: UIButton = UIButton ()
-        btn.setTitle("\(ad_time)", for: UIControlState.normal)
+        btn.setTitle("跳过\(ad_time)", for: UIControlState.normal)
         btn.titleLabel?.font = UIFont .systemFont(ofSize: 15.0)
         btn.setTitleColor(UIColor.white, for: UIControlState.normal)
         btn.backgroundColor = UIColor (red: 38 / 255, green: 38 / 255, blue: 38 / 255, alpha: 0.6)
         btn.layer.cornerRadius = 4
         btn.addTarget(self, action: #selector(clickedSkipBtnHandler), for: UIControlEvents.touchUpInside)
         return btn
-    }
+    }()
     
-    private var adTimer: Timer {
-        let timer: Timer = Timer ()
+    private lazy var adTimer: Timer = {
+        let timer: Timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         return timer
-    }
+    }()
+    
+    private lazy var adCount: NSInteger = {
+        let count: NSInteger = 0
+        return count
+    }()
     
     // MARK: - life cycle
     init(imageFilePath: String) {
@@ -57,23 +59,8 @@ class AdPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - public methods
-    func show() {
-        let window: UIWindow = UIApplication.shared.keyWindow!
-        window.addSubview(self)
-    }
-    
-    // MARK: - events
-    func clickedSkipBtnHandler() {
-        
-    }
-    
-    func openAdWebView() {
-        
-    }
-    
-    // MARK: - private methods
     private func initUI() {
+        self.adImageView.image = UIImage (contentsOfFile: self.imageFilePath)
         self.addSubview(self.adImageView)
         self.addSubview(self.skipBtn)
     }
@@ -92,6 +79,47 @@ class AdPageView: UIView {
             make.top.equalTo(self.snp.top).offset(24)
             make.right.equalTo(self.snp.right).offset(-5)
             make.size.equalTo(CGSize (width: 60, height: 30))
+        }
+    }
+    
+    // MARK: - public methods
+    func show() {
+        let window: UIWindow = UIApplication.shared.keyWindow!
+        window.addSubview(self)
+        
+        // 开始计时
+        self.adCount = ad_time
+        RunLoop.main.add(self.adTimer, forMode: RunLoopMode.commonModes)
+    }
+    
+    // MARK: - events
+    func clickedSkipBtnHandler() {
+        dismiss()
+    }
+    
+    func openAdWebView() {
+        dismiss()
+        
+        // 发送外界跳转通知
+        NotificationCenter.default.post(name: Constants.Notification.DISPATCH_AD_PAGE, object: nil, userInfo: nil)
+    }
+    
+    func countDown() {
+        self.adCount -= 1
+        self.skipBtn.setTitle("跳过\(self.adCount)", for: UIControlState.normal)
+        if self.adCount == 0 {
+            dismiss()
+        }
+    }
+    
+    // MARK: - private methods
+    private func dismiss() {
+        self.adTimer.invalidate()
+        self.adCount = 0
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.alpha = 0
+            }) { (finished) in
+                self.removeFromSuperview()
         }
     }
 }
