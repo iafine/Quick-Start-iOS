@@ -27,7 +27,7 @@ class AdPageView: UIView {
     
     private lazy var skipBtn: UIButton = {
         let btn: UIButton = UIButton ()
-        btn.setTitle("跳过\(ad_time)", for: UIControlState.normal)
+        btn.setTitle("跳过", for: UIControlState.normal)
         btn.titleLabel?.font = UIFont .systemFont(ofSize: 15.0)
         btn.setTitleColor(UIColor.white, for: UIControlState.normal)
         btn.backgroundColor = UIColor (red: 38 / 255, green: 38 / 255, blue: 38 / 255, alpha: 0.6)
@@ -106,7 +106,7 @@ class AdPageView: UIView {
     
     func countDown() {
         self.adCount -= 1
-        self.skipBtn.setTitle("跳过\(self.adCount)", for: UIControlState.normal)
+//        self.skipBtn.setTitle("跳过\(self.adCount)", for: UIControlState.normal)
         if self.adCount == 0 {
             dismiss()
         }

@@ -35,7 +35,7 @@ class AdHelper: NSObject {
     /// 更新广告图片
     class func refreshAdvertisingImage() {
         // 广告地址
-        let imageUrl: String = "http://media.idownloadblog.com/wp-content/uploads/2013/09/116@2xiphone.png"
+        let imageUrl: String = "http://img4.duitang.com/uploads/item/201204/09/20120409174006_FcVej.jpeg"
         // 获取广告图片名称
         let imageName: String = imageUrl.components(separatedBy: "/").last!
         // 判断本地是否有这张图片
@@ -78,7 +78,7 @@ class AdHelper: NSObject {
                 print(filePathUrl.path)
                 // 删除旧图片，并将新的广告图片名称缓存起来
                 do {
-                    try UIImagePNGRepresentation(getImage!)?.write(to: filePathUrl, options: .atomicWrite)
+                    try UIImageJPEGRepresentation(getImage!, 1.0)?.write(to: filePathUrl, options: .atomicWrite)
                 }catch let error as NSError {
                     print(error.localizedDescription)
                 }
