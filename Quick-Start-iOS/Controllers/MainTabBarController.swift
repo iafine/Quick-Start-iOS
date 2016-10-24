@@ -15,13 +15,12 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         let homeVC: HomeViewController = HomeViewController()
+        let locationVC: LocationViewController = LocationViewController()
+        let meVC: MeViewController = MeViewController()
         
         setupChildVC(vc: homeVC, title: "首页", imageName: "home", selectedImageName: "home_selected")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setupChildVC(vc: locationVC, title: "位置", imageName: "location", selectedImageName: "location_selected")
+        setupChildVC(vc: meVC, title: "我", imageName: "me", selectedImageName: "me_selected")
     }
     
     // MARK: private methods

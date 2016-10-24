@@ -45,8 +45,8 @@ class HYNavigationController: UINavigationController {
     // MARK: - private methods
     private func initUI() {
         self.tabBarItem.title = self.title
-        self.tabBarItem.image = UIImage (named: imageName)
-        self.tabBarItem.selectedImage = UIImage (named: selectedImageName)
+        self.tabBarItem.image = UIImage (named: imageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        self.tabBarItem.selectedImage = UIImage (named: selectedImageName)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         self.navigationBar.isTranslucent = false    // 取消导航栏默认透明效果
         self.viewControllers = [self.vc]
         
