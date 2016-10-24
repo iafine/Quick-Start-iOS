@@ -1,5 +1,5 @@
 //
-//  AdvertisingPageViewController.swift
+//  AdPageViewController.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/21.
@@ -8,19 +8,12 @@
 
 import UIKit
 
-class AdPageViewController: UIViewController {
-
+class AdPageViewController: HYWebViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.white
-        self.title = "广告页面"
-        print("广告页面加载")
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        let url: URL = URL (string: "https://castial.github.io")!
+        self.webView.load(URLRequest (url: url))
     }
 }

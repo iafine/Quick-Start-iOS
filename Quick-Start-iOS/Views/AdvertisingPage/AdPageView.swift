@@ -1,5 +1,5 @@
 //
-//  AdvertisingPageView.swift
+//  AdPageView.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/21.
