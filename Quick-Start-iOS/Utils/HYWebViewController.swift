@@ -9,8 +9,16 @@
 import UIKit
 import WebKit
 
+protocol HYWebViewControllerDelegate {
+    
+    /// 导航栏右侧按钮点击事件
+    func clickedRightBarButtonHandler()
+}
+
 class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
+    var webDelegate: HYWebViewControllerDelegate?
+    
     var webView: WKWebView = {
         let webView: WKWebView = WKWebView ()
         return webView
@@ -27,10 +35,10 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
-        
+    
         self.view.addSubview(self.progressBar)
         self.view.addSubview(self.webView)
         
@@ -144,5 +152,10 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     // 网页进程终止
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         
+    }
+    
+    // MARK: - button events
+    func clickedMoreBtnHandler() {
+        webDelegate?.clickedRightBarButtonHandler()
     }
 }
