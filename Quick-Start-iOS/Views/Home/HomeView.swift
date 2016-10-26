@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+// MARK: - Class
 class HomeView: UIView {
 
     // MARK: properties
@@ -18,18 +19,25 @@ class HomeView: UIView {
         return tempLabel
     }()
     
-    // MARK: lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(label)
+
+        initUI()
         initLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - LifeCycle
+extension HomeView {
+    fileprivate func initUI() {
+        self.addSubview(self.label)
+    }
     
-    func initLayout() {
+    fileprivate func initLayout() {
         label.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(40)
             make.centerX.equalTo(self.snp.centerX)

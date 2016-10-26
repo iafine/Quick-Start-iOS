@@ -8,11 +8,17 @@
 
 import UIKit
 
+// MARK: - Class
 class MeViewController: UIViewController {
 
+}
+
+// MARK: - Lifecycle
+extension MeViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "我"
     }
 }

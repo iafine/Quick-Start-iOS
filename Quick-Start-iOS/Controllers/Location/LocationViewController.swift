@@ -8,11 +8,17 @@
 
 import UIKit
 
+// MARK: - Class
 class LocationViewController: UIViewController {
 
+}
+
+// MARK: - LifeCycle
+extension LocationViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "位置"
     }
 }

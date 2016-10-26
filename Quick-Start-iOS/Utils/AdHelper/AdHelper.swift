@@ -11,7 +11,11 @@ import UIKit
 private let ad_image_path_key: String = "AD_IMAGE_APTH"
 
 class AdHelper: NSObject {
-    
+
+}
+
+// MARK: - Class Methods
+extension AdHelper {
     /// 是否需要显示广告
     class func isNeedShow() -> Bool {
         if let imageName = UserDefaults.standard.string(forKey: ad_image_path_key) {
@@ -45,18 +49,19 @@ class AdHelper: NSObject {
             downloadAdImageWithUrl(imageUrl: imageUrl, imageName: imageName)
         }
     }
-    
-    // MARK: private methods
-    
+}
+
+// MARK: - Private Methods
+extension AdHelper {
     // 判断文件是否存在
-    class private func isFileExistWithFilePath(filePath: String) -> Bool {
+    class fileprivate func isFileExistWithFilePath(filePath: String) -> Bool {
         let fileManager: FileManager = FileManager.default
         var isDir: ObjCBool = false
         return fileManager.fileExists(atPath: filePath, isDirectory: &isDir)
     }
     
     // 广告文件目录
-    class private func adImagePathWithImageName(imageName: String) -> String? {
+    class fileprivate func adImagePathWithImageName(imageName: String) -> String? {
         if !imageName.isEmpty {
             // 获取Cache目录
             let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
@@ -68,7 +73,7 @@ class AdHelper: NSObject {
     }
     
     // 下载广告图片
-    class private func downloadAdImageWithUrl(imageUrl: String?, imageName: String?) {
+    class fileprivate func downloadAdImageWithUrl(imageUrl: String?, imageName: String?) {
         DispatchQueue.global(qos: DispatchQoS.background.qosClass).async {
             do {
                 let data = try Data(contentsOf: URL(string: imageUrl!)!)
@@ -94,7 +99,7 @@ class AdHelper: NSObject {
     }
     
     // 删除旧图片
-    class private func deleteOldAdImageFile() {
+    class fileprivate func deleteOldAdImageFile() {
         if let imageName = UserDefaults.standard.string(forKey: ad_image_path_key) {
             if !imageName.isEmpty {
                 let filePath: String = adImagePathWithImageName(imageName: imageName)!

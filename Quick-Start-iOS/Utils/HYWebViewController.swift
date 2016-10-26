@@ -9,13 +9,15 @@
 import UIKit
 import WebKit
 
+// MARK: - Protocol
 protocol HYWebViewControllerDelegate {
     
     /// 导航栏右侧按钮点击事件
     func clickedRightBarButtonHandler()
 }
 
-class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+// MARK: - Class
+class HYWebViewController: UIViewController {
 
     var webDelegate: HYWebViewControllerDelegate?
     
@@ -38,7 +40,7 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
-    
+        
         self.view.addSubview(self.progressBar)
         self.view.addSubview(self.webView)
         
@@ -47,17 +49,22 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         // 监听网页进度
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.new, context: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
+}
+
+// MARK: - LifeCycle
+extension HYWebViewController {
     
-    private func initLayout() {
+    fileprivate func initLayout() {
         self.progressBar.snp.makeConstraints { (make) in
             make.left.equalTo(self.view.snp.left)
             make.top.equalTo(self.view.snp.top)
@@ -72,25 +79,10 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
             make.bottom.equalTo(self.view.snp.bottom)
         }
     }
-    
-    // 监听方法
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            self.progressBar.alpha = 1.0
-            self.progressBar.setProgress(Float(self.webView.estimatedProgress), animated: true)
-            
-            // 如果进度条值大于等于0
-            if self.webView.estimatedProgress >= 1.0 {
-                UIView.animate(withDuration: 0.3, delay: 0.1, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                    self.progressBar.alpha = 0.0
-                    }, completion: { (finished) in
-                        self.progressBar.progress = 0
-                })
-            }
-        }
-    }
-    
-    // MARK: - WKUIDelegate
+}
+
+// MARK: - WKUIDelegate
+extension HYWebViewController: WKUIDelegate {
     
     // 初始化加载配置
     //    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
@@ -117,7 +109,10 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         
     }
     
-    // MARK: - WKNavigationDelegate
+}
+
+// MARK: - WKNavigationDelegate
+extension HYWebViewController: WKNavigationDelegate {
     
     // 网页是否可以跳转
     //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -153,8 +148,28 @@ class HYWebViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         
     }
+}
+
+// MARK: - Events
+extension HYWebViewController {
+    /// 进度条监听方法
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            self.progressBar.alpha = 1.0
+            self.progressBar.setProgress(Float(self.webView.estimatedProgress), animated: true)
+            
+            // 如果进度条值大于等于0
+            if self.webView.estimatedProgress >= 1.0 {
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                    self.progressBar.alpha = 0.0
+                    }, completion: { (finished) in
+                        self.progressBar.progress = 0
+                })
+            }
+        }
+    }
     
-    // MARK: - button events
+    /// 点击导航栏右侧更多事件
     func clickedMoreBtnHandler() {
         webDelegate?.clickedRightBarButtonHandler()
     }

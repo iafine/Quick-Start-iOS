@@ -8,15 +8,17 @@
 
 import UIKit
 
+// MARK: - Class
 class RootViewController: UIViewController {
 
-    // MARK: properties
     let mainVC: MainTabBarController = MainTabBarController()
     let leftVC: LeftViewController = LeftViewController()
     
     let distance: CGFloat = 0
-    
-    // MARK: lifecycle
+}
+
+// MARK: - LifeCycle
+extension RootViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
@@ -27,20 +29,19 @@ class RootViewController: UIViewController {
         self.addChildViewController(mainVC)
         self.view.addSubview(mainVC.view)
         // 添加滑动手势
-//        let panGR: UIPanGestureRecognizer = UIPanGestureRecognizer (target: self, action: #selector(panHandler(sender:)))
-//        self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
-//        self.addChildViewController(leftVC)
-//        self.view.addSubview(leftVC.view)
-//        mainVC.view.addGestureRecognizer(panGR)
-//        self.view.bringSubview(toFront: mainVC.view)
+        //        let panGR: UIPanGestureRecognizer = UIPanGestureRecognizer (target: self, action: #selector(panHandler(sender:)))
+        //        self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
+        //        self.addChildViewController(leftVC)
+        //        self.view.addSubview(leftVC.view)
+        //        mainVC.view.addGestureRecognizer(panGR)
+        //        self.view.bringSubview(toFront: mainVC.view)
     }
-    
-    // MARK: publi methods
-    func show() {
-        
-    }
+}
+
+// MARK: - Private Methods
+extension RootViewController {
     // MARK: Events
-    func panHandler(sender: UIPanGestureRecognizer) {
+    fileprivate func panHandler(sender: UIPanGestureRecognizer) {
         let x = sender.translation(in: mainVC.view).x
         
         if x > 0 {
@@ -59,14 +60,14 @@ class RootViewController: UIViewController {
         }
     }
     
-    func showLeft() {
+    fileprivate func showLeft() {
         UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.leftVC.view.center = CGPoint (x: 0, y: self.view.center.y)
             self.mainVC.view.center = CGPoint (x: Constants.Rect.ScreenWidth, y: self.view.center.y)
             }, completion: nil)
     }
     
-    func showHome() {
+    fileprivate func showHome() {
         UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
             self.leftVC.view.center = CGPoint (x: -self.view.center.x, y: self.view.center.y)
             self.mainVC.view.center = CGPoint (x: self.view.center.x, y: self.view.center.y)

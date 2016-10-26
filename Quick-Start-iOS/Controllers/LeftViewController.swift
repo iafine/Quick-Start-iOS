@@ -8,18 +8,16 @@
 
 import UIKit
 
+// MARK: - Class
 class LeftViewController: UIViewController {
+}
+
+// MARK: - LifeCycle
+extension LeftViewController {
     
-    // MARK: lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.gray
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

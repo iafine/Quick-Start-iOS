@@ -8,14 +8,20 @@
 
 import UIKit
 
-private let ad_time: NSInteger = 5  // 广告显示时间
+private let AD_TIME: NSInteger = 5  // 广告显示时间
 
+// MARK: - Class
 class AdPageView: UIView {
-
-    // MARK: - property
-    var imageFilePath: String
     
-    private lazy var adImageView: UIImageView = {
+    var imageFilePath: String = "" {
+        willSet {
+        }
+        didSet {
+            self.adImageView.image = UIImage (named: imageFilePath)
+        }
+    }
+    
+    fileprivate lazy var adImageView: UIImageView = {
         let imageView: UIImageView = UIImageView ()
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = UIViewContentMode.scaleAspectFill
@@ -25,7 +31,7 @@ class AdPageView: UIView {
         return imageView
     }()
     
-    private lazy var skipBtn: UIButton = {
+    fileprivate lazy var skipBtn: UIButton = {
         let btn: UIButton = UIButton ()
         btn.setTitle("跳过", for: UIControlState.normal)
         btn.titleLabel?.font = UIFont .systemFont(ofSize: 15.0)
@@ -36,20 +42,18 @@ class AdPageView: UIView {
         return btn
     }()
     
-    private lazy var adTimer: Timer = {
+    fileprivate lazy var adTimer: Timer = {
         let timer: Timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         return timer
     }()
     
-    private lazy var adCount: NSInteger = {
+    fileprivate lazy var adCount: NSInteger = {
         let count: NSInteger = 0
         return count
     }()
     
-    // MARK: - life cycle
-    init(imageFilePath: String) {
-        self.imageFilePath = imageFilePath
-        super.init(frame: CGRect (x: 0, y: 0, width: Constants.Rect.ScreenWidth, height: Constants.Rect.ScreenHeight))
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         initUI()
         initLayout()
@@ -58,14 +62,17 @@ class AdPageView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - LifeCycle
+extension AdPageView {
     
-    private func initUI() {
-        self.adImageView.image = UIImage (contentsOfFile: self.imageFilePath)
+    fileprivate func initUI() {
         self.addSubview(self.adImageView)
         self.addSubview(self.skipBtn)
     }
     
-    private func initLayout() {
+    fileprivate func initLayout() {
         // 广告图片
         self.adImageView.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top)
@@ -81,45 +88,48 @@ class AdPageView: UIView {
             make.size.equalTo(CGSize (width: 60, height: 30))
         }
     }
-    
-    // MARK: - public methods
-    func show() {
+}
+
+// MARK: - Public Methods
+extension AdPageView {
+    open func show() {
         let window: UIWindow = UIApplication.shared.keyWindow!
         window.addSubview(self)
         
         // 开始计时
-        self.adCount = ad_time
+        self.adCount = AD_TIME
         RunLoop.main.add(self.adTimer, forMode: RunLoopMode.commonModes)
     }
-    
-    // MARK: - events
-    func clickedSkipBtnHandler() {
+}
+
+// MARK: - Private Methods
+extension AdPageView {
+    @objc fileprivate func clickedSkipBtnHandler() {
         dismiss()
     }
     
-    func openAdWebView() {
+    @objc fileprivate func openAdWebView() {
         dismiss()
         
         // 发送外界跳转通知
         NotificationCenter.default.post(name: Constants.Notification.DISPATCH_AD_PAGE, object: nil, userInfo: nil)
     }
     
-    func countDown() {
+    @objc fileprivate func countDown() {
         self.adCount -= 1
-//        self.skipBtn.setTitle("跳过\(self.adCount)", for: UIControlState.normal)
+        //        self.skipBtn.setTitle("跳过\(self.adCount)", for: UIControlState.normal)
         if self.adCount == 0 {
             dismiss()
         }
     }
     
-    // MARK: - private methods
-    private func dismiss() {
+    fileprivate func dismiss() {
         self.adTimer.invalidate()
         self.adCount = 0
-        UIView.animate(withDuration: 0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
-            }) { (finished) in
-                self.removeFromSuperview()
+        }) { (finished) in
+            self.removeFromSuperview()
         }
     }
 }

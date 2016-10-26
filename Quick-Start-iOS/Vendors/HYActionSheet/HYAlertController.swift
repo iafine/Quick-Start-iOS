@@ -10,9 +10,9 @@ import UIKit
 
 let identifier = "Cell"
 
-class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource {
+// MARK: - Class
+class HYAlertController: UIViewController {
 
-    // MARK: - Properties
     lazy var sheetView: UITableView = {
         let tableView: UITableView = UITableView ()
         return tableView
@@ -30,7 +30,6 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
         return view
     }()
     
-    // MARK: - lifecycle
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -42,7 +41,10 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - LifeCycle
+extension HYAlertController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,13 +59,13 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
         let bgTapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(clickedBgViewHandler))
         self.bgView.addGestureRecognizer(bgTapGR)
         
-//        self.view.addSubview(self.sheetView)
-//
+        //        self.view.addSubview(self.sheetView)
+        //
         initLayout()
         
     }
     
-    func initLayout() {
+    fileprivate func initLayout() {
         self.bgView.snp.makeConstraints { (make) in
             make.left.equalTo(self.view.snp.left)
             make.right.equalTo(self.view.snp.right)
@@ -78,8 +80,10 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
             make.height.equalTo(120)
         }
     }
-    
-    // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+extension HYAlertController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -88,7 +92,7 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
         return 10
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    @objc(tableView:heightForRowAtIndexPath:) func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
     
@@ -97,8 +101,10 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
         cell.textLabel?.text = "测试数据"
         return cell
     }
-    
-    // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+extension HYAlertController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
@@ -110,8 +116,10 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    // MARK: - UIViewControllerTransitioningDelegate
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+extension HYAlertController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return HYAlertPresentSlideUp ()
     }
@@ -119,9 +127,13 @@ class HYAlertController: UIViewController, UIViewControllerTransitioningDelegate
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return HYAlertDismissSlideUp ()
     }
+}
+
+// MARK: - Events
+extension HYAlertController {
     
-    // MARK: - evnets
-    func clickedBgViewHandler() {
+    /// 点击背景事件
+    @objc fileprivate func clickedBgViewHandler() {
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Class
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,9 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
-        // 加载广告
-        loadAd()
-        
+        openAdView()
+
         return true
     }
 
@@ -51,20 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
-    // MARK: - 私有方法
-    
-    /// 加载广告内容
-    private func loadAd() {
+// MARK: - 启动广告相关
+extension AppDelegate {
+    func openAdView() {
         if AdHelper.isNeedShow() {
             // 显示公告页面
-            let adView: AdPageView = AdPageView (imageFilePath: AdHelper.adImagePath()!)
+            let adView: AdPageView = AdPageView (frame: CGRect (x: 0, y: 0, width: Constants.Rect.ScreenWidth, height: Constants.Rect.ScreenHeight))
+            adView.imageFilePath = AdHelper.adImagePath()!
             adView.show()
-            
         }
         // 每次启动，都更新广告
         AdHelper.refreshAdvertisingImage()
     }
-
 }
-
