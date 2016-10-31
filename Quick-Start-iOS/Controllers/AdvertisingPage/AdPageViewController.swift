@@ -24,6 +24,10 @@ extension HYWebViewController: HYWebViewControllerDelegate {
     
     func clickedRightBarButtonHandler() {
         let alertVC: HYAlertController = HYAlertController ()
+        let testAction: HYAlertAction = HYAlertAction (title: "您好", style: .normal) { (action) in
+            print(action.title)
+        }
+        alertVC.addAction(action: testAction)
         self.present(alertVC, animated: true, completion: nil)
     }
 }

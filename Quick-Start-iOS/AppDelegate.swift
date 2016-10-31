@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
-        openAdView()
+        startAdvertisingPage()
 
         return true
     }
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - 启动广告相关
 extension AppDelegate {
-    func openAdView() {
+    func startAdvertisingPage() {
         if AdHelper.isNeedShow() {
             // 显示公告页面
             let adView: AdPageView = AdPageView (frame: CGRect (x: 0, y: 0, width: Constants.Rect.ScreenWidth, height: Constants.Rect.ScreenHeight))

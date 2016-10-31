@@ -8,33 +8,28 @@
 
 import UIKit
 
-let identifier = "Cell"
+fileprivate let identifier: String = "Cell"
+fileprivate let cellHeight: CGFloat = 44
 
 // MARK: - Class
 class HYAlertController: UIViewController {
-
-    lazy var sheetView: UITableView = {
-        let tableView: UITableView = UITableView ()
+    
+    lazy var alertTable: UITableView = {
+        let tableView: UITableView = UITableView (frame: CGRect (x: 0,
+                                                                 y: Constants.Rect.ScreenHeight,
+                                                                 width: Constants.Rect.ScreenWidth,
+                                                                 height:0),
+                                                  style: .plain)
         return tableView
     }()
     
-    lazy var testLabel: UILabel = {
-        let label: UILabel = UILabel()
-        label.backgroundColor = UIColor.green
-        return label
-    }()
-    
-    lazy var bgView: UIView = {
-        let view: UIView = UIView ()
-        view.backgroundColor = UIColor.black
-        return view
-    }()
+    fileprivate var actionArray: NSMutableArray = NSMutableArray ()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        self.transitioningDelegate = self
-        self.modalPresentationStyle = UIModalPresentationStyle.custom
+//        self.transitioningDelegate = self
+        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
     }
     
@@ -50,34 +45,29 @@ extension HYAlertController {
         
         self.view.backgroundColor = UIColor.clear
         
-        self.view.addSubview(self.bgView)
-        self.view.addSubview(self.testLabel)
-        self.sheetView.delegate = self
-        self.sheetView.dataSource = self
-        self.sheetView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
-        
+        // 添加主视图点击事件
         let bgTapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(clickedBgViewHandler))
-        self.bgView.addGestureRecognizer(bgTapGR)
+        self.view.addGestureRecognizer(bgTapGR)
         
-        //        self.view.addSubview(self.sheetView)
-        //
-        initLayout()
+        initUI()
+//        initLayout()
         
     }
     
-    fileprivate func initLayout() {
-        self.bgView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view.snp.left)
-            make.right.equalTo(self.view.snp.right)
-            make.top.equalTo(self.view.snp.top)
-            make.bottom.equalTo(self.view.snp.bottom)
-        }
+    fileprivate func initUI() {
+        self.alertTable.delegate = self
+        self.alertTable.dataSource = self
+        self.alertTable.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         
-        self.testLabel.snp.makeConstraints { (make) in
+        self.view.addSubview(self.alertTable)
+    }
+    
+    fileprivate func initLayout() {
+        self.alertTable.snp.makeConstraints { (make) in
             make.left.equalTo(self.view.snp.left)
             make.right.equalTo(self.view.snp.right)
             make.bottom.equalTo(self.view.snp.bottom)
-            make.height.equalTo(120)
+            make.height.equalTo(0)
         }
     }
 }
@@ -89,16 +79,17 @@ extension HYAlertController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.actionArray.count
     }
     
     @objc(tableView:heightForRowAtIndexPath:) func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return HYActionSheetCell.cellHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: identifier)!
-        cell.textLabel?.text = "测试数据"
+        let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
+        let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
+        cell.titleLabel.text = action.title
         return cell
     }
 }
@@ -106,7 +97,7 @@ extension HYAlertController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension HYAlertController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.1
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -118,16 +109,33 @@ extension HYAlertController: UITableViewDelegate {
     }
 }
 
-// MARK: - UIViewControllerTransitioningDelegate
-extension HYAlertController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HYAlertPresentSlideUp ()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HYAlertDismissSlideUp ()
+// MARK: - Public Methods
+extension HYAlertController {
+    open func addAction(action: HYAlertAction) {
+        // 添加一个Action，更新约束，刷新视图
+        self.actionArray.add(action)
+        
+        let tableHeight: CGFloat = cellHeight * CGFloat (self.actionArray.count)
+        let newTableFrame: CGRect = CGRect (x: 0,
+                                            y: Constants.Rect.ScreenHeight - tableHeight,
+                                            width: Constants.Rect.ScreenWidth,
+                                            height: tableHeight)
+        self.alertTable.frame = newTableFrame
+        
+        self.alertTable.reloadData()
     }
 }
+
+// MARK: - UIViewControllerTransitioningDelegate
+//extension HYAlertController: UIViewControllerTransitioningDelegate {
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return HYAlertPresentSlideUp ()
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return HYAlertDismissSlideUp ()
+//    }
+//}
 
 // MARK: - Events
 extension HYAlertController {

@@ -17,6 +17,8 @@
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
 		966A1FE51DBA285E00AE005C /* AdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE41DBA285E00AE005C /* AdPageView.swift */; };
 		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
+		966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F41DC72674001E9457 /* HYAlertAction.swift */; };
+		966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */; };
 		969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA02A1DBC895D001051B1 /* HYNavigationController.swift */; };
 		96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A244171DBF0186001721F9 /* HYAlertController.swift */; };
 		96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476971DBDE5DD0065E726 /* HYWebViewController.swift */; };
@@ -44,6 +46,8 @@
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
 		966A1FE41DBA285E00AE005C /* AdPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageView.swift; path = Views/AdvertisingPage/AdPageView.swift; sourceTree = "<group>"; };
 		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
+		966DB8F41DC72674001E9457 /* HYAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertAction.swift; path = HYActionSheet/HYAlertAction.swift; sourceTree = "<group>"; };
+		966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetCell.swift; path = HYActionSheet/HYActionSheetCell.swift; sourceTree = "<group>"; };
 		969BA02A1DBC895D001051B1 /* HYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYNavigationController.swift; path = Utils/HYNavigationController.swift; sourceTree = "<group>"; };
 		96A244171DBF0186001721F9 /* HYAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertController.swift; path = HYActionSheet/HYAlertController.swift; sourceTree = "<group>"; };
 		96B476971DBDE5DD0065E726 /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebViewController.swift; path = Utils/HYWebViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				96A244171DBF0186001721F9 /* HYAlertController.swift */,
 				96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */,
 				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */,
+				966DB8F41DC72674001E9457 /* HYAlertAction.swift */,
+				966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */,
 			);
 			name = HYActionSheet;
 			sourceTree = "<group>";
@@ -369,11 +375,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				96BC6AC91DB0760500D917E4 /* HomeView.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
+				966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */,
 				969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */,
 				96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,

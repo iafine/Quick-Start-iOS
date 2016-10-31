@@ -23,7 +23,7 @@ class HYAlertDismissSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
                         delay: 0,
                         options: .curveEaseInOut,
                         animations: { 
-                            fromVC.bgView.alpha = 0
+                            fromVC.view.alpha = 0
             }) { (finished) in
                 transitionContext.completeTransition(true)
         }

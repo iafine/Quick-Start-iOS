@@ -55,8 +55,7 @@ class HYWebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
 }

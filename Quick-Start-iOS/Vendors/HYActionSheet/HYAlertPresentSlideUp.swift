@@ -17,7 +17,7 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let toVC: HYAlertController = transitionContext.viewController(forKey: .to) as! HYAlertController
-        toVC.bgView.alpha = 0
+        toVC.view.alpha = 0
         let containerView: UIView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         let duration: TimeInterval = transitionDuration(using: transitionContext)
@@ -27,7 +27,7 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
                         delay: 0,
                         options: .curveEaseInOut,
                         animations: {
-                            toVC.bgView.alpha = 0.3
+                            toVC.view.alpha = 0.3
             }) { (finished) in
                 transitionContext.completeTransition(true)
         }
