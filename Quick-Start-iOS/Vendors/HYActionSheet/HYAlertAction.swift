@@ -14,16 +14,17 @@ public enum HYAlertActionStyle : Int {
     case destructive
 }
 
-typealias handler = (UIAlertAction) -> Void
+typealias actionHandler = (_ action: HYAlertAction) -> Void
 
 class HYAlertAction: NSObject {
     
     var title: String
     var style: HYAlertActionStyle
-    
-    init(title: String, style: HYAlertActionStyle, handler:handler) {
+    var myHandler: actionHandler
+    init(title: String, style: HYAlertActionStyle, handler: @escaping actionHandler) {
         self.title = title
         self.style = style
+        self.myHandler = handler
         super.init()
     }
 }

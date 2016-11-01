@@ -20,10 +20,12 @@ class HYAlertController: UIViewController {
                                                                  width: Constants.Rect.ScreenWidth,
                                                                  height:0),
                                                   style: .plain)
+        tableView.isScrollEnabled = false
         return tableView
     }()
     
     fileprivate var actionArray: NSMutableArray = NSMutableArray ()
+    fileprivate var cancelActionArray: NSMutableArray = NSMutableArray ()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -46,40 +48,32 @@ extension HYAlertController {
         self.view.backgroundColor = UIColor.clear
         
         // 添加主视图点击事件
-        let bgTapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(clickedBgViewHandler))
-        self.view.addGestureRecognizer(bgTapGR)
+//        let bgTapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(clickedBgViewHandler))
+//        self.view.addGestureRecognizer(bgTapGR)
         
         initUI()
-//        initLayout()
-        
     }
     
     fileprivate func initUI() {
         self.alertTable.delegate = self
         self.alertTable.dataSource = self
-        self.alertTable.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         
         self.view.addSubview(self.alertTable)
-    }
-    
-    fileprivate func initLayout() {
-        self.alertTable.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view.snp.left)
-            make.right.equalTo(self.view.snp.right)
-            make.bottom.equalTo(self.view.snp.bottom)
-            make.height.equalTo(0)
-        }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension HYAlertController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.actionArray.count
+        if section == 0 {
+            return self.actionArray.count
+        }else {
+            return 1
+        }
     }
     
     @objc(tableView:heightForRowAtIndexPath:) func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,16 +81,30 @@ extension HYAlertController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
-        let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
-        cell.titleLabel.text = action.title
-        return cell
+        if indexPath.section == 0 {
+            let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
+            let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
+            cell.titleLabel.text = action.title
+            return cell
+        }else {
+            let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
+            if self.cancelActionArray.count > 0 {
+                let action: HYAlertAction = self.cancelActionArray.object(at: indexPath.row) as! HYAlertAction
+                cell.titleLabel.text = action.title
+            }else {
+                cell.titleLabel.text = "取消"
+            }
+            return cell
+        }
     }
 }
 
 // MARK: - UITableViewDelegate
 extension HYAlertController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 10
+        }
         return 0.1
     }
     
@@ -105,7 +113,17 @@ extension HYAlertController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
+            action.myHandler(action)
+        }else {
+            if self.cancelActionArray.count > 0 {
+                let action: HYAlertAction = self.cancelActionArray.object(at: indexPath.row) as! HYAlertAction
+                action.myHandler(action)
+            }
+        }
         
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -113,9 +131,14 @@ extension HYAlertController: UITableViewDelegate {
 extension HYAlertController {
     open func addAction(action: HYAlertAction) {
         // 添加一个Action，更新约束，刷新视图
-        self.actionArray.add(action)
+        if action.style == .cancel {
+            self.cancelActionArray.add(action)
+        }else {
+            self.actionArray.add(action)
+        }
         
-        let tableHeight: CGFloat = cellHeight * CGFloat (self.actionArray.count)
+        let tableHeight: CGFloat = cellHeight * CGFloat (self.actionArray.count) + cellHeight + 10
+        
         let newTableFrame: CGRect = CGRect (x: 0,
                                             y: Constants.Rect.ScreenHeight - tableHeight,
                                             width: Constants.Rect.ScreenWidth,
@@ -145,3 +168,4 @@ extension HYAlertController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+

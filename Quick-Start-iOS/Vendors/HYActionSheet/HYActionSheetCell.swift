@@ -42,6 +42,11 @@ extension HYActionSheetCell {
 // MARK: - Private Methods
 extension HYActionSheetCell {
     fileprivate func initCellUI() {
+        
+        self.preservesSuperviewLayoutMargins = false
+        self.separatorInset = UIEdgeInsets.zero
+        self.layoutMargins = UIEdgeInsets.zero
+        
         self.addSubview(self.titleLabel)
     }
     
