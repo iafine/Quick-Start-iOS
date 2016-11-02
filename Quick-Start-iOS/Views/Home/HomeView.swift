@@ -11,19 +11,21 @@ import SnapKit
 
 // MARK: - Class
 class HomeView: UIView {
-
-    // MARK: properties
-    lazy var label: UILabel = {
-        let tempLabel: UILabel = UILabel()
-        tempLabel.backgroundColor = UIColor.red
-        return tempLabel
+    
+    lazy var menuCollectionView: UICollectionView = {
+        let collectionLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout ()
+//        collectionLayout.scrollDirection = .horizontal  // 设置视图滚动方向
+        
+        let collectionView: UICollectionView = UICollectionView (frame: CGRect (x: 0, y: 30, width: Constants.Rect.ScreenWidth, height: 100), collectionViewLayout: collectionLayout)
+//        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = UIColor.white
+        return collectionView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         initUI()
-        initLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,14 +36,54 @@ class HomeView: UIView {
 // MARK: - LifeCycle
 extension HomeView {
     fileprivate func initUI() {
-        self.addSubview(self.label)
+        self.menuCollectionView.delegate = self
+        self.menuCollectionView.dataSource = self
+        self.menuCollectionView.register(HYShareCollectionCell.self, forCellWithReuseIdentifier: HYShareCollectionCell.ID())
+        self.addSubview(self.menuCollectionView)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension HomeView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension HomeView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
     }
     
-    fileprivate func initLayout() {
-        label.snp.makeConstraints { (make) in
-            make.top.equalTo(self.snp.top).offset(40)
-            make.centerX.equalTo(self.snp.centerX)
-            make.size.equalTo(CGSize (width: 120, height: 40))
-        }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: HYShareCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HYShareCollectionCell.ID(), for: indexPath) as! HYShareCollectionCell
+        cell.cellIcon.image = UIImage (named: "qq")
+        cell.titleLabel.text = "测试"
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension HomeView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return HYShareCollectionCell.cellSize()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return HYShareCollectionCell.cellInset()
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10
+//    }
 }

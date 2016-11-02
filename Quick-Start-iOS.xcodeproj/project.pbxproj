@@ -14,6 +14,7 @@
 		965408EA1DAF5BA500F5D0F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E81DAF5BA500F5D0F9 /* LaunchScreen.storyboard */; };
 		965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FC1DAF817200F5D0F9 /* HomeViewController.swift */; };
 		965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */; };
+		9660E5041DC9E6B800C7B4B1 /* HYShareCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */; };
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
 		966A1FE51DBA285E00AE005C /* AdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE41DBA285E00AE005C /* AdPageView.swift */; };
 		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
@@ -43,6 +44,7 @@
 		965408EB1DAF5BA500F5D0F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965408FC1DAF817200F5D0F9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareCollectionCell.swift; path = HYActionSheet/HYShareCollectionCell.swift; sourceTree = "<group>"; };
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
 		966A1FE41DBA285E00AE005C /* AdPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageView.swift; path = Views/AdvertisingPage/AdPageView.swift; sourceTree = "<group>"; };
 		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */,
 				966DB8F41DC72674001E9457 /* HYAlertAction.swift */,
 				966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */,
+				9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */,
 			);
 			name = HYActionSheet;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */,
 				96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */,
 				966A1FE51DBA285E00AE005C /* AdPageView.swift in Sources */,
+				9660E5041DC9E6B800C7B4B1 /* HYShareCollectionCell.swift in Sources */,
 				966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */,
 				96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */,
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,

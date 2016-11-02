@@ -40,16 +40,16 @@ extension HYWebViewController: HYWebViewControllerDelegate {
 //        self.present(alertVC, animated: true, completion: nil)
         
         let alertVC: HYAlertController = HYAlertController ()
-        let testAction1: HYAlertAction = HYAlertAction (title: "您好1", style: .normal) { (action) in
+        let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
             print(action.title)
         }
-        let testAction2: HYAlertAction = HYAlertAction (title: "您好2", style: .normal) { (action) in
+        let testAction2: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
             print(action.title)
         }
-        let testAction3: HYAlertAction = HYAlertAction (title: "您好3", style: .normal) { (action) in
+        let testAction3: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
             print(action.title)
         }
-        let testAction4: HYAlertAction = HYAlertAction (title: "您好4", style: .normal) { (action) in
+        let testAction4: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
             print(action.title)
         }
         alertVC.addAction(action: testAction1)

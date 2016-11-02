@@ -19,16 +19,22 @@ typealias actionHandler = (_ action: HYAlertAction) -> Void
 class HYAlertAction: NSObject {
     
     var title: String
+    var image: UIImage = UIImage ()
     var style: HYAlertActionStyle
     var myHandler: actionHandler
+
     init(title: String, style: HYAlertActionStyle, handler: @escaping actionHandler) {
         self.title = title
         self.style = style
         self.myHandler = handler
         super.init()
     }
-}
-
-// MARK: - Public Methods
-extension HYAlertAction {
+    
+    init(title: String, image: UIImage, style: HYAlertActionStyle, handler: @escaping actionHandler) {
+        self.title = title
+        self.style = style
+        self.image = image
+        self.myHandler = handler
+        super.init()
+    }
 }
