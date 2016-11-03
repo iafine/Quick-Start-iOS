@@ -61,7 +61,7 @@ extension HYShareCollectionCell {
             make.left.equalTo(self.snp.left)
             make.top.equalTo(self.snp.top)
             make.right.equalTo(self.snp.right)
-            make.height.equalTo(50)
+            make.height.equalTo(self.snp.width)
         }
         
         self.titleLabel.snp.makeConstraints { (make) in
