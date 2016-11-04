@@ -56,7 +56,7 @@ extension HomeViewController {
 //        alertVC.addAction(threeAction)
 //        self.present(alertVC, animated: true, completion: nil)
         
-        let alertVC: HYAlertController = HYAlertController ()
+        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "消息", style: .actionSheet)
         let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
             print(action.title)
         }

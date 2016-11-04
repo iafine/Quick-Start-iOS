@@ -11,8 +11,11 @@ import UIKit
 class Constants: NSObject {
     
     struct Rect {
-        static let ScreenWidth = UIScreen.main.bounds.size.width
-        static let ScreenHeight = UIScreen.main.bounds.size.height
+        static let statusBarHeight = UIApplication.shared.statusBarFrame.size.height    // 状态栏高度
+        static let navHeight: CGFloat = 44   // 默认导航栏高度
+        static let tabBarHeight: CGFloat = 49    //  默认TabBar高度
+        static let ScreenWidth = UIScreen.main.bounds.size.width    // 屏幕宽度
+        static let ScreenHeight = UIScreen.main.bounds.size.height  // 屏幕高度
     }
     
     struct Notification {

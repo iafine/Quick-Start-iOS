@@ -31,6 +31,9 @@
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
 		96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */; };
 		96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */; };
+		96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350C1DCC60A50033429C /* HYShareView.swift */; };
+		96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350E1DCC855D0033429C /* HY_Constants.swift */; };
+		96E535111DCC8DE10033429C /* HYActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E535101DCC8DE10033429C /* HYActionSheetView.swift */; };
 		C160F53A12490EF6D976BBDE /* Pods_Quick_Start_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertPresentSlideUp.swift; path = HYActionSheet/HYAlertPresentSlideUp.swift; sourceTree = "<group>"; };
 		96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertDismissSlideUp.swift; path = HYActionSheet/HYAlertDismissSlideUp.swift; sourceTree = "<group>"; };
+		96E5350C1DCC60A50033429C /* HYShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareView.swift; path = HYActionSheet/HYShareView.swift; sourceTree = "<group>"; };
+		96E5350E1DCC855D0033429C /* HY_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HY_Constants.swift; path = HYActionSheet/HY_Constants.swift; sourceTree = "<group>"; };
+		96E535101DCC8DE10033429C /* HYActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetView.swift; path = HYActionSheet/HYActionSheetView.swift; sourceTree = "<group>"; };
 		9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_Start_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC950D9B2325503F3968EA59 /* Pods-Quick-Start-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +208,9 @@
 				966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */,
 				9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */,
 				966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */,
+				96E5350C1DCC60A50033429C /* HYShareView.swift */,
+				96E5350E1DCC855D0033429C /* HY_Constants.swift */,
+				96E535101DCC8DE10033429C /* HYActionSheetView.swift */,
 			);
 			name = HYActionSheet;
 			sourceTree = "<group>";
@@ -385,7 +394,9 @@
 				966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				96BC6AC91DB0760500D917E4 /* HomeView.swift in Sources */,
+				96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
+				96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
 				966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */,
@@ -400,6 +411,7 @@
 				966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */,
 				96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */,
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
+				96E535111DCC8DE10033429C /* HYActionSheetView.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);

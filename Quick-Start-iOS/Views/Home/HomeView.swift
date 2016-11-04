@@ -27,7 +27,7 @@ class HomeView: UIView {
         let tableView: UITableView = UITableView (frame: CGRect (x: 0,
                                                                  y: 0,
                                                                  width: Constants.Rect.ScreenWidth,
-                                                                 height:Constants.Rect.ScreenHeight),
+                                                                 height:Constants.Rect.ScreenHeight - Constants.Rect.tabBarHeight),
                                                   style: .plain)
         tableView.backgroundColor = UIColor.white
 //        tableView.isScrollEnabled = false
@@ -74,7 +74,6 @@ extension HomeView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HYShareTableViewCell = HYShareTableViewCell.cellWithTableView(tableView: tableView)
-        cell.backgroundColor = UIColor.lightGray
         return cell
     }
 }
@@ -132,9 +131,9 @@ extension HomeView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        print("collectionView的位置： \(collectionView.tag)")
-        cell.backgroundColor = randomColor()
+        let cell: HYShareCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HYShareCollectionCell.ID(), for: indexPath) as! HYShareCollectionCell
+        cell.cellIcon.image = UIImage (named: "qq")
+        cell.titleView.text = "测试"
         return cell
     }
 }

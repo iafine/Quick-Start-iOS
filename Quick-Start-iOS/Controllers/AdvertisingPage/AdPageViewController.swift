@@ -39,7 +39,7 @@ extension HYWebViewController: HYWebViewControllerDelegate {
 //        alertVC.addAction(threeAction)
 //        self.present(alertVC, animated: true, completion: nil)
         
-        let alertVC: HYAlertController = HYAlertController ()
+        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "消息", style: .shareSheet)
         let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
             print(action.title)
         }
@@ -52,10 +52,11 @@ extension HYWebViewController: HYWebViewControllerDelegate {
         let testAction4: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
             print(action.title)
         }
-        alertVC.addAction(action: testAction1)
-        alertVC.addAction(action: testAction2)
-        alertVC.addAction(action: testAction3)
-        alertVC.addAction(action: testAction4)
+        alertVC.addShareActions(actions: [testAction1, testAction2, testAction3, testAction4])
+//        alertVC.addAction(action: testAction1)
+//        alertVC.addAction(action: testAction2)
+//        alertVC.addAction(action: testAction3)
+//        alertVC.addAction(action: testAction4)
         self.present(alertVC, animated: true, completion: nil)
     }
 }

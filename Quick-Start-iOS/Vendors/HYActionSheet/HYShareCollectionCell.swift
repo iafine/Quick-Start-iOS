@@ -14,13 +14,13 @@ class HYShareCollectionCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var titleLabel: UILabel = {
-        let label: UILabel = UILabel ()
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .center
-        label.numberOfLines = 2
-        return label
+    lazy var titleView: UITextView = {
+        let text: UITextView = UITextView ()
+        text.textAlignment = .center
+        text.font = UIFont.systemFont(ofSize: 11)
+        text.textAlignment = .center
+        text.isUserInteractionEnabled = false
+        return text
     }()
     
     override init(frame: CGRect) {
@@ -41,18 +41,18 @@ extension HYShareCollectionCell {
     }
     
     class func cellSize() -> CGSize {
-        return CGSize (width: 50, height: 80)
+        return CGSize (width: HY_Constants.shareItemWidth, height: HY_Constants.shareItemHeight)
     }
     
     class func cellInset() -> UIEdgeInsets {
-        return UIEdgeInsets (top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets (top: HY_Constants.shareItemPadding, left: HY_Constants.shareItemPadding, bottom: HY_Constants.shareItemPadding, right: HY_Constants.shareItemPadding)
     }
 }
 
 // MARK: - Private Methods
 extension HYShareCollectionCell {
     fileprivate func initCellUI() {
-        self.addSubview(self.titleLabel)
+        self.addSubview(self.titleView)
         self.addSubview(self.cellIcon)
     }
     
@@ -64,7 +64,7 @@ extension HYShareCollectionCell {
             make.height.equalTo(self.snp.width)
         }
         
-        self.titleLabel.snp.makeConstraints { (make) in
+        self.titleView.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left)
             make.top.equalTo(self.cellIcon.snp.bottom).offset(5)
             make.right.equalTo(self.snp.right)

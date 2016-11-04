@@ -8,27 +8,57 @@
 
 import UIKit
 
+public enum HYAlertControllerStyle : Int {
+    
+    case actionSheet
+    
+    case shareSheet
+    
+    case alert
+}
+
 // MARK: - Class
 class HYAlertController: UIViewController {
-    
-    lazy var alertTable: UITableView = {
-        let tableView: UITableView = UITableView (frame: CGRect (x: 0,
-                                                                 y: Constants.Rect.ScreenHeight,
-                                                                 width: Constants.Rect.ScreenWidth,
-                                                                 height:0),
-                                                  style: .plain)
-        tableView.backgroundColor = UIColor.white
-        tableView.isScrollEnabled = false
-        return tableView
-    }()
+
+    fileprivate var alertTitle: String
+    fileprivate var alertMessage: String
+    fileprivate var alertStyle: HYAlertControllerStyle
     
     fileprivate var actionArray: NSMutableArray = NSMutableArray ()
     fileprivate var cancelActionArray: NSMutableArray = NSMutableArray ()
+
+    lazy var shareView: HYShareView = {
+        let view: HYShareView = HYShareView (frame: CGRect.zero)
+        return view
+    }()
     
-    init() {
+    lazy var sheetView: HYActionSheetView = {
+        let view: HYActionSheetView = HYActionSheetView (frame: CGRect.zero)
+        return view
+    }()
+    
+    lazy var dimBackgroundView: UIView = {
+        let view: UIView = UIView (frame: CGRect (x: 0,
+                                                  y: 0,
+                                                  width: HY_Constants.ScreenWidth,
+                                                  height: HY_Constants.ScreenHeight))
+        view.backgroundColor = UIColor.black
+        view.alpha = 0
+        
+        // 添加手势监听
+        let tapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector (clickedBgViewHandler))
+        view.addGestureRecognizer(tapGR)
+        return view
+    }()
+    
+    init(title: String?, message: String?, style: HYAlertControllerStyle) {
+        self.alertTitle = title!
+        self.alertMessage = message!
+        self.alertStyle = style
         super.init(nibName: nil, bundle: nil)
         
-//        self.transitioningDelegate = self
+        // 自定义转场动画
+        self.transitioningDelegate = self
         self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
     }
@@ -42,142 +72,99 @@ class HYAlertController: UIViewController {
 extension HYAlertController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = UIColor.clear
-        
-        // 添加主视图点击事件
-//        let bgTapGR: UITapGestureRecognizer = UITapGestureRecognizer (target: self, action: #selector(clickedBgViewHandler))
-//        self.view.addGestureRecognizer(bgTapGR)
-        
+
         initUI()
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        
-//        let tableHeight: CGFloat = cellHeight * CGFloat (self.actionArray.count) + cellHeight + 10
-//        self.alertTable.snp.makeConstraints { (make) in
-//            make.left.equalTo(self.view.snp.left)
-//            make.right.equalTo(self.view.snp.right)
-//            make.bottom.equalTo(self.view.snp.bottom)
-//            make.height.equalTo(tableHeight)
-//        }
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if self.alertStyle == .shareSheet {
+            let tableHeight: CGFloat = HYShareTableViewCell.cellHeight() * CGFloat (self.actionArray.count) + 44
+            let newTableFrame: CGRect = CGRect (x: 0,
+                                                y: HY_Constants.ScreenHeight - tableHeight,
+                                                width: HY_Constants.ScreenWidth,
+                                                height: tableHeight)
+            self.shareView.frame = newTableFrame
+        }else {
+            let tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
+            
+            let newTableFrame: CGRect = CGRect (x: 0,
+                                                y: HY_Constants.ScreenHeight - tableHeight,
+                                                width: HY_Constants.ScreenWidth,
+                                                height: tableHeight)
+            self.sheetView.frame = newTableFrame
+        }
+    }
     
     fileprivate func initUI() {
-        self.alertTable.delegate = self
-        self.alertTable.dataSource = self
-        
-        UIApplication.shared.keyWindow?.addSubview(self.alertTable)
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension HYAlertController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return self.actionArray.count
-        }else {
-            return 1
+        self.view.addSubview(self.dimBackgroundView)
+        switch self.alertStyle {
+        case .actionSheet:
+            self.sheetView.delegate = self
+            self.view.addSubview(self.sheetView)
+            break
+            
+        case .shareSheet:
+            self.shareView.delegate = self
+            self.view.addSubview(self.shareView)
+            break
+            
+        default: break
+            
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
-            let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
-            cell.titleLabel.text = action.title
-            cell.cellIcon.image = action.image
-            return cell
-        }else {
-            let cell: HYActionSheetCell = HYActionSheetCell.cellWithTableView(tableView: tableView)
-            if self.cancelActionArray.count > 0 {
-                let action: HYAlertAction = self.cancelActionArray.object(at: indexPath.row) as! HYAlertAction
-                cell.titleLabel.text = action.title
-                cell.cellIcon.image = action.image
-            }else {
-                cell.titleLabel.text = "取消"
-            }
-            return cell
-        }
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension HYAlertController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 10
-        }
-        return 0.1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return HYActionSheetCell.cellHeight()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let action: HYAlertAction = self.actionArray.object(at: indexPath.row) as! HYAlertAction
-            action.myHandler(action)
-        }else {
-            if self.cancelActionArray.count > 0 {
-                let action: HYAlertAction = self.cancelActionArray.object(at: indexPath.row) as! HYAlertAction
-                action.myHandler(action)
-            }
-        }
-        dismiss()
     }
 }
 
 // MARK: - Public Methods
 extension HYAlertController {
     open func addAction(action: HYAlertAction) {
-        // 添加一个Action，更新约束，刷新视图
         if action.style == .cancel {
             self.cancelActionArray.add(action)
         }else {
             self.actionArray.add(action)
         }
-        
-        let tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
-        
-        let newTableFrame: CGRect = CGRect (x: 0,
-                                            y: Constants.Rect.ScreenHeight - tableHeight,
-                                            width: Constants.Rect.ScreenWidth,
-                                            height: tableHeight)
-        self.alertTable.frame = newTableFrame
-        
-        self.view.setNeedsLayout()
-        self.alertTable.reloadData()
+        self.sheetView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray)
+    }
+    
+    open func addShareActions(actions: NSArray) {
+        self.actionArray.add(actions)
+        self.shareView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray)
+    }
+}
+
+// MARK: - HYActionSheetViewDelegate
+extension HYAlertController: HYActionSheetViewDelegate {
+    func clickSheetItemHandler() {
+        dismiss()
+    }
+}
+
+// MARK: - HYShareViewDelegate
+extension HYAlertController: HYShareViewDelegate {
+    func clickedShareItemHandler() {
+        dismiss()
     }
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-//extension HYAlertController: UIViewControllerTransitioningDelegate {
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return HYAlertPresentSlideUp ()
-//    }
-//    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return HYAlertDismissSlideUp ()
-//    }
-//}
+extension HYAlertController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return HYAlertPresentSlideUp ()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return HYAlertDismissSlideUp ()
+    }
+}
 
 // MARK: - Events
 extension HYAlertController {
     
     /// 点击背景事件
     @objc fileprivate func clickedBgViewHandler() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss()
     }
 }
 
@@ -185,12 +172,14 @@ extension HYAlertController {
 extension HYAlertController {
     // 取消视图显示和控制器加载
     fileprivate func dismiss() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
-            self.alertTable.alpha = 0
-        }) { (finished) in
-            self.alertTable.removeFromSuperview()
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.actionArray.removeAllObjects()
+        self.cancelActionArray.removeAllObjects()
+//        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
+//            self.alertTable.alpha = 0
+//        }) { (finished) in
+//            self.alertTable.removeFromSuperview()
+//        }
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

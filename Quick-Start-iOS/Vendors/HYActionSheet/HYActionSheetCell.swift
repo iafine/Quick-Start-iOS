@@ -13,6 +13,7 @@ class HYActionSheetCell: UITableViewCell {
         let label: UILabel = UILabel ()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor.darkText
         return label
     }()
     
@@ -29,7 +30,7 @@ extension HYActionSheetCell {
     }
     
     class func cellHeight() -> CGFloat {
-        return 44
+        return HY_Constants.actionSheetheight
     }
     
     class func cellWithTableView(tableView: UITableView) ->HYActionSheetCell {
@@ -66,8 +67,9 @@ extension HYActionSheetCell {
         
         self.cellIcon.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left).offset(20)
-            make.centerY.equalTo(self.snp.centerY)
-            make.size.equalTo(CGSize (width: 25, height: 25))
+            make.top.equalTo(self.snp.top).offset(10)
+            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.width.equalTo(self.cellIcon.snp.height)
         }
     }
 }

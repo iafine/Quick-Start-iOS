@@ -12,24 +12,26 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
 
     // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return HY_Constants.animateDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let toVC: HYAlertController = transitionContext.viewController(forKey: .to) as! HYAlertController
-        toVC.view.alpha = 0
+        toVC.dimBackgroundView.alpha = 0
         let containerView: UIView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         let duration: TimeInterval = transitionDuration(using: transitionContext)
         
         // 执行动画
-        UIView .animate(withDuration: duration,
-                        delay: 0,
-                        options: .curveEaseInOut,
-                        animations: {
-                            toVC.view.alpha = 0.3
-            }) { (finished) in
-                transitionContext.completeTransition(true)
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       usingSpringWithDamping: 0.9,
+                       initialSpringVelocity: 0.7,
+                       options: .curveEaseInOut,
+                       animations: {
+            toVC.dimBackgroundView.alpha = HY_Constants.dimBackgroundAlpha
+        }) { (finished) in
+            transitionContext.completeTransition(true)
         }
     }
 }

@@ -12,11 +12,11 @@ class HYShareTableViewCell: UITableViewCell {
     
     lazy var collectionView: UICollectionView = {
         let collectionLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout ()
-        collectionLayout.itemSize = CGSize (width: 50, height: 80)
-        collectionLayout.sectionInset = UIEdgeInsets (top: 10, left: 10, bottom: 10, right: 10)
+        collectionLayout.itemSize = HYShareCollectionCell.cellSize()
+        collectionLayout.sectionInset = HYShareCollectionCell.cellInset()
         collectionLayout.scrollDirection = .horizontal
         let collection: UICollectionView = UICollectionView (frame: CGRect.zero, collectionViewLayout: collectionLayout)
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.register(HYShareCollectionCell.self, forCellWithReuseIdentifier: HYShareCollectionCell.ID())
         collection.backgroundColor = UIColor.white
         return collection
     }()
@@ -35,7 +35,7 @@ extension HYShareTableViewCell {
     }
     
     class func cellHeight() -> CGFloat {
-        return 100
+        return HY_Constants.shareItemHeight + HY_Constants.shareItemPadding * 2
     }
     
     class func cellWithTableView(tableView: UITableView) ->HYShareTableViewCell {
@@ -65,6 +65,7 @@ extension HYShareTableViewCell {
 // MARK: - Private Methods
 extension HYShareTableViewCell {
     fileprivate func initCellUI() {
+        self.backgroundColor = UIColor.lightGray
         self.contentView.addSubview(self.collectionView)
     }
     
