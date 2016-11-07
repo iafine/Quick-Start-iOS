@@ -20,12 +20,14 @@ public enum HYAlertControllerStyle : Int {
 // MARK: - Class
 class HYAlertController: UIViewController {
 
-    fileprivate var alertTitle: String
-    fileprivate var alertMessage: String
-    fileprivate var alertStyle: HYAlertControllerStyle
+    var alertTitle: String
+    var alertMessage: String
+    var alertStyle: HYAlertControllerStyle
     
     fileprivate var actionArray: NSMutableArray = NSMutableArray ()
     fileprivate var cancelActionArray: NSMutableArray = NSMutableArray ()
+    
+    var alertHeight: CGFloat = CGFloat()
 
     lazy var shareView: HYShareView = {
         let view: HYShareView = HYShareView (frame: CGRect.zero)
@@ -42,7 +44,7 @@ class HYAlertController: UIViewController {
                                                   y: 0,
                                                   width: HY_Constants.ScreenWidth,
                                                   height: HY_Constants.ScreenHeight))
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor (white: 0, alpha: HY_Constants.dimBackgroundAlpha)
         view.alpha = 0
         
         // 添加手势监听
@@ -59,7 +61,7 @@ class HYAlertController: UIViewController {
         
         // 自定义转场动画
         self.transitioningDelegate = self
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.modalPresentationStyle = UIModalPresentationStyle.custom
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
     }
     
@@ -86,6 +88,7 @@ extension HYAlertController {
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
                                                 height: tableHeight)
+            self.alertHeight = tableHeight
             self.shareView.frame = newTableFrame
         }else {
             let tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
@@ -94,6 +97,7 @@ extension HYAlertController {
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
                                                 height: tableHeight)
+            self.alertHeight = tableHeight
             self.sheetView.frame = newTableFrame
         }
     }

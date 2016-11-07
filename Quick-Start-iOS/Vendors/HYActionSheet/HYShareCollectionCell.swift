@@ -58,10 +58,10 @@ extension HYShareCollectionCell {
     
     fileprivate func initCellLayout() {
         self.cellIcon.snp.makeConstraints { (make) in
-            make.left.equalTo(self.snp.left)
-            make.top.equalTo(self.snp.top)
-            make.right.equalTo(self.snp.right)
-            make.height.equalTo(self.snp.width)
+            make.left.equalTo(self.snp.left).offset(10)
+            make.top.equalTo(self.snp.top).offset(10)
+            make.right.equalTo(self.snp.right).offset(-10)
+            make.height.equalTo(self.cellIcon.snp.width)
         }
         
         self.titleView.snp.makeConstraints { (make) in

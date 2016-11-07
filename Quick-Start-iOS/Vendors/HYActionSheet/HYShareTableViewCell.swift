@@ -18,6 +18,7 @@ class HYShareTableViewCell: UITableViewCell {
         let collection: UICollectionView = UICollectionView (frame: CGRect.zero, collectionViewLayout: collectionLayout)
         collection.register(HYShareCollectionCell.self, forCellWithReuseIdentifier: HYShareCollectionCell.ID())
         collection.backgroundColor = UIColor.white
+        collection.showsHorizontalScrollIndicator = false
         return collection
     }()
     

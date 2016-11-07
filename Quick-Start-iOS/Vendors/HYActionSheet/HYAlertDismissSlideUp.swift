@@ -12,7 +12,7 @@ class HYAlertDismissSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
 
     // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return HY_Constants.animateDuration
+        return HY_Constants.dismissAnimateDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -20,16 +20,17 @@ class HYAlertDismissSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
         let duration: TimeInterval = transitionDuration(using: transitionContext)
         
         // 执行动画
-        UIView.animate(withDuration: duration,
-                       delay: 0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 0.7,
-                       options: .curveEaseInOut,
-                       animations: {
-                        fromVC.dimBackgroundView.alpha = 0
-        }) { (finished) in
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: .curveEaseInOut, animations: {
+            fromVC.dimBackgroundView.alpha = 0
+            if fromVC.alertStyle == .actionSheet {
+                fromVC.sheetView.transform = .identity
+            }else if fromVC.alertStyle == .shareSheet {
+                fromVC.shareView.transform = .identity
+            }else {
+            }
+        }, completion: { (finished) in
             transitionContext.completeTransition(true)
-        }
+        })
     }
 }
 

@@ -12,7 +12,7 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
 
     // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return HY_Constants.animateDuration
+        return HY_Constants.presentAnimateDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -23,15 +23,16 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
         let duration: TimeInterval = transitionDuration(using: transitionContext)
         
         // 执行动画
-        UIView.animate(withDuration: duration,
-                       delay: 0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 0.7,
-                       options: .curveEaseInOut,
-                       animations: {
-            toVC.dimBackgroundView.alpha = HY_Constants.dimBackgroundAlpha
-        }) { (finished) in
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: .curveEaseInOut, animations: {
+            toVC.dimBackgroundView.alpha = 1
+            if toVC.alertStyle == .actionSheet {
+                toVC.sheetView.transform = CGAffineTransform(translationX: 0, y: -toVC.alertHeight)
+            }else if toVC.alertStyle == .shareSheet {
+                toVC.shareView.transform = CGAffineTransform(translationX: 0, y: -toVC.alertHeight)
+            }else {
+            }
+        }, completion: { (finished) in
             transitionContext.completeTransition(true)
-        }
+        })
     }
 }
