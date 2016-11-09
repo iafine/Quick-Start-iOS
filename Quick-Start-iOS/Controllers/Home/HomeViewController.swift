@@ -21,8 +21,8 @@ extension HomeViewController {
         
         self.view.backgroundColor = UIColor.white
         self.title = "首页"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem (title: "Alert", style: .plain, target: self, action: #selector(alertTest))
-        self.view.addSubview(self.homeView)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (title: "登录", style: .plain, target: self, action: #selector(alertTest))
+//        self.view.addSubview(self.homeView)
         
         /// 监听广告跳转
         NotificationCenter.default.addObserver(self, selector: #selector(pushAdViewController), name: Constants.Notification.DISPATCH_AD_PAGE, object: nil)
@@ -56,24 +56,25 @@ extension HomeViewController {
 //        alertVC.addAction(threeAction)
 //        self.present(alertVC, animated: true, completion: nil)
         
-        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "消息", style: .actionSheet)
-        let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction2: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction3: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction4: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        alertVC.addAction(action: testAction1)
-        alertVC.addAction(action: testAction2)
-        alertVC.addAction(action: testAction3)
-        alertVC.addAction(action: testAction4)
-        self.present(alertVC, animated: true, completion: nil)
+//        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "消息", style: .actionSheet)
+//        let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction2: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction3: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction4: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        alertVC.addAction(action: testAction1)
+//        alertVC.addAction(action: testAction2)
+//        alertVC.addAction(action: testAction3)
+//        alertVC.addAction(action: testAction4)
+//        self.present(alertVC, animated: true, completion: nil)
+        LoginHelper.openLoginPage(vc: self)
     }
 }
 

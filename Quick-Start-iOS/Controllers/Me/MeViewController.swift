@@ -18,7 +18,7 @@ extension MeViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.white
         self.title = "我"
     }
 }

@@ -12,16 +12,16 @@ import SnapKit
 // MARK: - Class
 class HomeView: UIView {
     
-//    lazy var menuCollectionView: UICollectionView = {
-//        let collectionLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout ()
-////        collectionLayout.scrollDirection = .horizontal  // 设置视图滚动方向
-//        
-//        let collectionView: UICollectionView = UICollectionView (frame: CGRect (x: 0, y: 30, width: Constants.Rect.ScreenWidth, height: 700), collectionViewLayout: collectionLayout)
-////        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.backgroundColor = UIColor.lightGray
-//        collectionView.isPagingEnabled = true
-//        return collectionView
-//    }()
+    //    lazy var menuCollectionView: UICollectionView = {
+    //        let collectionLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout ()
+    ////        collectionLayout.scrollDirection = .horizontal  // 设置视图滚动方向
+    //
+    //        let collectionView: UICollectionView = UICollectionView (frame: CGRect (x: 0, y: 30, width: Constants.Rect.ScreenWidth, height: 700), collectionViewLayout: collectionLayout)
+    ////        collectionView.showsHorizontalScrollIndicator = false
+    //        collectionView.backgroundColor = UIColor.lightGray
+    //        collectionView.isPagingEnabled = true
+    //        return collectionView
+    //    }()
     
     lazy var shareTable: UITableView = {
         let tableView: UITableView = UITableView (frame: CGRect (x: 0,
@@ -30,7 +30,7 @@ class HomeView: UIView {
                                                                  height:Constants.Rect.ScreenHeight - Constants.Rect.tabBarHeight),
                                                   style: .plain)
         tableView.backgroundColor = UIColor.white
-//        tableView.isScrollEnabled = false
+        //        tableView.isScrollEnabled = false
         return tableView
     }()
     
@@ -39,7 +39,7 @@ class HomeView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         initUI()
     }
     
@@ -51,10 +51,10 @@ class HomeView: UIView {
 // MARK: - LifeCycle
 extension HomeView {
     fileprivate func initUI() {
-//        self.menuCollectionView.delegate = self
-//        self.menuCollectionView.dataSource = self
-//        self.menuCollectionView.register(HYShareCollectionCell.self, forCellWithReuseIdentifier: HYShareCollectionCell.ID())
-//        self.addSubview(self.menuCollectionView)
+        //        self.menuCollectionView.delegate = self
+        //        self.menuCollectionView.dataSource = self
+        //        self.menuCollectionView.register(HYShareCollectionCell.self, forCellWithReuseIdentifier: HYShareCollectionCell.ID())
+        //        self.addSubview(self.menuCollectionView)
         
         self.shareTable.dataSource = self
         self.shareTable.delegate = self
@@ -141,21 +141,21 @@ extension HomeView: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension HomeView: UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return HYShareCollectionCell.cellSize()
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return HYShareCollectionCell.cellInset()
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        return HYShareCollectionCell.cellSize()
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    //        return HYShareCollectionCell.cellInset()
+    //    }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 10
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 10
+    //    }
 }
 
 // MARK: - Private Methods

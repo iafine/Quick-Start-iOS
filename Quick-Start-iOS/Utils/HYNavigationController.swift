@@ -64,6 +64,6 @@ extension HYNavigationController {
         UINavigationBar.appearance().barTintColor = UIColor (red: 146/255, green: 185/255, blue: 74/255, alpha: 1.0)    // 背景颜色
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white] // 文字颜色
-        self.navigationBar.isTranslucent = false    // 取消导航栏默认透明效果
+//        self.navigationBar.isTranslucent = false    // 取消导航栏默认透明效果
     }
 }

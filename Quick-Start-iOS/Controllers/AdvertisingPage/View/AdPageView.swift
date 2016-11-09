@@ -126,10 +126,10 @@ extension AdPageView {
     fileprivate func dismiss() {
         self.adTimer.invalidate()
         self.adCount = 0
-        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: { 
+        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
             self.alpha = 0
-            }) { (finished) in
-                self.removeFromSuperview()
+        }) { (finished) in
+            self.removeFromSuperview()
         }
     }
 }
