@@ -15,6 +15,26 @@ class LoginView: UIView {
         return imageView
     }()
     
+    lazy var cloud1: UIImageView = {
+        let imageView: UIImageView = UIImageView (image: UIImage (named: "bg-sunny-cloud-1"))
+        return imageView
+    }()
+
+    lazy var cloud2: UIImageView = {
+        let imageView: UIImageView = UIImageView (image: UIImage (named: "bg-sunny-cloud-2"))
+        return imageView
+    }()
+    
+    lazy var cloud3: UIImageView = {
+        let imageView: UIImageView = UIImageView (image: UIImage (named: "bg-sunny-cloud-3"))
+        return imageView
+    }()
+    
+    lazy var cloud4: UIImageView = {
+        let imageView: UIImageView = UIImageView (image: UIImage (named: "bg-sunny-cloud-4"))
+        return imageView
+    }()
+    
     lazy var loginHeaderLabel: UILabel = {
         let label: UILabel = UILabel ()
         label.text = "Bahama Login"
@@ -43,7 +63,15 @@ class LoginView: UIView {
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 28.0)
         btn.backgroundColor = UIColor.init(red: 160 / 255.0, green: 214 / 255.0, blue: 90 / 255.0, alpha: 1.0)
+        btn.addTarget(self, action: #selector (doLog), for: .touchUpInside)
         return btn
+    }()
+    
+    lazy var spinner: UIActivityIndicatorView = {
+        let view: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        view.frame = CGRect(x: -20.0, y: 6.0, width: 20.0, height: 20.0)
+        view.alpha = 0.0
+        return view
     }()
     
     override init(frame: CGRect) {
@@ -62,10 +90,17 @@ class LoginView: UIView {
 extension LoginView {
     fileprivate func initUI() {
         self.addSubview(self.bgImageView)
+        self.addSubview(self.cloud1)
+        self.addSubview(self.cloud2)
+        self.addSubview(self.cloud3)
+        self.addSubview(self.cloud4)
         self.addSubview(self.loginHeaderLabel)
         self.addSubview(self.usernameField)
         self.addSubview(self.passwordField)
         self.addSubview(self.loginBtn)
+        
+        spinner.startAnimating()
+        self.loginBtn.addSubview(self.spinner)
     }
     
     fileprivate func initLayout() {
@@ -76,23 +111,51 @@ extension LoginView {
             make.bottom.equalTo(self.snp.bottom)
         }
         
+        self.cloud1.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left).offset(-120)
+            make.top.equalTo(self.snp.top).offset(131)
+            make.size.equalTo(CGSize (width: 159, height: 50))
+        }
+        
+        self.cloud2.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left).offset(217)
+            make.top.equalTo(self.snp.top).offset(155)
+            make.size.equalTo(CGSize (width: 159, height: 50))
+        }
+        
+        self.cloud3.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left).offset(252)
+            make.bottom.equalTo(self.snp.bottom).offset(-100)
+            make.size.equalTo(CGSize (width: 74, height: 35))
+        }
+        
+        self.cloud4.snp.makeConstraints { (make) in
+            make.left.equalTo(self.snp.left).offset(20)
+            make.bottom.equalTo(self.snp.bottom).offset(-100)
+            make.size.equalTo(CGSize (width: 115, height: 50))
+        }
+        
         self.loginHeaderLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(90)
+            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 215, height: 34))
         }
         
         self.usernameField.snp.makeConstraints { (make) in
             make.top.equalTo(self.loginHeaderLabel.snp.bottom).offset(60)
+            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 218, height: 30))
         }
         
         self.passwordField.snp.makeConstraints { (make) in
             make.top.equalTo(self.usernameField.snp.bottom).offset(50)
+            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 218, height: 30))
         }
         
         self.loginBtn.snp.makeConstraints { (make) in
             make.top.equalTo(self.passwordField.snp.bottom).offset(60)
+            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 235, height: 52))
         }
     }
@@ -102,28 +165,83 @@ extension LoginView {
 extension LoginView {
     
     /// 开始登录动画
-    open func startLoginAnimate(width: CGFloat) {
-        print("\(self.loginHeaderLabel.center.x)")
-        self.loginHeaderLabel.center.x  = -width
-        self.usernameField.center.x = -width
-        self.passwordField.center.x = -width
-        print("\(self.loginHeaderLabel.center.x)")
+    open func startLoginAnimate() {
+        self.loginHeaderLabel.center.x  = -Constants.Rect.ScreenWidth
+        self.usernameField.center.x = -Constants.Rect.ScreenWidth
+        self.passwordField.center.x = -Constants.Rect.ScreenWidth
+        
+        self.cloud1.alpha = 0
+        self.cloud2.alpha = 0
+        self.cloud3.alpha = 0
+        self.cloud4.alpha = 0
+        
+        self.loginBtn.center.y += 30
+        self.loginBtn.alpha = 0
     }
     
     /// 结束登录动画
     open func endLoginAnimate() {
-        print("\(self.loginHeaderLabel.center.x)")
         UIView.animate(withDuration: 0.5, animations: {
             self.loginHeaderLabel.center.x = self.center.x
-            print("\(self.loginHeaderLabel.center.x)")
         })
         
-        UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: [], animations: {
             self.usernameField.center.x = self.center.x
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.4, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: [], animations: {
             self.passwordField.center.x = self.center.x
         }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginBtn.center.y -= 30
+            self.loginBtn.alpha = 1
+        }, completion: nil)
+    
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
+            self.cloud1.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: [], animations: {
+            self.cloud2.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.9, options: [], animations: {
+            self.cloud3.alpha = 1.0
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 1.1, options: [], animations: {
+            self.cloud4.alpha = 1.0
+        }, completion: nil)
+    }
+}
+
+// MARK: - Private Methods
+extension LoginView {
+    /// 登录动画
+    fileprivate func doLoginAnimate() {
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginBtn.bounds.size.width += 80
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginBtn.center.y += 60
+            self.loginBtn.backgroundColor = UIColor (red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+            
+            self.spinner.center = CGPoint (x: 40.0, y: self.loginBtn.frame.size.height/2)
+            self.spinner.alpha = 1
+        }, completion: nil)
+    }
+    
+    /// 显示文字
+    fileprivate func showMessage(index: Int) {
+        
+    }
+}
+
+// MARK: - Events
+extension LoginView {
+    @objc fileprivate func doLog() {
+        doLoginAnimate()
     }
 }

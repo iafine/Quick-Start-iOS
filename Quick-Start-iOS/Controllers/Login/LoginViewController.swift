@@ -33,30 +33,13 @@ extension LoginViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage (), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage ()
         
-        print("\(self.loginView.loginHeaderLabel.center.x)")
-        self.loginView.loginHeaderLabel.center.x -= self.view.bounds.width
-        self.loginView.usernameField.center.x -= self.view.bounds.width
-        self.loginView.passwordField.center.x -= self.view.bounds.width
-        print("\(self.loginView.loginHeaderLabel.center.x)")
+        self.loginView.startLoginAnimate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        self.loginView.endLoginAnimate()
-        print("\(self.loginView.loginHeaderLabel.center.x)")
-        UIView.animate(withDuration: 0.5, animations: {
-            self.loginView.loginHeaderLabel.center.x += self.view.bounds.width
-            print("\(self.loginView.loginHeaderLabel.center.x)")
-        })
-        
-        UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-            self.loginView.usernameField.center.x += self.view.bounds.width
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
-            self.loginView.passwordField.center.x += self.view.bounds.width
-        }, completion: nil)
+        self.loginView.endLoginAnimate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
