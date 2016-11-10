@@ -23,6 +23,8 @@ class HYWebViewController: UIViewController {
     
     var webView: WKWebView = {
         let webView: WKWebView = WKWebView ()
+        webView.backgroundColor = UIColor.clear
+        webView.isOpaque = false
         return webView
     }()
     
@@ -33,16 +35,27 @@ class HYWebViewController: UIViewController {
         return pro
     }()
     
+    var webTipLabel: UILabel = {
+        let label: UILabel = UILabel ()
+        label.textColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.clear
+        label.numberOfLines = 0
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
         
         self.view.addSubview(self.progressBar)
+        self.view.addSubview(self.webTipLabel)
         self.view.addSubview(self.webView)
+        self.view.sendSubview(toBack: self.webTipLabel)
         
         initLayout()
         
@@ -64,6 +77,14 @@ class HYWebViewController: UIViewController {
 extension HYWebViewController {
     
     fileprivate func initLayout() {
+        
+        self.webTipLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self.view.snp.left).offset(20)
+            make.top.equalTo(self.view.snp.top).offset(10)
+            make.right.equalTo(self.view.snp.right).offset(-20)
+            make.height.equalTo(40)
+        }
+        
         self.progressBar.snp.makeConstraints { (make) in
             make.left.equalTo(self.view.snp.left)
             make.top.equalTo(self.view.snp.top)
@@ -114,13 +135,12 @@ extension HYWebViewController: WKUIDelegate {
 extension HYWebViewController: WKNavigationDelegate {
     
     // 网页是否可以跳转
-    //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-    //
-    //    }
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//        
+//    }
     
     // 网页开始加载
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
     }
     
     // 网页加载失败
@@ -130,12 +150,14 @@ extension HYWebViewController: WKNavigationDelegate {
     
     // 网页内容开始返回
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        
+    
     }
     
     // 网页加载完成
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.title = webView.title
+        let host: String = (webView.url?.host)!
+        self.webTipLabel.text = "网页由\(host)提供"
     }
     
     // 网页返回内容失败

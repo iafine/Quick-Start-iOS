@@ -14,7 +14,7 @@ class AdPageViewController: HYWebViewController {
         super.viewDidLoad()
         
         self.webDelegate = self
-        let url: URL = URL (string: "https://castial.github.io")!
+        let url: URL = URL (string: "https://baidu.com")!
         self.webView.load(URLRequest (url: url))
     }
 }

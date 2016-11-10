@@ -20,19 +20,19 @@ class LoginView: UIView {
         label.text = "Bahama Login"
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18.0)
+        label.font = UIFont.systemFont(ofSize: 28.0)
         return label
     }()
     
     lazy var usernameField: UITextField = {
         let textField: UITextField = UITextField ()
-        textField.borderStyle = .bezel
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
     lazy var passwordField: UITextField = {
         let textField: UITextField = UITextField ()
-        textField.borderStyle = .bezel
+        textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -42,7 +42,7 @@ class LoginView: UIView {
         btn.setTitle("Log In", for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 28.0)
-        btn.backgroundColor = UIColor.init(red: 160, green: 214, blue: 90, alpha: 1.0)
+        btn.backgroundColor = UIColor.init(red: 160 / 255.0, green: 214 / 255.0, blue: 90 / 255.0, alpha: 1.0)
         return btn
     }()
     
@@ -78,26 +78,52 @@ extension LoginView {
         
         self.loginHeaderLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(90)
-            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 215, height: 34))
         }
         
         self.usernameField.snp.makeConstraints { (make) in
             make.top.equalTo(self.loginHeaderLabel.snp.bottom).offset(60)
-            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 218, height: 30))
         }
         
         self.passwordField.snp.makeConstraints { (make) in
             make.top.equalTo(self.usernameField.snp.bottom).offset(50)
-            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 218, height: 30))
         }
         
         self.loginBtn.snp.makeConstraints { (make) in
             make.top.equalTo(self.passwordField.snp.bottom).offset(60)
-            make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 235, height: 52))
         }
+    }
+}
+
+// MARK: - Public Methods
+extension LoginView {
+    
+    /// 开始登录动画
+    open func startLoginAnimate(width: CGFloat) {
+        print("\(self.loginHeaderLabel.center.x)")
+        self.loginHeaderLabel.center.x  = -width
+        self.usernameField.center.x = -width
+        self.passwordField.center.x = -width
+        print("\(self.loginHeaderLabel.center.x)")
+    }
+    
+    /// 结束登录动画
+    open func endLoginAnimate() {
+        print("\(self.loginHeaderLabel.center.x)")
+        UIView.animate(withDuration: 0.5, animations: {
+            self.loginHeaderLabel.center.x = self.center.x
+            print("\(self.loginHeaderLabel.center.x)")
+        })
+        
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+            self.usernameField.center.x = self.center.x
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: [], animations: {
+            self.passwordField.center.x = self.center.x
+        }, completion: nil)
     }
 }

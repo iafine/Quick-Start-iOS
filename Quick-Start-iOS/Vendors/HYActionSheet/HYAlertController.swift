@@ -60,8 +60,8 @@ class HYAlertController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // 自定义转场动画
-        self.transitioningDelegate = self
-        self.modalPresentationStyle = UIModalPresentationStyle.custom
+//        self.transitioningDelegate = self
+        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
     }
     
@@ -153,15 +153,15 @@ extension HYAlertController: HYShareViewDelegate {
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-extension HYAlertController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HYAlertPresentSlideUp ()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HYAlertDismissSlideUp ()
-    }
-}
+//extension HYAlertController: UIViewControllerTransitioningDelegate {
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return HYAlertPresentSlideUp ()
+//    }
+//    
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return HYAlertDismissSlideUp ()
+//    }
+//}
 
 // MARK: - Events
 extension HYAlertController {
