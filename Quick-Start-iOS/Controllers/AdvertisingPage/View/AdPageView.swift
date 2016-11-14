@@ -127,6 +127,7 @@ extension AdPageView {
         self.adTimer.invalidate()
         self.adCount = 0
         UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
+            self.adImageView.transform = CGAffineTransform (scaleX: 3, y: 3)
             self.alpha = 0
         }) { (finished) in
             self.removeFromSuperview()

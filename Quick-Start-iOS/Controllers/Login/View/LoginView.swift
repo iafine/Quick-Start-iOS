@@ -64,6 +64,8 @@ class LoginView: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 28.0)
         btn.backgroundColor = UIColor.init(red: 160 / 255.0, green: 214 / 255.0, blue: 90 / 255.0, alpha: 1.0)
         btn.addTarget(self, action: #selector (doLog), for: .touchUpInside)
+        btn.layer.cornerRadius = 5
+        btn.layer.masksToBounds = true
         return btn
     }()
     
@@ -73,6 +75,22 @@ class LoginView: UIView {
         view.alpha = 0.0
         return view
     }()
+    
+    lazy var status: UIImageView = {
+        let imageView: UIImageView = UIImageView (image: UIImage (named: "banner"))
+        imageView.isHidden = true
+        return imageView
+    }()
+    
+    lazy var statusLabel: UILabel = {
+        let label: UILabel = UILabel ()
+        label.font = UIFont(name: "HelveticaNeue", size: 18.0)
+        label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,9 +116,11 @@ extension LoginView {
         self.addSubview(self.usernameField)
         self.addSubview(self.passwordField)
         self.addSubview(self.loginBtn)
+        self.addSubview(self.status)
         
         spinner.startAnimating()
         self.loginBtn.addSubview(self.spinner)
+        self.status.addSubview(self.statusLabel)
     }
     
     fileprivate func initLayout() {
@@ -157,6 +177,16 @@ extension LoginView {
             make.top.equalTo(self.passwordField.snp.bottom).offset(60)
             make.centerX.equalTo(self.snp.centerX)
             make.size.equalTo(CGSize (width: 235, height: 52))
+        }
+        
+        self.status.snp.makeConstraints { (make) in
+            make.top.equalTo(self.loginBtn.snp.bottom).offset(20)
+            make.centerX.equalTo(self.snp.centerX)
+            make.size.equalTo(CGSize (width: 200, height: 52))
+        }
+        
+        self.statusLabel.snp.makeConstraints { (make) in
+            make.left.top.right.bottom.equalTo(self.status)
         }
     }
 }
@@ -220,12 +250,12 @@ extension LoginView {
 extension LoginView {
     /// 登录动画
     fileprivate func doLoginAnimate() {
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
-            self.loginBtn.bounds.size.width += 80
+        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+            self.loginBtn.bounds.size.width += 60
         }, completion: nil)
         
         UIView.animate(withDuration: 0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
-            self.loginBtn.center.y += 60
+//            self.loginBtn.center.y += 60
             self.loginBtn.backgroundColor = UIColor (red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
             
             self.spinner.center = CGPoint (x: 40.0, y: self.loginBtn.frame.size.height/2)
@@ -235,7 +265,10 @@ extension LoginView {
     
     /// 显示文字
     fileprivate func showMessage(index: Int) {
-        
+        statusLabel.text = self.messages[index]
+        UIView.transition(with: self.status, duration: 0.33, options: [.curveEaseOut, .transitionCurlDown], animations: {
+            self.status.isHidden = false
+        }, completion: nil)
     }
 }
 
@@ -243,5 +276,6 @@ extension LoginView {
 extension LoginView {
     @objc fileprivate func doLog() {
         doLoginAnimate()
+        showMessage(index: 0)
     }
 }

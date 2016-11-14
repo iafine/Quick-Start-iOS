@@ -22,7 +22,7 @@ extension HomeViewController {
         self.view.backgroundColor = UIColor.white
         self.title = "首页"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem (title: "登录", style: .plain, target: self, action: #selector(alertTest))
-//        self.view.addSubview(self.homeView)
+        self.view.addSubview(self.homeView)
         
         /// 监听广告跳转
         NotificationCenter.default.addObserver(self, selector: #selector(pushAdViewController), name: Constants.Notification.DISPATCH_AD_PAGE, object: nil)

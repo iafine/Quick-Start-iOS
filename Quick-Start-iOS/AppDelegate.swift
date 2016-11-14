@@ -25,8 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
+        // 开始广告页面
         startAdvertisingPage()
 
+        // 显示FPS
+        showFPS()
+        
         return true
     }
 
@@ -64,5 +68,16 @@ extension AppDelegate {
         }
         // 每次启动，都更新广告
         AdHelper.refreshAdvertisingImage()
+    }
+}
+
+// MARK: - 测试相关
+extension AppDelegate {
+    func showFPS() {
+        let fpsLabel: HYFPSLabel = HYFPSLabel (frame: CGRect (x: Constants.Rect.ScreenWidth - HYFPSLabel.defaultSize.width - 5,
+                                                              y: Constants.Rect.ScreenHeight - HYFPSLabel.defaultSize.height - 10,
+                                                              width: HYFPSLabel.defaultSize.width,
+                                                              height: HYFPSLabel.defaultSize.height))
+        fpsLabel.showFPS()
     }
 }
