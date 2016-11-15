@@ -18,7 +18,15 @@ extension LocationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "位置"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (title: "动画测试", style: .plain, target: self, action: #selector (clickRightBtnHandler))
+    }
+}
+
+// MARK: - Events
+extension LocationViewController {
+    @objc fileprivate func clickRightBtnHandler() {
+        let vc: AirlineViewController = AirlineViewController ()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

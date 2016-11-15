@@ -26,6 +26,8 @@
 		966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F41DC72674001E9457 /* HYAlertAction.swift */; };
 		966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */; };
 		966FD58D1DCB13C00099E69D /* HYShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */; };
+		9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */; };
+		9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B60B1DD9DDAB007E7796 /* AirlineView.swift */; };
 		969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA02A1DBC895D001051B1 /* HYNavigationController.swift */; };
 		96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A244171DBF0186001721F9 /* HYAlertController.swift */; };
 		96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476971DBDE5DD0065E726 /* HYWebViewController.swift */; };
@@ -64,6 +66,8 @@
 		966DB8F41DC72674001E9457 /* HYAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertAction.swift; path = HYActionSheet/HYAlertAction.swift; sourceTree = "<group>"; };
 		966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetCell.swift; path = HYActionSheet/HYActionSheetCell.swift; sourceTree = "<group>"; };
 		966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareTableViewCell.swift; path = HYActionSheet/HYShareTableViewCell.swift; sourceTree = "<group>"; };
+		9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineViewController.swift; path = Location/AnimationPractice/Airline/AirlineViewController.swift; sourceTree = "<group>"; };
+		9671B60B1DD9DDAB007E7796 /* AirlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineView.swift; path = Location/AnimationPractice/Airline/View/AirlineView.swift; sourceTree = "<group>"; };
 		969BA02A1DBC895D001051B1 /* HYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYNavigationController.swift; path = Utils/HYNavigationController.swift; sourceTree = "<group>"; };
 		96A244171DBF0186001721F9 /* HYAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertController.swift; path = HYActionSheet/HYAlertController.swift; sourceTree = "<group>"; };
 		96B476971DBDE5DD0065E726 /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebViewController.swift; path = Utils/HYWebViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +245,31 @@
 			name = AdvertisingPage;
 			sourceTree = "<group>";
 		};
+		9671B6061DD9DC92007E7796 /* AnimationPractice */ = {
+			isa = PBXGroup;
+			children = (
+				9671B6071DD9DCB2007E7796 /* Airline */,
+			);
+			name = AnimationPractice;
+			sourceTree = "<group>";
+		};
+		9671B6071DD9DCB2007E7796 /* Airline */ = {
+			isa = PBXGroup;
+			children = (
+				9671B60A1DD9DD8B007E7796 /* View */,
+				9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */,
+			);
+			name = Airline;
+			sourceTree = "<group>";
+		};
+		9671B60A1DD9DD8B007E7796 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9671B60B1DD9DDAB007E7796 /* AirlineView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		96A244161DBF011F001721F9 /* HYActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +290,7 @@
 		96B476991DBDF86B0065E726 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				9671B6061DD9DC92007E7796 /* AnimationPractice */,
 				96B4769A1DBDF8960065E726 /* LocationViewController.swift */,
 			);
 			name = Location;
@@ -433,10 +463,12 @@
 				96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
 				96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */,
+				9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */,
 				960534DE1DD2BB670068C081 /* AdPageView.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
+				9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */,
 				966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */,
 				969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */,
 				96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */,
