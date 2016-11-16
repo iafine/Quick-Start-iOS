@@ -60,8 +60,8 @@ class HYAlertController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // 自定义转场动画
-//        self.transitioningDelegate = self
-        self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.transitioningDelegate = self
+        self.modalPresentationStyle = UIModalPresentationStyle.custom
         self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
     }
     
@@ -153,15 +153,15 @@ extension HYAlertController: HYShareViewDelegate {
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
-//extension HYAlertController: UIViewControllerTransitioningDelegate {
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return HYAlertPresentSlideUp ()
-//    }
-//    
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return HYAlertDismissSlideUp ()
-//    }
-//}
+extension HYAlertController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return HYAlertPresentSlideUp ()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return HYAlertDismissSlideUp ()
+    }
+}
 
 // MARK: - Events
 extension HYAlertController {
@@ -178,11 +178,7 @@ extension HYAlertController {
     fileprivate func dismiss() {
         self.actionArray.removeAllObjects()
         self.cancelActionArray.removeAllObjects()
-//        UIView.animate(withDuration: 0.3, delay: 0, options: .beginFromCurrentState, animations: {
-//            self.alertTable.alpha = 0
-//        }) { (finished) in
-//            self.alertTable.removeFromSuperview()
-//        }
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

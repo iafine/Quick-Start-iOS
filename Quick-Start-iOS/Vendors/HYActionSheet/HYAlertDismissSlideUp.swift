@@ -17,15 +17,20 @@ class HYAlertDismissSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let fromVC: HYAlertController = transitionContext.viewController(forKey: .from) as! HYAlertController
+        
+        // start animation status
+        fromVC.dimBackgroundView.alpha = 1
+        
         let duration: TimeInterval = transitionDuration(using: transitionContext)
+        let finalY: CGFloat = fromVC.view.frame.size.height
         
         // 执行动画
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
             fromVC.dimBackgroundView.alpha = 0
             if fromVC.alertStyle == .actionSheet {
-                fromVC.sheetView.transform = .identity
+                fromVC.sheetView.frame.origin.y += finalY
             }else if fromVC.alertStyle == .shareSheet {
-                fromVC.shareView.transform = .identity
+                fromVC.shareView.frame.origin.y += finalY
             }else {
             }
         }, completion: { (finished) in

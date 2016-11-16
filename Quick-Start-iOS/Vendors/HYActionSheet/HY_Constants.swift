@@ -20,8 +20,8 @@ class HY_Constants: UIView {
     static let shareItemPadding: CGFloat = 14   // 分享item之间的距离
     static let shareCancelItemHeight: CGFloat = 49   // 分享底部取消的高度
 
-    static let presentAnimateDuration: TimeInterval = 0.5   // present动画时间
-    static let dismissAnimateDuration: TimeInterval = 0.5   // dismiss动画时间
+    static let presentAnimateDuration: TimeInterval = 0.7   // present动画时间
+    static let dismissAnimateDuration: TimeInterval = 0.7   // dismiss动画时间
     
-    static let dimBackgroundAlpha: CGFloat = 0.5    // 半透明背景的alpha值
+    static let dimBackgroundAlpha: CGFloat = 0.4    // 半透明背景的alpha值
 }
