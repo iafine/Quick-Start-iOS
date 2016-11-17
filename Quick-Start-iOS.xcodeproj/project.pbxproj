@@ -35,8 +35,9 @@
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
+		96C30ABD1DDD52C400BECB35 /* HYTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */; };
 		96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */; };
-		96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */; };
+		96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */; };
 		96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350C1DCC60A50033429C /* HYShareView.swift */; };
 		96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350E1DCC855D0033429C /* HY_Constants.swift */; };
 		96E535111DCC8DE10033429C /* HYActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E535101DCC8DE10033429C /* HYActionSheetView.swift */; };
@@ -75,8 +76,9 @@
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYTitleView.swift; path = HYActionSheet/HYTitleView.swift; sourceTree = "<group>"; };
 		96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertPresentSlideUp.swift; path = HYActionSheet/HYAlertPresentSlideUp.swift; sourceTree = "<group>"; };
-		96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertDismissSlideUp.swift; path = HYActionSheet/HYAlertDismissSlideUp.swift; sourceTree = "<group>"; };
+		96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertDismissSlideDown.swift; path = HYActionSheet/HYAlertDismissSlideDown.swift; sourceTree = "<group>"; };
 		96E5350C1DCC60A50033429C /* HYShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareView.swift; path = HYActionSheet/HYShareView.swift; sourceTree = "<group>"; };
 		96E5350E1DCC855D0033429C /* HY_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HY_Constants.swift; path = HYActionSheet/HY_Constants.swift; sourceTree = "<group>"; };
 		96E535101DCC8DE10033429C /* HYActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetView.swift; path = HYActionSheet/HYActionSheetView.swift; sourceTree = "<group>"; };
@@ -275,7 +277,7 @@
 			children = (
 				96A244171DBF0186001721F9 /* HYAlertController.swift */,
 				96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */,
-				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift */,
+				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */,
 				966DB8F41DC72674001E9457 /* HYAlertAction.swift */,
 				966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */,
 				9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */,
@@ -283,6 +285,7 @@
 				96E5350C1DCC60A50033429C /* HYShareView.swift */,
 				96E5350E1DCC855D0033429C /* HY_Constants.swift */,
 				96E535101DCC8DE10033429C /* HYActionSheetView.swift */,
+				96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */,
 			);
 			name = HYActionSheet;
 			sourceTree = "<group>";
@@ -474,9 +477,10 @@
 				96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
-				96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideUp.swift in Sources */,
+				96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift in Sources */,
 				960534D81DD2BB150068C081 /* LoginView.swift in Sources */,
 				960534E11DD2F03F0068C081 /* LoginHelper.swift in Sources */,
+				96C30ABD1DDD52C400BECB35 /* HYTitleView.swift in Sources */,
 				96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */,
 				96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */,
 				9660E5041DC9E6B800C7B4B1 /* HYShareCollectionCell.swift in Sources */,

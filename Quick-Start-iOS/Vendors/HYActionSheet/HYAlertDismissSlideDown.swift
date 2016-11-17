@@ -1,5 +1,5 @@
 //
-//  HYAlertDismissSlideUp.swift
+//  HYAlertDismissSlideDown.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HYAlertDismissSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
+class HYAlertDismissSlideDown: NSObject, UIViewControllerAnimatedTransitioning {
 
     // MARK: - UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

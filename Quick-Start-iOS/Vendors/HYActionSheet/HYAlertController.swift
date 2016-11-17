@@ -83,7 +83,10 @@ extension HYAlertController {
         super.viewDidLayoutSubviews()
         
         if self.alertStyle == .shareSheet {
-            let tableHeight: CGFloat = HYShareTableViewCell.cellHeight() * CGFloat (self.actionArray.count) + 44
+            var tableHeight: CGFloat = HYShareTableViewCell.cellHeight() * CGFloat (self.actionArray.count) + 44
+            if self.alertTitle.characters.count > 0 || self.alertMessage.characters.count > 0 {
+                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle, message: self.alertMessage)
+            }
             let newTableFrame: CGRect = CGRect (x: 0,
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
@@ -91,8 +94,10 @@ extension HYAlertController {
             self.alertHeight = tableHeight
             self.shareView.frame = newTableFrame
         }else {
-            let tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
-            
+            var tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
+            if self.alertTitle.characters.count > 0 || self.alertMessage.characters.count > 0 {
+                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle, message: self.alertMessage)
+            }
             let newTableFrame: CGRect = CGRect (x: 0,
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
@@ -129,12 +134,12 @@ extension HYAlertController {
         }else {
             self.actionArray.add(action)
         }
-        self.sheetView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray)
+        self.sheetView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
     }
     
     open func addShareActions(actions: NSArray) {
         self.actionArray.add(actions)
-        self.shareView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray)
+        self.shareView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
     }
 }
 
@@ -159,7 +164,7 @@ extension HYAlertController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HYAlertDismissSlideUp ()
+        return HYAlertDismissSlideDown ()
     }
 }
 

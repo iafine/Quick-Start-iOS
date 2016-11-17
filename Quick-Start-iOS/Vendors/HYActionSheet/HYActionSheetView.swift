@@ -22,6 +22,11 @@ class HYActionSheetView: UIView {
         return tableView
     }()
     
+    lazy var titleView: HYTitleView = {
+        let view: HYTitleView = HYTitleView (frame: CGRect.zero)
+        return view
+    }()
+    
     var delegate: HYActionSheetViewDelegate?
     fileprivate var sheetDataArray: NSArray = NSArray ()
     fileprivate var cancelDataArray: NSArray = NSArray ()
@@ -54,10 +59,17 @@ extension HYActionSheetView {
 
 // MARK: - Public Methods
 extension HYActionSheetView {
-    open func refreshDate(dataArray: NSArray, cancelArray: NSArray) {
+    open func refreshDate(dataArray: NSArray, cancelArray: NSArray, title: String, message: String) {
         self.sheetDataArray = dataArray
         self.cancelDataArray = cancelArray
         
+        if title.characters.count > 0 || message.characters.count > 0 {
+            self.titleView.refrenshTitleView(title: title, message: message)
+            self.titleView.frame = CGRect (x: 0, y: 0, width: self.bounds.size.width, height: HYTitleView.titleViewHeight(title: title, message: message))
+            self.sheetTable.tableHeaderView = self.titleView
+        }else {
+            self.sheetTable.tableHeaderView = UIView ()
+        }
         self.sheetTable.reloadData()
     }
 }
@@ -90,7 +102,7 @@ extension HYActionSheetView: UITableViewDataSource {
                 cell.titleLabel.text = action.title
                 cell.cellIcon.image = action.image
             }else {
-                cell.titleLabel.text = "取消"
+                cell.titleLabel.text = HY_Constants.defaultCancelText
             }
             return cell
         }

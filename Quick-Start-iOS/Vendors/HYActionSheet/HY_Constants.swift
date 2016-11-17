@@ -24,4 +24,6 @@ class HY_Constants: UIView {
     static let dismissAnimateDuration: TimeInterval = 0.7   // dismiss动画时间
     
     static let dimBackgroundAlpha: CGFloat = 0.4    // 半透明背景的alpha值
+    
+    static let defaultCancelText: String = "取消"     // 默认取消按钮文字
 }
