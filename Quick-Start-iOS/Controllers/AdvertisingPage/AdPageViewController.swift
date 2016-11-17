@@ -39,7 +39,7 @@ extension HYWebViewController: HYWebViewControllerDelegate {
 //        alertVC.addAction(threeAction)
 //        self.present(alertVC, animated: true, completion: nil)
         
-        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息消息", style: .shareSheet)
+        let alertVC: HYAlertController = HYAlertController (title: "测试", message: "This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it! This is a alert UI. you can use it equal to UIAlertController, Welcome to use it!", style: .alert)
         let testAction1: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
             print(action.title)
         }
@@ -52,32 +52,32 @@ extension HYWebViewController: HYWebViewControllerDelegate {
         let testAction4: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
             print(action.title)
         }
-        let testAction11: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction12: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction13: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction14: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction21: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction22: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction23: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        let testAction24: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
-            print(action.title)
-        }
-        alertVC.addShareActions(actions: [testAction1, testAction2, testAction3, testAction4, testAction11, testAction12, testAction13, testAction14, testAction21, testAction22, testAction23, testAction24])
-        alertVC.addShareActions(actions: [testAction1, testAction2, testAction3, testAction4, testAction11, testAction12, testAction13, testAction14, testAction21, testAction22, testAction23, testAction24])
+//        let testAction11: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction12: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction13: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction14: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction21: HYAlertAction = HYAlertAction (title: "支付宝", image: UIImage (named: "alipay")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction22: HYAlertAction = HYAlertAction (title: "微信", image: UIImage (named: "wechat")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction23: HYAlertAction = HYAlertAction (title: "QQ", image: UIImage (named: "qq")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        let testAction24: HYAlertAction = HYAlertAction (title: "知乎", image: UIImage (named: "zhihu")!, style: .normal) { (action) in
+//            print(action.title)
+//        }
+//        alertVC.addShareActions(actions: [testAction1, testAction2, testAction3, testAction4, testAction11, testAction12, testAction13, testAction14, testAction21, testAction22, testAction23, testAction24])
+//        alertVC.addShareActions(actions: [testAction1, testAction2, testAction3, testAction4, testAction11, testAction12, testAction13, testAction14, testAction21, testAction22, testAction23, testAction24])
 //        alertVC.addAction(action: testAction1)
 //        alertVC.addAction(action: testAction2)
 //        alertVC.addAction(action: testAction3)

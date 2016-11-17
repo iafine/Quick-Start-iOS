@@ -21,6 +21,9 @@ class HYAlertDismissSlideDown: NSObject, UIViewControllerAnimatedTransitioning {
         // start animation status
         fromVC.dimBackgroundView.alpha = 1
         
+        if fromVC.alertStyle == .alert {
+            fromVC.view.alpha = 1
+        }
         let duration: TimeInterval = transitionDuration(using: transitionContext)
         let finalY: CGFloat = fromVC.view.frame.size.height
         
@@ -32,6 +35,7 @@ class HYAlertDismissSlideDown: NSObject, UIViewControllerAnimatedTransitioning {
             }else if fromVC.alertStyle == .shareSheet {
                 fromVC.shareView.frame.origin.y += finalY
             }else {
+                fromVC.view.alpha = 0
             }
         }, completion: { (finished) in
             transitionContext.completeTransition(true)

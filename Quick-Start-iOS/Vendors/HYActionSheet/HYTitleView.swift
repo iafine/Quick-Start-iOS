@@ -12,14 +12,14 @@ import UIKit
 class HYTitleView: UIView {
     lazy var titleLabel: UILabel = {
         let label: UILabel = UILabel ()
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: HY_Constants.titleFont)
         label.textAlignment = .center
         return label
     }()
     
     lazy var messageLabel: UILabel = {
         let label: UILabel = UILabel ()
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: HY_Constants.messageFont)
         label.textColor = UIColor.lightGray
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -76,13 +76,13 @@ extension HYTitleView {
 
 // MARK: - Class Methods
 extension HYTitleView {
-    class func titleViewHeight(title: String, message: String) -> CGFloat {
+    class func titleViewHeight(title: String, message: String, width: CGFloat) -> CGFloat {
         var titleHeight: CGFloat = 15
         if title.characters.count > 0 {
             titleHeight += 22
         }
         if message.characters.count > 0 {
-            titleHeight += message.heightWithConstrainedWidth(width: HY_Constants.ScreenWidth - 40, font: UIFont.systemFont(ofSize: 12)) + 1
+            titleHeight += message.heightWithConstrainedWidth(width: width - 40, font: UIFont.systemFont(ofSize: HY_Constants.messageFont)) + 1
         }
         return titleHeight
     }

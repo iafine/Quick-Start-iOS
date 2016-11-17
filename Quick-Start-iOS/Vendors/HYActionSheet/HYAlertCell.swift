@@ -1,5 +1,5 @@
 //
-//  HYActionSheetCell.swift
+//  HYAlertCell.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/10/31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HYActionSheetCell: UITableViewCell {
+class HYAlertCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label: UILabel = UILabel ()
         label.textAlignment = .center
@@ -24,20 +24,20 @@ class HYActionSheetCell: UITableViewCell {
 }
 
 // MARK: - Class Methods
-extension HYActionSheetCell {
+extension HYAlertCell {
     class func ID() -> String {
-        return "HYActionSheetCell"
+        return "HYAlertCell"
     }
     
     class func cellHeight() -> CGFloat {
-        return HY_Constants.actionSheetheight
+        return HY_Constants.alertCellheight
     }
     
-    class func cellWithTableView(tableView: UITableView) ->HYActionSheetCell {
+    class func cellWithTableView(tableView: UITableView) ->HYAlertCell {
         // 修改cell类型为定义类型
-        var cell: HYActionSheetCell? = tableView.dequeueReusableCell(withIdentifier: ID()) as! HYActionSheetCell?
+        var cell: HYAlertCell? = tableView.dequeueReusableCell(withIdentifier: ID()) as! HYAlertCell?
         if cell == nil {
-            cell = HYActionSheetCell ()
+            cell = HYAlertCell ()
             cell?.initCellUI()
             cell?.initCellLayout()
         }
@@ -46,7 +46,7 @@ extension HYActionSheetCell {
 }
 
 // MARK: - Private Methods
-extension HYActionSheetCell {
+extension HYAlertCell {
     fileprivate func initCellUI() {
         
         self.selectionStyle = .none

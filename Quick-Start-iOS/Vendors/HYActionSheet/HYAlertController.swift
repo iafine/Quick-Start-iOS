@@ -39,6 +39,11 @@ class HYAlertController: UIViewController {
         return view
     }()
     
+    lazy var alertView: HYAlertView = {
+        let view: HYAlertView = HYAlertView (frame: CGRect.zero)
+        return view
+    }()
+    
     lazy var dimBackgroundView: UIView = {
         let view: UIView = UIView (frame: CGRect (x: 0,
                                                   y: 0,
@@ -85,25 +90,49 @@ extension HYAlertController {
         if self.alertStyle == .shareSheet {
             var tableHeight: CGFloat = HYShareTableViewCell.cellHeight() * CGFloat (self.actionArray.count) + 44
             if self.alertTitle.characters.count > 0 || self.alertMessage.characters.count > 0 {
-                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle, message: self.alertMessage)
+                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle,
+                                                           message: self.alertMessage,
+                                                           width: HY_Constants.ScreenWidth)
             }
             let newTableFrame: CGRect = CGRect (x: 0,
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
                                                 height: tableHeight)
             self.alertHeight = tableHeight
+            self.shareView.shareTitle = self.alertTitle
+            self.shareView.shareMessage = self.alertMessage
             self.shareView.frame = newTableFrame
-        }else {
-            var tableHeight: CGFloat = HYActionSheetCell.cellHeight() * CGFloat (self.actionArray.count) + HYActionSheetCell.cellHeight() + 10
+        }else if self.alertStyle == .actionSheet {
+            var tableHeight: CGFloat = HYAlertCell.cellHeight() * CGFloat (self.actionArray.count) + HYAlertCell.cellHeight() + 10
             if self.alertTitle.characters.count > 0 || self.alertMessage.characters.count > 0 {
-                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle, message: self.alertMessage)
+                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle,
+                                                           message: self.alertMessage,
+                                                           width: HY_Constants.ScreenWidth)
             }
             let newTableFrame: CGRect = CGRect (x: 0,
                                                 y: HY_Constants.ScreenHeight - tableHeight,
                                                 width: HY_Constants.ScreenWidth,
                                                 height: tableHeight)
             self.alertHeight = tableHeight
+            self.sheetView.sheetTitle = self.alertTitle
+            self.sheetView.sheetMessage = self.alertMessage
             self.sheetView.frame = newTableFrame
+        }else {
+            var tableHeight: CGFloat = HYAlertCell.cellHeight() * CGFloat (self.actionArray.count) + HYAlertCell.cellHeight() + 10
+            if self.alertTitle.characters.count > 0 || self.alertMessage.characters.count > 0 {
+                tableHeight += HYTitleView.titleViewHeight(title: self.alertTitle,
+                                                           message: self.alertMessage,
+                                                           width: HY_Constants.ScreenWidth - HY_Constants.alertSpec)
+            }
+            let newTableFrame: CGRect = CGRect (x: 0,
+                                                y: 0,
+                                                width: HY_Constants.ScreenWidth - HY_Constants.alertSpec,
+                                                height: tableHeight)
+            self.alertHeight = tableHeight
+            self.alertView.alertTitle = self.alertTitle
+            self.alertView.alertMessage = self.alertMessage
+            self.alertView.frame = newTableFrame
+            self.alertView.center = self.view.center
         }
     }
     
@@ -120,8 +149,10 @@ extension HYAlertController {
             self.view.addSubview(self.shareView)
             break
             
-        default: break
-            
+        case .alert:
+            self.alertView.delegate = self
+            self.view.addSubview(self.alertView)
+            break
         }
     }
 }
@@ -134,7 +165,12 @@ extension HYAlertController {
         }else {
             self.actionArray.add(action)
         }
-        self.sheetView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
+        if self.alertStyle == .actionSheet {
+            self.sheetView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
+        }else if self.alertStyle == .alert {
+            self.alertView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
+        }else {
+        }
     }
     
     open func addShareActions(actions: NSArray) {
@@ -153,6 +189,13 @@ extension HYAlertController: HYActionSheetViewDelegate {
 // MARK: - HYShareViewDelegate
 extension HYAlertController: HYShareViewDelegate {
     func clickedShareItemHandler() {
+        dismiss()
+    }
+}
+
+// MARK: - HYAlertViewDelegate
+extension HYAlertController: HYAlertViewDelegate {
+    func clickAlertItemHandler() {
         dismiss()
     }
 }

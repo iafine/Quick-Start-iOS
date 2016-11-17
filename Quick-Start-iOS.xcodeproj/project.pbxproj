@@ -24,7 +24,7 @@
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
 		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
 		966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F41DC72674001E9457 /* HYAlertAction.swift */; };
-		966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */; };
+		966DB8F71DC7534D001E9457 /* HYAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F61DC7534D001E9457 /* HYAlertCell.swift */; };
 		966FD58D1DCB13C00099E69D /* HYShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */; };
 		9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */; };
 		9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B60B1DD9DDAB007E7796 /* AirlineView.swift */; };
@@ -36,6 +36,7 @@
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
 		96C30ABD1DDD52C400BECB35 /* HYTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */; };
+		96C30AFC1DDD7D8600BECB35 /* HYAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */; };
 		96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */; };
 		96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */; };
 		96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350C1DCC60A50033429C /* HYShareView.swift */; };
@@ -65,7 +66,7 @@
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
 		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
 		966DB8F41DC72674001E9457 /* HYAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertAction.swift; path = HYActionSheet/HYAlertAction.swift; sourceTree = "<group>"; };
-		966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetCell.swift; path = HYActionSheet/HYActionSheetCell.swift; sourceTree = "<group>"; };
+		966DB8F61DC7534D001E9457 /* HYAlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertCell.swift; path = HYActionSheet/HYAlertCell.swift; sourceTree = "<group>"; };
 		966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareTableViewCell.swift; path = HYActionSheet/HYShareTableViewCell.swift; sourceTree = "<group>"; };
 		9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineViewController.swift; path = Location/AnimationPractice/Airline/AirlineViewController.swift; sourceTree = "<group>"; };
 		9671B60B1DD9DDAB007E7796 /* AirlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineView.swift; path = Location/AnimationPractice/Airline/View/AirlineView.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYTitleView.swift; path = HYActionSheet/HYTitleView.swift; sourceTree = "<group>"; };
+		96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertView.swift; path = HYActionSheet/HYAlertView.swift; sourceTree = "<group>"; };
 		96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertPresentSlideUp.swift; path = HYActionSheet/HYAlertPresentSlideUp.swift; sourceTree = "<group>"; };
 		96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertDismissSlideDown.swift; path = HYActionSheet/HYAlertDismissSlideDown.swift; sourceTree = "<group>"; };
 		96E5350C1DCC60A50033429C /* HYShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareView.swift; path = HYActionSheet/HYShareView.swift; sourceTree = "<group>"; };
@@ -279,13 +281,14 @@
 				96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */,
 				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */,
 				966DB8F41DC72674001E9457 /* HYAlertAction.swift */,
-				966DB8F61DC7534D001E9457 /* HYActionSheetCell.swift */,
+				966DB8F61DC7534D001E9457 /* HYAlertCell.swift */,
 				9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */,
 				966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */,
 				96E5350C1DCC60A50033429C /* HYShareView.swift */,
 				96E5350E1DCC855D0033429C /* HY_Constants.swift */,
 				96E535101DCC8DE10033429C /* HYActionSheetView.swift */,
 				96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */,
+				96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */,
 			);
 			name = HYActionSheet;
 			sourceTree = "<group>";
@@ -459,9 +462,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96C30AFC1DDD7D8600BECB35 /* HYAlertView.swift in Sources */,
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
 				966FD58D1DCB13C00099E69D /* HYShareTableViewCell.swift in Sources */,
-				966DB8F71DC7534D001E9457 /* HYActionSheetCell.swift in Sources */,
+				966DB8F71DC7534D001E9457 /* HYAlertCell.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,

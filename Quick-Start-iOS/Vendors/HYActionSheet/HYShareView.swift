@@ -35,6 +35,8 @@ class HYShareView: UIView {
         return view
     }()
     
+    var shareTitle: String = String ()
+    var shareMessage: String = String ()
     var delegate: HYShareViewDelegate?
     fileprivate var shareDataArray: NSArray = NSArray ()
     fileprivate var cancelDataArray: NSArray = NSArray ()
@@ -65,6 +67,20 @@ extension HYShareView {
         super.layoutSubviews()
         
         self.shareTable.frame = self.bounds
+        
+        if self.shareTitle.characters.count > 0 || self.shareMessage.characters.count > 0 {
+            self.titleView.refrenshTitleView(title: self.shareTitle,
+                                             message: self.shareMessage)
+            self.titleView.frame = CGRect (x: 0,
+                                           y: 0,
+                                           width: self.bounds.size.width,
+                                           height: HYTitleView.titleViewHeight(title: self.shareTitle,
+                                                                               message: self.shareMessage,
+                                                                               width: self.bounds.size.width))
+            self.shareTable.tableHeaderView = self.titleView
+        }else {
+            self.shareTable.tableHeaderView = UIView ()
+        }
     }
 }
 
@@ -73,14 +89,6 @@ extension HYShareView {
     open func refreshDate(dataArray: NSArray, cancelArray: NSArray, title: String, message: String) {
         self.shareDataArray = dataArray
         self.cancelDataArray = cancelArray
-        
-        if title.characters.count > 0 || message.characters.count > 0 {
-            self.titleView.refrenshTitleView(title: title, message: message)
-            self.titleView.frame = CGRect (x: 0, y: 0, width: self.bounds.size.width, height: HYTitleView.titleViewHeight(title: title, message: message))
-            self.shareTable.tableHeaderView = self.titleView
-        }else {
-            self.shareTable.tableHeaderView = UIView ()
-        }
         
         self.shareTable.reloadData()
     }

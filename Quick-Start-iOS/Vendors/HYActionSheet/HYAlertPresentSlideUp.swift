@@ -33,6 +33,7 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
                                            width: fromVC.view.frame.size.width,
                                            height: fromVC.view.frame.size.height)
         }else {
+            toVC.view.alpha = 0
         }
         containerView.addSubview(toVC.view)
         
@@ -46,6 +47,7 @@ class HYAlertPresentSlideUp: NSObject, UIViewControllerAnimatedTransitioning {
             }else if toVC.alertStyle == .shareSheet {
                 toVC.shareView.frame = transitionContext.finalFrame(for: toVC)
             }else {
+                toVC.view.alpha = 1
             }
         }, completion: { (finished) in
             transitionContext.completeTransition(true)
