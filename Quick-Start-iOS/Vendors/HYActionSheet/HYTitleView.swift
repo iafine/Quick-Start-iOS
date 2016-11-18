@@ -14,6 +14,8 @@ class HYTitleView: UIView {
         let label: UILabel = UILabel ()
         label.font = UIFont.systemFont(ofSize: HY_Constants.titleFont)
         label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -57,7 +59,6 @@ extension HYTitleView {
             make.left.equalTo(self.snp.left).offset(20)
             make.top.equalTo(self.snp.top).offset(5)
             make.right.equalTo(self.snp.right).offset(-20)
-            make.height.equalTo(22)
         }
         self.messageLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.snp.left).offset(20)
@@ -79,7 +80,7 @@ extension HYTitleView {
     class func titleViewHeight(title: String, message: String, width: CGFloat) -> CGFloat {
         var titleHeight: CGFloat = 15
         if title.characters.count > 0 {
-            titleHeight += 22
+            titleHeight += title.heightWithConstrainedWidth(width: width - 40, font: UIFont.systemFont(ofSize: HY_Constants.titleFont)) + 1
         }
         if message.characters.count > 0 {
             titleHeight += message.heightWithConstrainedWidth(width: width - 40, font: UIFont.systemFont(ofSize: HY_Constants.messageFont)) + 1

@@ -59,8 +59,8 @@ class HYAlertController: UIViewController {
     }()
     
     init(title: String?, message: String?, style: HYAlertControllerStyle) {
-        self.alertTitle = title!
-        self.alertMessage = message!
+        self.alertTitle = (title ?? "").isEmpty ? "" : title!
+        self.alertMessage = (message ?? "").isEmpty ? "" : message!
         self.alertStyle = style
         super.init(nibName: nil, bundle: nil)
         
@@ -173,7 +173,8 @@ extension HYAlertController {
         }
     }
     
-    open func addShareActions(actions: NSArray) {
+    /// 添加必须是元素为HYAlertAction的数组，调用几次该方法，分享显示几行
+    open func addShareActions(actions: Array<HYAlertAction>) {
         self.actionArray.add(actions)
         self.shareView.refreshDate(dataArray: self.actionArray, cancelArray: self.cancelActionArray, title: self.alertTitle, message: self.alertMessage)
     }
