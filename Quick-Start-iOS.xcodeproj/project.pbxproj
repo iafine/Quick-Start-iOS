@@ -20,28 +20,16 @@
 		965408EA1DAF5BA500F5D0F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E81DAF5BA500F5D0F9 /* LaunchScreen.storyboard */; };
 		965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FC1DAF817200F5D0F9 /* HomeViewController.swift */; };
 		965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */; };
-		9660E5041DC9E6B800C7B4B1 /* HYShareCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */; };
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
 		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
-		966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F41DC72674001E9457 /* HYAlertAction.swift */; };
-		966DB8F71DC7534D001E9457 /* HYAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DB8F61DC7534D001E9457 /* HYAlertCell.swift */; };
-		966FD58D1DCB13C00099E69D /* HYShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */; };
 		9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */; };
 		9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B60B1DD9DDAB007E7796 /* AirlineView.swift */; };
 		969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA02A1DBC895D001051B1 /* HYNavigationController.swift */; };
-		96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A244171DBF0186001721F9 /* HYAlertController.swift */; };
 		96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476971DBDE5DD0065E726 /* HYWebViewController.swift */; };
 		96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4769A1DBDF8960065E726 /* LocationViewController.swift */; };
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
-		96C30ABD1DDD52C400BECB35 /* HYTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */; };
-		96C30AFC1DDD7D8600BECB35 /* HYAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */; };
-		96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */; };
-		96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */; };
-		96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350C1DCC60A50033429C /* HYShareView.swift */; };
-		96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E5350E1DCC855D0033429C /* HY_Constants.swift */; };
-		96E535111DCC8DE10033429C /* HYActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E535101DCC8DE10033429C /* HYActionSheetView.swift */; };
 		C160F53A12490EF6D976BBDE /* Pods_Quick_Start_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,28 +50,16 @@
 		965408EB1DAF5BA500F5D0F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965408FC1DAF817200F5D0F9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareCollectionCell.swift; path = HYActionSheet/HYShareCollectionCell.swift; sourceTree = "<group>"; };
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
 		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
-		966DB8F41DC72674001E9457 /* HYAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertAction.swift; path = HYActionSheet/HYAlertAction.swift; sourceTree = "<group>"; };
-		966DB8F61DC7534D001E9457 /* HYAlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertCell.swift; path = HYActionSheet/HYAlertCell.swift; sourceTree = "<group>"; };
-		966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareTableViewCell.swift; path = HYActionSheet/HYShareTableViewCell.swift; sourceTree = "<group>"; };
 		9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineViewController.swift; path = Location/AnimationPractice/Airline/AirlineViewController.swift; sourceTree = "<group>"; };
 		9671B60B1DD9DDAB007E7796 /* AirlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineView.swift; path = Location/AnimationPractice/Airline/View/AirlineView.swift; sourceTree = "<group>"; };
 		969BA02A1DBC895D001051B1 /* HYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYNavigationController.swift; path = Utils/HYNavigationController.swift; sourceTree = "<group>"; };
-		96A244171DBF0186001721F9 /* HYAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertController.swift; path = HYActionSheet/HYAlertController.swift; sourceTree = "<group>"; };
 		96B476971DBDE5DD0065E726 /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebViewController.swift; path = Utils/HYWebViewController.swift; sourceTree = "<group>"; };
 		96B4769A1DBDF8960065E726 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Location/LocationViewController.swift; sourceTree = "<group>"; };
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYTitleView.swift; path = HYActionSheet/HYTitleView.swift; sourceTree = "<group>"; };
-		96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertView.swift; path = HYActionSheet/HYAlertView.swift; sourceTree = "<group>"; };
-		96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertPresentSlideUp.swift; path = HYActionSheet/HYAlertPresentSlideUp.swift; sourceTree = "<group>"; };
-		96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYAlertDismissSlideDown.swift; path = HYActionSheet/HYAlertDismissSlideDown.swift; sourceTree = "<group>"; };
-		96E5350C1DCC60A50033429C /* HYShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYShareView.swift; path = HYActionSheet/HYShareView.swift; sourceTree = "<group>"; };
-		96E5350E1DCC855D0033429C /* HY_Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HY_Constants.swift; path = HYActionSheet/HY_Constants.swift; sourceTree = "<group>"; };
-		96E535101DCC8DE10033429C /* HYActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYActionSheetView.swift; path = HYActionSheet/HYActionSheetView.swift; sourceTree = "<group>"; };
 		9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_Start_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC950D9B2325503F3968EA59 /* Pods-Quick-Start-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,25 +250,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		96A244161DBF011F001721F9 /* HYActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				96A244171DBF0186001721F9 /* HYAlertController.swift */,
-				96D42B641DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift */,
-				96D42B661DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift */,
-				966DB8F41DC72674001E9457 /* HYAlertAction.swift */,
-				966DB8F61DC7534D001E9457 /* HYAlertCell.swift */,
-				9660E5031DC9E6B800C7B4B1 /* HYShareCollectionCell.swift */,
-				966FD58C1DCB13C00099E69D /* HYShareTableViewCell.swift */,
-				96E5350C1DCC60A50033429C /* HYShareView.swift */,
-				96E5350E1DCC855D0033429C /* HY_Constants.swift */,
-				96E535101DCC8DE10033429C /* HYActionSheetView.swift */,
-				96C30ABC1DDD52C400BECB35 /* HYTitleView.swift */,
-				96C30AFB1DDD7D8600BECB35 /* HYAlertView.swift */,
-			);
-			name = HYActionSheet;
-			sourceTree = "<group>";
-		};
 		96B476991DBDF86B0065E726 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				9603EA531DD95EC200EBC9D4 /* HYFPSLabel */,
-				96A244161DBF011F001721F9 /* HYActionSheet */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -462,36 +418,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96C30AFC1DDD7D8600BECB35 /* HYAlertView.swift in Sources */,
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
-				966FD58D1DCB13C00099E69D /* HYShareTableViewCell.swift in Sources */,
-				966DB8F71DC7534D001E9457 /* HYAlertCell.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
-				96E5350F1DCC855D0033429C /* HY_Constants.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
-				96E5350D1DCC60A50033429C /* HYShareView.swift in Sources */,
 				9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */,
 				960534DE1DD2BB670068C081 /* AdPageView.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
 				9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */,
-				966DB8F51DC72674001E9457 /* HYAlertAction.swift in Sources */,
 				969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */,
-				96D42B651DBF614900BAAFF9 /* HYAlertPresentSlideUp.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
-				96D42B671DBF642700BAAFF9 /* HYAlertDismissSlideDown.swift in Sources */,
 				960534D81DD2BB150068C081 /* LoginView.swift in Sources */,
 				960534E11DD2F03F0068C081 /* LoginHelper.swift in Sources */,
-				96C30ABD1DDD52C400BECB35 /* HYTitleView.swift in Sources */,
 				96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */,
 				96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */,
-				9660E5041DC9E6B800C7B4B1 /* HYShareCollectionCell.swift in Sources */,
 				966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */,
-				96A244181DBF0186001721F9 /* HYAlertController.swift in Sources */,
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
-				96E535111DCC8DE10033429C /* HYActionSheetView.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);

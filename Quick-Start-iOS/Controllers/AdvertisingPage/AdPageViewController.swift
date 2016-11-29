@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import HYAlertController
 
 // MARK: - Class
 class AdPageViewController: HYWebViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,23 +84,23 @@ extension HYWebViewController: HYWebViewControllerDelegate {
 //        alertVC.addAction(action: testAction2)
 //        alertVC.addAction(action: testAction3)
 //        alertVC.addAction(action: testAction4)
-        let alertVC: HYAlertController = HYAlertController (title: "Title", message: "Message", style: .alert)
-        let oneAction: HYAlertAction = HYAlertAction (title: "One Action", style: .normal, handler:  { (action) in
-            print(action.title)
-        })
-        let twoAction: HYAlertAction = HYAlertAction (title: "Two Action", style: .normal, handler:  { (action) in
-            print(action.title)
-        })
-        let threeAction: HYAlertAction = HYAlertAction (title: "Three Action", style: .destructive, handler:  { (action) in
-            print(action.title)
-        })
-        let cancelAction: HYAlertAction = HYAlertAction (title: "Cancel Action", style: .cancel, handler:  { (action) in
-            print(action.title)
-        })
-        alertVC.addAction(action: oneAction)
-        alertVC.addAction(action: twoAction)
-        alertVC.addAction(action: threeAction)
-        alertVC.addAction(action: cancelAction)
-        self.present(alertVC, animated: true, completion: nil)
+//        let alertVC: HYAlertController = HYAlertController (title: "Title", message: "Message", style: .alert)
+//        let oneAction: HYAlertAction = HYAlertAction (title: "One Action", style: .normal, handler:  { (action) in
+//            print(action.title)
+//        })
+//        let twoAction: HYAlertAction = HYAlertAction (title: "Two Action", style: .normal, handler:  { (action) in
+//            print(action.title)
+//        })
+//        let threeAction: HYAlertAction = HYAlertAction (title: "Three Action", style: .destructive, handler:  { (action) in
+//            print(action.title)
+//        })
+//        let cancelAction: HYAlertAction = HYAlertAction (title: "Cancel Action", style: .cancel, handler:  { (action) in
+//            print(action.title)
+//        })
+//        alertVC.addAction(action: oneAction)
+//        alertVC.addAction(action: twoAction)
+//        alertVC.addAction(action: threeAction)
+//        alertVC.addAction(action: cancelAction)
+//        self.present(alertVC, animated: true, completion: nil)
     }
 }

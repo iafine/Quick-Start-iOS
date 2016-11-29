@@ -8,5 +8,5 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'Quick-Start-iOS' do
-    pod 'SnapKit', '~> 3.0.2'
+    pod 'HYAlertController'
 end

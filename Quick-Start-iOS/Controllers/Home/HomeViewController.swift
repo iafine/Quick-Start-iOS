@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HYAlertController
 
 // MARK: - Class
 class HomeViewController: UIViewController {
@@ -134,7 +135,7 @@ extension HomeViewController {
         alertVC.addAction(action: cancelAction)
         self.present(alertVC, animated: true, completion: nil)
     }
-    
+
     fileprivate func showSheetStyle() {
         let alertVC: HYAlertController = HYAlertController (title: nil, message: nil, style: .actionSheet)
         let oneAction: HYAlertAction = HYAlertAction (title: "One Action", style: .normal, handler:  { (action) in
