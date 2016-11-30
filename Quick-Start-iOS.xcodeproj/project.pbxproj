@@ -30,6 +30,10 @@
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
+		96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929351DEEB44A006B71EA /* HYRefreshControl.swift */; };
+		96F929391DEEB44A006B71EA /* HYRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929361DEEB44A006B71EA /* HYRefreshView.swift */; };
+		96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929371DEEB44A006B71EA /* UIScrollView+HYRefresh.swift */; };
+		96F9293C1DEED6D3006B71EA /* HYNormalRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9293B1DEED6D3006B71EA /* HYNormalRefresh.swift */; };
 		C160F53A12490EF6D976BBDE /* Pods_Quick_Start_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +64,10 @@
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		96F929351DEEB44A006B71EA /* HYRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshControl.swift; sourceTree = "<group>"; };
+		96F929361DEEB44A006B71EA /* HYRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshView.swift; sourceTree = "<group>"; };
+		96F929371DEEB44A006B71EA /* UIScrollView+HYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+HYRefresh.swift"; sourceTree = "<group>"; };
+		96F9293B1DEED6D3006B71EA /* HYNormalRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYNormalRefresh.swift; sourceTree = "<group>"; };
 		9C2C71F347C5FB73BD083231 /* Pods_Quick_Start_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quick_Start_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC950D9B2325503F3968EA59 /* Pods-Quick-Start-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +278,7 @@
 		96BC6A821DB05E8000D917E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				96F929341DEEB44A006B71EA /* HYRefresh */,
 				9603EA531DD95EC200EBC9D4 /* HYFPSLabel */,
 			);
 			path = Vendors;
@@ -292,6 +301,17 @@
 				96BC6ACC1DB0AA2800D917E4 /* Constants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		96F929341DEEB44A006B71EA /* HYRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				96F929351DEEB44A006B71EA /* HYRefreshControl.swift */,
+				96F929361DEEB44A006B71EA /* HYRefreshView.swift */,
+				96F929371DEEB44A006B71EA /* UIScrollView+HYRefresh.swift */,
+				96F9293B1DEED6D3006B71EA /* HYNormalRefresh.swift */,
+			);
+			path = HYRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,14 +441,18 @@
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
+				96F929391DEEB44A006B71EA /* HYRefreshView.swift in Sources */,
 				9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */,
 				960534DE1DD2BB670068C081 /* AdPageView.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
 				9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
+				96F9293C1DEED6D3006B71EA /* HYNormalRefresh.swift in Sources */,
 				9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */,
 				969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
+				96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */,
+				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
 				960534D81DD2BB150068C081 /* LoginView.swift in Sources */,
 				960534E11DD2F03F0068C081 /* LoginHelper.swift in Sources */,
