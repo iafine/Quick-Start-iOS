@@ -49,6 +49,10 @@ extension HomeViewController {
 //        self.view.addSubview(self.homeView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        let normalHeader = HYNormalRefresh (frame: CGRect (x: 0, y: 0, width: Constants.Rect.ScreenWidth, height: 100))
+        self.tableView.hy_refreshHeader(headerControl: normalHeader, refreshHandler: {
+            print("下拉刷新Block回调")
+        })
         self.view.addSubview(self.tableView)
         /// 监听广告跳转
         NotificationCenter.default.addObserver(self, selector: #selector(pushAdViewController), name: Constants.Notification.DISPATCH_AD_PAGE, object: nil)

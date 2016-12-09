@@ -13,6 +13,9 @@
 		960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960534DA1DD2BB3A0068C081 /* HomeView.swift */; };
 		960534DE1DD2BB670068C081 /* AdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960534DD1DD2BB670068C081 /* AdPageView.swift */; };
 		960534E11DD2F03F0068C081 /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960534E01DD2F03F0068C081 /* LoginHelper.swift */; };
+		9605D04A1DF6B1D5008ECA3B /* Shakeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D0491DF6B1D5008ECA3B /* Shakeable.swift */; };
+		9605D0501DF6B55F008ECA3B /* ShakeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D04F1DF6B55F008ECA3B /* ShakeImageView.swift */; };
+		9605D0521DF6B97C008ECA3B /* ShakeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D0511DF6B97C008ECA3B /* ShakeButton.swift */; };
 		9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9612E6381DB0C0F700756149 /* RootViewController.swift */; };
 		965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */; };
 		965408E51DAF5BA500F5D0F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E31DAF5BA500F5D0F9 /* Main.storyboard */; };
@@ -30,6 +33,7 @@
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
+		96CD4AAA1DF657210008582A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD4AA91DF657210008582A /* User.swift */; };
 		96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929351DEEB44A006B71EA /* HYRefreshControl.swift */; };
 		96F929391DEEB44A006B71EA /* HYRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929361DEEB44A006B71EA /* HYRefreshView.swift */; };
 		96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929371DEEB44A006B71EA /* UIScrollView+HYRefresh.swift */; };
@@ -45,6 +49,9 @@
 		960534DA1DD2BB3A0068C081 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = View/HomeView.swift; sourceTree = "<group>"; };
 		960534DD1DD2BB670068C081 /* AdPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageView.swift; path = AdvertisingPage/View/AdPageView.swift; sourceTree = "<group>"; };
 		960534E01DD2F03F0068C081 /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginHelper.swift; path = Login/Helper/LoginHelper.swift; sourceTree = "<group>"; };
+		9605D0491DF6B1D5008ECA3B /* Shakeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Shakeable.swift; path = Location/Protocol/Shakeable.swift; sourceTree = "<group>"; };
+		9605D04F1DF6B55F008ECA3B /* ShakeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeImageView.swift; path = Location/View/ShakeImageView.swift; sourceTree = "<group>"; };
+		9605D0511DF6B97C008ECA3B /* ShakeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeButton.swift; path = Location/View/ShakeButton.swift; sourceTree = "<group>"; };
 		9612E6381DB0C0F700756149 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		965408DC1DAF5BA500F5D0F9 /* Quick-Start-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-Start-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		96CD4AA91DF657210008582A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = HYNetwork/User.swift; sourceTree = "<group>"; };
 		96F929351DEEB44A006B71EA /* HYRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshControl.swift; sourceTree = "<group>"; };
 		96F929361DEEB44A006B71EA /* HYRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshView.swift; sourceTree = "<group>"; };
 		96F929371DEEB44A006B71EA /* UIScrollView+HYRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+HYRefresh.swift"; sourceTree = "<group>"; };
@@ -149,6 +157,23 @@
 				960534E01DD2F03F0068C081 /* LoginHelper.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		9605D0481DF6B1A7008ECA3B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				9605D0491DF6B1D5008ECA3B /* Shakeable.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		9605D04B1DF6B3D3008ECA3B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9605D04F1DF6B55F008ECA3B /* ShakeImageView.swift */,
+				9605D0511DF6B97C008ECA3B /* ShakeButton.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		965408D31DAF5BA500F5D0F9 = {
@@ -261,6 +286,8 @@
 		96B476991DBDF86B0065E726 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				9605D04B1DF6B3D3008ECA3B /* View */,
+				9605D0481DF6B1A7008ECA3B /* Protocol */,
 				9671B6061DD9DC92007E7796 /* AnimationPractice */,
 				96B4769A1DBDF8960065E726 /* LocationViewController.swift */,
 			);
@@ -278,6 +305,7 @@
 		96BC6A821DB05E8000D917E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				96CD4AA81DF656E90008582A /* HYNetwork */,
 				96F929341DEEB44A006B71EA /* HYRefresh */,
 				9603EA531DD95EC200EBC9D4 /* HYFPSLabel */,
 			);
@@ -301,6 +329,14 @@
 				96BC6ACC1DB0AA2800D917E4 /* Constants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		96CD4AA81DF656E90008582A /* HYNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				96CD4AA91DF657210008582A /* User.swift */,
+			);
+			name = HYNetwork;
 			sourceTree = "<group>";
 		};
 		96F929341DEEB44A006B71EA /* HYRefresh */ = {
@@ -440,11 +476,15 @@
 			files = (
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
+				9605D0501DF6B55F008ECA3B /* ShakeImageView.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
+				96CD4AAA1DF657210008582A /* User.swift in Sources */,
 				96F929391DEEB44A006B71EA /* HYRefreshView.swift in Sources */,
 				9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */,
 				960534DE1DD2BB670068C081 /* AdPageView.swift in Sources */,
+				9605D0521DF6B97C008ECA3B /* ShakeButton.swift in Sources */,
 				965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */,
+				9605D04A1DF6B1D5008ECA3B /* Shakeable.swift in Sources */,
 				9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */,
 				9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */,
 				96F9293C1DEED6D3006B71EA /* HYNormalRefresh.swift in Sources */,
