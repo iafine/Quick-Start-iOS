@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Class
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, LoadingPresenter, ErrorPresenter, EmptyPresenter {
     lazy var shakeBtn: ShakeButton = {
         let button: ShakeButton = ShakeButton ()
         button.setTitle("抖动", for: .normal)
@@ -24,17 +24,21 @@ class LocationViewController: UIViewController {
         imageView.image = UIImage (named: "launchimage")
         return imageView
     }()
+    
+    fileprivate let isError = false;
 }
 
 // MARK: - LifeCycle
 extension LocationViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "面向协议编程"
-  
-        initUI()
-        initLayout()
+
+        presentEmpty()
+//        presentError()
+//        presentLoading()
+//        initUI()
+//        initLayout()
     }
     
     fileprivate func initUI() {
@@ -63,5 +67,7 @@ extension LocationViewController {
     @objc fileprivate func clickedShakeBtnHandler() {
 //        shakeImageView.shake()
         shakeBtn.shake()
+        
+//        presentError()
     }
 }

@@ -25,9 +25,12 @@
 		965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */; };
 		9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665BDD11DB7443B00E395F9 /* AdHelper.swift */; };
 		966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966A1FE71DBA28C100AE005C /* AdPageViewController.swift */; };
+		966D3A891DFA7BE80009D798 /* ErrorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966D3A881DFA7BE80009D798 /* ErrorPresenter.swift */; };
+		966D3A8B1DFA93770009D798 /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966D3A8A1DFA93770009D798 /* LoadingPresenter.swift */; };
 		9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */; };
 		9671B60C1DD9DDAB007E7796 /* AirlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9671B60B1DD9DDAB007E7796 /* AirlineView.swift */; };
 		969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969BA02A1DBC895D001051B1 /* HYNavigationController.swift */; };
+		969DB1B31DFBAD4B00134E83 /* EmptyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969DB1B21DFBAD4B00134E83 /* EmptyPresenter.swift */; };
 		96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476971DBDE5DD0065E726 /* HYWebViewController.swift */; };
 		96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4769A1DBDF8960065E726 /* LocationViewController.swift */; };
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
@@ -63,9 +66,12 @@
 		965408FD1DAF817200F5D0F9 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		9665BDD11DB7443B00E395F9 /* AdHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdHelper.swift; path = Utils/AdHelper/AdHelper.swift; sourceTree = "<group>"; };
 		966A1FE71DBA28C100AE005C /* AdPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdPageViewController.swift; path = AdvertisingPage/AdPageViewController.swift; sourceTree = "<group>"; };
+		966D3A881DFA7BE80009D798 /* ErrorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorPresenter.swift; path = Location/Protocol/ErrorPresenter.swift; sourceTree = "<group>"; };
+		966D3A8A1DFA93770009D798 /* LoadingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingPresenter.swift; path = Location/Protocol/LoadingPresenter.swift; sourceTree = "<group>"; };
 		9671B6081DD9DD0C007E7796 /* AirlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineViewController.swift; path = Location/AnimationPractice/Airline/AirlineViewController.swift; sourceTree = "<group>"; };
 		9671B60B1DD9DDAB007E7796 /* AirlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AirlineView.swift; path = Location/AnimationPractice/Airline/View/AirlineView.swift; sourceTree = "<group>"; };
 		969BA02A1DBC895D001051B1 /* HYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYNavigationController.swift; path = Utils/HYNavigationController.swift; sourceTree = "<group>"; };
+		969DB1B21DFBAD4B00134E83 /* EmptyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyPresenter.swift; path = Location/Protocol/EmptyPresenter.swift; sourceTree = "<group>"; };
 		96B476971DBDE5DD0065E726 /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebViewController.swift; path = Utils/HYWebViewController.swift; sourceTree = "<group>"; };
 		96B4769A1DBDF8960065E726 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = Location/LocationViewController.swift; sourceTree = "<group>"; };
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				9605D0491DF6B1D5008ECA3B /* Shakeable.swift */,
+				966D3A881DFA7BE80009D798 /* ErrorPresenter.swift */,
+				966D3A8A1DFA93770009D798 /* LoadingPresenter.swift */,
+				969DB1B21DFBAD4B00134E83 /* EmptyPresenter.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -475,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
+				969DB1B31DFBAD4B00134E83 /* EmptyPresenter.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
 				9605D0501DF6B55F008ECA3B /* ShakeImageView.swift in Sources */,
 				96B476981DBDE5DD0065E726 /* HYWebViewController.swift in Sources */,
@@ -491,6 +501,7 @@
 				9671B6091DD9DD0C007E7796 /* AirlineViewController.swift in Sources */,
 				969BA02B1DBC895D001051B1 /* HYNavigationController.swift in Sources */,
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
+				966D3A8B1DFA93770009D798 /* LoadingPresenter.swift in Sources */,
 				96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */,
 				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
@@ -500,6 +511,7 @@
 				96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */,
 				966A1FE81DBA28C100AE005C /* AdPageViewController.swift in Sources */,
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
+				966D3A891DFA7BE80009D798 /* ErrorPresenter.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);
