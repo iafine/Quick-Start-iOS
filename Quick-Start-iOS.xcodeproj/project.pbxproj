@@ -17,6 +17,7 @@
 		9605D0501DF6B55F008ECA3B /* ShakeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D04F1DF6B55F008ECA3B /* ShakeImageView.swift */; };
 		9605D0521DF6B97C008ECA3B /* ShakeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9605D0511DF6B97C008ECA3B /* ShakeButton.swift */; };
 		9612E6391DB0C0F700756149 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9612E6381DB0C0F700756149 /* RootViewController.swift */; };
+		963BB5391E090DEE00F8C3E1 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BB5381E090DEE00F8C3E1 /* UIViewController+Utils.swift */; };
 		965408E01DAF5BA500F5D0F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */; };
 		965408E51DAF5BA500F5D0F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965408E31DAF5BA500F5D0F9 /* Main.storyboard */; };
 		965408E71DAF5BA500F5D0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965408E61DAF5BA500F5D0F9 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		9605D04F1DF6B55F008ECA3B /* ShakeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeImageView.swift; path = Location/View/ShakeImageView.swift; sourceTree = "<group>"; };
 		9605D0511DF6B97C008ECA3B /* ShakeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShakeButton.swift; path = Location/View/ShakeButton.swift; sourceTree = "<group>"; };
 		9612E6381DB0C0F700756149 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		963BB5381E090DEE00F8C3E1 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Utils.swift"; path = "Utils/SwiftUtils/UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		965408DC1DAF5BA500F5D0F9 /* Quick-Start-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quick-Start-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965408DF1DAF5BA500F5D0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		965408E41DAF5BA500F5D0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 				9605D0511DF6B97C008ECA3B /* ShakeButton.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		963BB5371E090B4100F8C3E1 /* SwiftUtils */ = {
+			isa = PBXGroup;
+			children = (
+				963BB5381E090DEE00F8C3E1 /* UIViewController+Utils.swift */,
+			);
+			name = SwiftUtils;
 			sourceTree = "<group>";
 		};
 		965408D31DAF5BA500F5D0F9 = {
@@ -324,6 +334,7 @@
 		96BC6ACA1DB0A9DD00D917E4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				963BB5371E090B4100F8C3E1 /* SwiftUtils */,
 				9665BDD01DB7441300E395F9 /* AdHelper */,
 				96BC6ACB1DB0A9EA00D917E4 /* Constants */,
 				969BA02A1DBC895D001051B1 /* HYNavigationController.swift */,
@@ -503,6 +514,7 @@
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
 				966D3A8B1DFA93770009D798 /* LoadingPresenter.swift in Sources */,
 				96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */,
+				963BB5391E090DEE00F8C3E1 /* UIViewController+Utils.swift in Sources */,
 				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
 				960534D81DD2BB150068C081 /* LoginView.swift in Sources */,
