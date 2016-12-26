@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreTelephony
 
 // MARK: - Class
 class LocationViewController: UIViewController, LoadingPresenter, ErrorPresenter, EmptyPresenter {
@@ -40,6 +41,7 @@ extension LocationViewController {
         self.view.addSubview(self.tableView)
         
 //        presentLoading()
+        
         requestLatestNews()
     }
     

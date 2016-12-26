@@ -27,9 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 开始广告页面
         startAdvertisingPage()
-
+        
         // 显示FPS
         showFPS()
+        
+        let hasPhotoAuth: Bool = UIApplication.hy_hasPhotoAuthorization()
         
         return true
     }
