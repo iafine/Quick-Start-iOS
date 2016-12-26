@@ -31,11 +31,7 @@ extension LocationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "消息"
-
-        let className: String = self.hy_name
-        print("\(className)")
-        let currentName: String = UIViewController.hy_currentViewControllerName()!
-        print("\(currentName)")
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)

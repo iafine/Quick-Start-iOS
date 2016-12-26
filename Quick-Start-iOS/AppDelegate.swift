@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 显示FPS
         showFPS()
         
-        let hasPhotoAuth: Bool = UIApplication.hy_hasPhotoAuthorization()
-        
         return true
     }
 

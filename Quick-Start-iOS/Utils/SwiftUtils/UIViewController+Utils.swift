@@ -12,54 +12,54 @@ import UIKit
 extension UIViewController {
     
     /// 控制器是否可以看得见
-    public var hy_isVisible: Bool {
+    public var isVisible: Bool {
         return (self.isViewLoaded && (self.view.window != nil))
     }
     
     /// 控制器类名
-    public var hy_name: String {
+    public var controllerName: String {
         return String(describing: type(of: self))
     }
 
     /// 当前显示的控制器
     ///
     /// - Returns: 当前显示的控制器
-    public class func hy_currentViewController() -> UIViewController? {
+    public class func currentViewController() -> UIViewController? {
         let viewController: UIViewController = (UIApplication.shared.keyWindow?.rootViewController)!
-        return UIViewController.hy_findCurrentViewController(viewController: viewController)
+        return UIViewController.findCurrentViewController(viewController: viewController)
     }
     
     /// 当前显示的控制器类名
     ///
     /// - Returns: 当前显示的控制器类名
-    public class func hy_currentViewControllerName() -> String? {
-        return String (describing: hy_currentViewController())
+    public class func currentViewControllerName() -> String? {
+        return String (describing: currentViewController())
     }
 }
 
 /// MARK: - Private Methods
 extension UIViewController {
-    fileprivate static func hy_findCurrentViewController(viewController: UIViewController?) -> UIViewController? {
+    fileprivate static func findCurrentViewController(viewController: UIViewController?) -> UIViewController? {
         if (viewController?.presentedViewController) != nil {
-            return UIViewController.hy_findCurrentViewController(viewController: viewController?.presentedViewController)
+            return UIViewController.findCurrentViewController(viewController: viewController?.presentedViewController)
         }else if (viewController is UISplitViewController) {
             let splitVC: UISplitViewController = viewController as! UISplitViewController
             if splitVC.viewControllers.count > 0 {
-                return UIViewController.hy_findCurrentViewController(viewController: splitVC.viewControllers.last)
+                return UIViewController.findCurrentViewController(viewController: splitVC.viewControllers.last)
             }else {
                 return splitVC
             }
         }else if (viewController is UINavigationController) {
             let navVC: UINavigationController = viewController as! UINavigationController
             if navVC.viewControllers.count > 0 {
-                return UIViewController.hy_findCurrentViewController(viewController: navVC.topViewController)
+                return UIViewController.findCurrentViewController(viewController: navVC.topViewController)
             }else {
                 return navVC;
             }
         }else if (viewController is UITabBarController) {
             let tabBarVC: UITabBarController = viewController as! UITabBarController
             if (tabBarVC.viewControllers?.count)! > 0 {
-                return UIViewController.hy_findCurrentViewController(viewController: tabBarVC.selectedViewController)
+                return UIViewController.findCurrentViewController(viewController: tabBarVC.selectedViewController)
             }else {
                 return tabBarVC
             }

@@ -1,5 +1,5 @@
 //
-//  UIApplication+Utils.swift
+//  UIDevice+Utils.swift
 //  Quick-Start-iOS
 //
 //  Created by work on 2016/12/21.
@@ -12,39 +12,58 @@ import AVFoundation
 import Contacts
 import EventKit
 
+// MARK: - 设备信息
+extension UIDevice {
+    public var deviceName: String {
+        return UIDevice.current.name
+    }
+    
+    public var deviceUUID: String {
+        return (UIDevice.current.identifierForVendor?.uuidString)!
+    }
+    
+    public var deviceModel: String {
+        return UIDevice.current.model
+    }
+    
+    public var sysVersion: String {
+        return UIDevice.current.systemVersion
+    }
+}
+
 // MARK: - 第三方App是否安装
-extension UIApplication {
+extension UIDevice {
     
     /// 本机是否安装QQ。
     /// 注意：iOS9以上需要先将QQ的URL Scheme添加到白名单上，才会生效，否则始终为false。
     /// - Returns: 是否安装QQ
-    public class func hy_isInstallQQ() -> Bool {
-        return hy_isInstallApp(appScheme: "mqq")
+    public class func isInstallQQ() -> Bool {
+        return isInstallApp(appScheme: "mqq")
     }
     
     /// 本机是否安装微信。
     /// 注意：iOS9以上需要先将微信的URL Scheme添加到白名单上，才会生效，否则始终为false。
     /// - Returns: 是否安装微信
-    public class func hy_isInstallWeChat() -> Bool {
-        return hy_isInstallApp(appScheme: "wechat")
+    public class func isInstallWeChat() -> Bool {
+        return isInstallApp(appScheme: "wechat")
     }
     
     /// 本机是否安装微博。
     /// 注意：iOS9以上需要先将微博的URL Scheme添加到白名单上，才会生效，否则始终为false。
     /// - Returns: 是否安装微博
-    public class func hy_isInstallWeibo() -> Bool {
-        return hy_isInstallApp(appScheme: "sinaweibo")
+    public class func isInstallWeibo() -> Bool {
+        return isInstallApp(appScheme: "sinaweibo")
     }
     
     /// 本机是否安装某个第三方app。
     /// 注意：iOS9以上需要先将该第三方app的URL Scheme添加到白名单上，才会生效，否则始终为false。
     /// - Parameter appScheme: App Scheme
     /// - Returns: 是否安装
-    public class func hy_isInstallThirdPartyApp(appScheme: String) -> Bool {
-        return hy_isInstallApp(appScheme: appScheme)
+    public class func isInstallThirdPartyApp(appScheme: String) -> Bool {
+        return isInstallApp(appScheme: appScheme)
     }
     
-    fileprivate static func hy_isInstallApp(appScheme: String) -> Bool {
+    fileprivate static func isInstallApp(appScheme: String) -> Bool {
         let appUrlScheme: String
         if appScheme.hasSuffix("://") {
             appUrlScheme = appScheme
@@ -60,11 +79,11 @@ extension UIApplication {
 }
 
 // MARK: - App权限获取
-extension UIApplication {
+extension UIDevice {
     /// 是否开启相册权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启相册权限
-    public class func hy_hasPhotoAuthorization() -> Bool {
+    public class func hasPhotoAuthorization() -> Bool {
         let photoAuthStatus: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         var hasPhotoAuth: Bool = false
         switch photoAuthStatus {
@@ -90,7 +109,7 @@ extension UIApplication {
     /// 是否开启相机权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启相机权限
-    public class func hy_hasVideoAuthorization() -> Bool {
+    public class func hasVideoAuthorization() -> Bool {
         let videoAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
         var hasVideoAuth: Bool = false
         switch videoAuthStatus {
@@ -116,7 +135,7 @@ extension UIApplication {
     /// 是否开启麦克风权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启麦克风权限
-    public class func hy_hasAudioAuthorization() -> Bool {
+    public class func hasAudioAuthorization() -> Bool {
         let audioAuthStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeAudio)
         var hasAudioAuth: Bool = false
         switch audioAuthStatus {
@@ -142,7 +161,7 @@ extension UIApplication {
     /// 是否开启定位权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启定位权限
-    public class func hy_hasLocationAuthorization() -> Bool {
+    public class func hasLocationAuthorization() -> Bool {
         var hasLocationAuth: Bool = CLLocationManager.locationServicesEnabled()
         if !hasLocationAuth {
            return false
@@ -175,7 +194,7 @@ extension UIApplication {
     /// 是否开启通讯录权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启通讯录权限
-    public class func hy_hasContactsAuthorization() -> Bool {
+    public class func hasContactsAuthorization() -> Bool {
         let contactsAuthStatus: CNAuthorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
         var hasContactsAuth: Bool = false
         switch contactsAuthStatus {
@@ -201,7 +220,7 @@ extension UIApplication {
     /// 是否开启日历权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启日历权限
-    public class func hy_hasEventAuthorization() -> Bool {
+    public class func hasEventAuthorization() -> Bool {
         let eventAuthStatus: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: .event)
         var hasEventAuth: Bool = false
         switch eventAuthStatus {
@@ -227,7 +246,7 @@ extension UIApplication {
     /// 是否开启备忘录权限，iOS10以上需要在info.plist添加描述。
     ///
     /// - Returns: 是否开启备忘录权限
-    public class func hy_hasRemiderAuthorization() -> Bool {
+    public class func hasRemiderAuthorization() -> Bool {
         let remiderAuthStatus: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: .reminder)
         var hasRemiderAuth: Bool = false
         switch remiderAuthStatus {

@@ -37,7 +37,7 @@
 		96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B476A01DBDF8E10065E726 /* MeViewController.swift */; };
 		96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACC1DB0AA2800D917E4 /* Constants.swift */; };
 		96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */; };
-		96C98AEB1E0A848B00B02CA7 /* UIApplication+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C98AEA1E0A848B00B02CA7 /* UIApplication+Utils.swift */; };
+		96C98AEB1E0A848B00B02CA7 /* UIDevice+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C98AEA1E0A848B00B02CA7 /* UIDevice+Utils.swift */; };
 		96CD4AAA1DF657210008582A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CD4AA91DF657210008582A /* User.swift */; };
 		96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929351DEEB44A006B71EA /* HYRefreshControl.swift */; };
 		96F929391DEEB44A006B71EA /* HYRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F929361DEEB44A006B71EA /* HYRefreshView.swift */; };
@@ -80,7 +80,7 @@
 		96B476A01DBDF8E10065E726 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		96BC6ACC1DB0AA2800D917E4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Utils/Constants/Constants.swift; sourceTree = "<group>"; };
 		96BC6ACE1DB0B52200D917E4 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		96C98AEA1E0A848B00B02CA7 /* UIApplication+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIApplication+Utils.swift"; path = "Utils/SwiftUtils/UIApplication+Utils.swift"; sourceTree = "<group>"; };
+		96C98AEA1E0A848B00B02CA7 /* UIDevice+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIDevice+Utils.swift"; path = "Utils/SwiftUtils/UIDevice+Utils.swift"; sourceTree = "<group>"; };
 		96CD4AA91DF657210008582A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = HYNetwork/User.swift; sourceTree = "<group>"; };
 		96F929351DEEB44A006B71EA /* HYRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshControl.swift; sourceTree = "<group>"; };
 		96F929361DEEB44A006B71EA /* HYRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYRefreshView.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				963BB5381E090DEE00F8C3E1 /* UIViewController+Utils.swift */,
-				96C98AEA1E0A848B00B02CA7 /* UIApplication+Utils.swift */,
+				96C98AEA1E0A848B00B02CA7 /* UIDevice+Utils.swift */,
 			);
 			name = SwiftUtils;
 			sourceTree = "<group>";
@@ -517,7 +517,7 @@
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
 				966D3A8B1DFA93770009D798 /* LoadingPresenter.swift in Sources */,
 				96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */,
-				96C98AEB1E0A848B00B02CA7 /* UIApplication+Utils.swift in Sources */,
+				96C98AEB1E0A848B00B02CA7 /* UIDevice+Utils.swift in Sources */,
 				963BB5391E090DEE00F8C3E1 /* UIViewController+Utils.swift in Sources */,
 				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
