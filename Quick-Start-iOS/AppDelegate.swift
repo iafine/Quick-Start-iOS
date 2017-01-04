@@ -26,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // 开始广告页面
-        startAdvertisingPage()
+//        startAdvertisingPage()
         
         // 显示FPS
-        showFPS()
+//        showFPS()
         
         return true
     }

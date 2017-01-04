@@ -19,6 +19,14 @@ extension MeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = "我"
+        self.title = "测试"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (title: "JS交互", style: .plain, target: self, action: #selector(javascriptHandler))
+    }
+}
+
+extension MeViewController {
+    @objc fileprivate func javascriptHandler() {
+        let webVC: HYWebTestController = HYWebTestController ()
+        self.navigationController?.pushViewController(webVC, animated: true)
     }
 }

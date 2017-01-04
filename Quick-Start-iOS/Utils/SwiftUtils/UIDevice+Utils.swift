@@ -14,20 +14,45 @@ import EventKit
 
 // MARK: - 设备信息
 extension UIDevice {
+    
+    /// 设备名称
     public var deviceName: String {
         return UIDevice.current.name
     }
     
+    /// 设备唯一标识符UUID
     public var deviceUUID: String {
         return (UIDevice.current.identifierForVendor?.uuidString)!
     }
     
+    /// 设备型号
     public var deviceModel: String {
         return UIDevice.current.model
     }
     
+    /// 系统版本
     public var sysVersion: String {
         return UIDevice.current.systemVersion
+    }
+    
+    /// app外部版本号
+    public var appVersion: String {
+        return UIDevice.appInfo(key: "CFBundleShortVersionString")
+    }
+    
+    /// app内部版本号(build)
+    public var appBuildVersion: String {
+        return UIDevice.appInfo(key: "CFBundleVersion")
+    }
+    
+    /// app名称
+    public var appName: String {
+        return UIDevice.appInfo(key: "CFBundleDisplayName")
+    }
+    
+    fileprivate static func appInfo(key: String) -> String {
+        let infoDic = Bundle.main.infoDictionary
+        return infoDic?[key] as! String
     }
 }
 
