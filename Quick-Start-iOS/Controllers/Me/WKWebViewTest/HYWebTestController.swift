@@ -11,20 +11,7 @@ import WebKit
 
 class HYWebTestController: UIViewController {
 
-    fileprivate var webView: WKWebView {
-        // 注册scriptMessageHandler
-        let conf = WKWebViewConfiguration ()
-        conf.userContentController.add(self, name: "HY")
-        let webview: WKWebView = WKWebView (frame: CGRect (x: 0,
-                                                y: 0,
-                                                width: Constants.Rect.ScreenWidth,
-                                                height: Constants.Rect.ScreenHeight),
-                                 configuration: conf)
-        webview.navigationDelegate = self
-        webview.uiDelegate = self
-        webview.load(URLRequest (url: URL (string: "https://www.baidu.com")!))
-        return webview
-    }
+    fileprivate var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +19,20 @@ class HYWebTestController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.title = "Javascript交互"
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // 注册scriptMessageHandler
+        let conf = WKWebViewConfiguration ()
+        conf.userContentController.add(self, name: "HY")
+        self.webView = WKWebView (frame: self.view.frame,
+                                            configuration: conf)
+        self.webView.navigationDelegate = self
+        self.webView.uiDelegate = self
+        self.webView.load(URLRequest (url: URL (string: "https://www.baidu.com")!))
         // 添加插件
-        self.runPluginsJS(names: ["Console"])
+        self.runPluginsJS(names: ["Console", "Base", "Accelerometer"])
         self.view.addSubview(self.webView)
     }
 }
@@ -70,9 +65,12 @@ extension HYWebTestController: WKScriptMessageHandler {
                 let functionName = dic["functionName"] as! String
                 // 注意：如果工程名字包含"-"，需要转换成"_"
                 let namespace = (Bundle.main.object(forInfoDictionaryKey: "CFBundleExecutable") as! String).replacingOccurrences(of: "-", with: "_")
-                if let cls = NSClassFromString("\(namespace).\(className)") as? NSObject.Type {
+                if let cls = NSClassFromString("\(namespace).\(className)") as? Plugin.Type {
                     let obj = cls.init()
-                    let functionSelector = Selector (functionName + ":")
+                    obj.webView = self.webView
+                    obj.taskId = dic.object(forKey: "taskId") as! Int!
+                    obj.data = dic.object(forKey: "data") as! String?
+                    let functionSelector = Selector (functionName)
                     if obj.responds(to: functionSelector) {
                         obj.perform(functionSelector, with: dic["data"])
                     }else {
@@ -92,8 +90,8 @@ extension HYWebTestController {
             if let path = Bundle.main.path(forResource: name, ofType: "js", inDirectory: "www/plugins") {
                 do {
                     let js = try String (contentsOfFile: path, encoding: .utf8)
-                    self.webView.evaluateJavaScript(js as String, completionHandler: nil)
-                }catch let error as Error {
+                    self.webView.evaluateJavaScript(js, completionHandler: nil)
+                }catch let error {
                     print(error.localizedDescription)
                 }
             }

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class Console: NSObject {
-    func log(data: String) {
-        print(data)
+class Console: Plugin {
+    func log() {
+        if let str = self.data {
+            print(str)
+        }
     }
 }
