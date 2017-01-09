@@ -24,7 +24,7 @@ extension MainTabBarController {
         
         setupChildVC(vc: homeVC, title: "首页", imageName: "home", selectedImageName: "home_selected")
         setupChildVC(vc: locationVC, title: "位置", imageName: "location", selectedImageName: "location_selected")
-        setupChildVC(vc: meVC, title: "测试", imageName: "me", selectedImageName: "me_selected")
+        setupChildVC(vc: meVC, title: "我", imageName: "me", selectedImageName: "me_selected")
     }
 }
 

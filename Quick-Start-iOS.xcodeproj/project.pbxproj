@@ -11,6 +11,7 @@
 		6866D5551E1E3C970094D26C /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5531E1E3C970094D26C /* Console.swift */; };
 		6866D5561E1E3C970094D26C /* JSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5541E1E3C970094D26C /* JSService.swift */; };
 		6866D5581E1E430B0094D26C /* Accelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5571E1E430B0094D26C /* Accelerometer.swift */; };
+		687213CE1E23602B00A28160 /* HYWebSimpleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687213CD1E23602B00A28160 /* HYWebSimpleController.swift */; };
 		689D0E871E1C93170071F2A1 /* HYWebTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689D0E861E1C93170071F2A1 /* HYWebTestController.swift */; };
 		689D0E9A1E1CEF660071F2A1 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 689D0E991E1CEF660071F2A1 /* www */; };
 		9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA541DD95F1C00EBC9D4 /* HYFPSLabel.swift */; };
@@ -57,6 +58,7 @@
 		6866D5531E1E3C970094D26C /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Console.swift; path = WKWebViewTest/Plugins/Console.swift; sourceTree = "<group>"; };
 		6866D5541E1E3C970094D26C /* JSService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSService.swift; path = WKWebViewTest/Plugins/JSService.swift; sourceTree = "<group>"; };
 		6866D5571E1E430B0094D26C /* Accelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Accelerometer.swift; path = WKWebViewTest/Plugins/Accelerometer.swift; sourceTree = "<group>"; };
+		687213CD1E23602B00A28160 /* HYWebSimpleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebSimpleController.swift; path = WKWebViewTest/HYWebSimpleController.swift; sourceTree = "<group>"; };
 		689D0E861E1C93170071F2A1 /* HYWebTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebTestController.swift; path = WKWebViewTest/HYWebTestController.swift; sourceTree = "<group>"; };
 		689D0E991E1CEF660071F2A1 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		87565C35535F6A2116B3B0BE /* Pods-Quick-Start-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				6866D5501E1E37DD0094D26C /* Plugins */,
 				689D0E861E1C93170071F2A1 /* HYWebTestController.swift */,
+				687213CD1E23602B00A28160 /* HYWebSimpleController.swift */,
 			);
 			name = WKWebViewTest;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
 				960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */,
 				960534D81DD2BB150068C081 /* LoginView.swift in Sources */,
+				687213CE1E23602B00A28160 /* HYWebSimpleController.swift in Sources */,
 				960534E11DD2F03F0068C081 /* LoginHelper.swift in Sources */,
 				96B4769B1DBDF8960065E726 /* LocationViewController.swift in Sources */,
 				96B476A11DBDF8E10065E726 /* MeViewController.swift in Sources */,

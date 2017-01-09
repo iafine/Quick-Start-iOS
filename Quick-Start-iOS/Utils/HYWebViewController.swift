@@ -9,33 +9,29 @@
 import UIKit
 import WebKit
 
-// MARK: - Protocol
-protocol HYWebViewControllerDelegate {
-    
-    /// 导航栏右侧按钮点击事件
-    func clickedRightBarButtonHandler()
-}
-
 // MARK: - Class
 class HYWebViewController: UIViewController {
-
-    var webDelegate: HYWebViewControllerDelegate?
     
-    var webView: WKWebView = {
+    /// 请求URL
+    public var requestUrl: URL!
+    
+    /// 是否需要显示导航栏
+    public var isShowNav: Bool = false
+    
+    fileprivate var webView: WKWebView = {
         let webView: WKWebView = WKWebView ()
-        webView.backgroundColor = UIColor.clear
-        webView.isOpaque = false
         return webView
     }()
     
-    var progressBar: UIProgressView = {
+    fileprivate var progressBar: UIProgressView = {
         let pro: UIProgressView = UIProgressView ()
         pro.progress = 0.0
-        pro.backgroundColor = UIColor.blue
+        pro.trackTintColor = UIColor.clear
+        pro.progressTintColor = UIColor.green
         return pro
     }()
     
-    var webTipLabel: UILabel = {
+    fileprivate var webTipLabel: UILabel = {
         let label: UILabel = UILabel ()
         label.textColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
         label.font = UIFont.systemFont(ofSize: 12)
@@ -48,14 +44,17 @@ class HYWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
+        self.view.backgroundColor = UIColor.white
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
+        
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
+        self.webView.load(URLRequest(url: requestUrl))
         
-        self.view.addSubview(self.progressBar)
+        
+        self.webView.addSubview(self.progressBar)
         self.view.addSubview(self.webTipLabel)
         self.view.addSubview(self.webView)
-        self.view.sendSubview(toBack: self.webTipLabel)
         
         initLayout()
         
@@ -63,9 +62,20 @@ class HYWebViewController: UIViewController {
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !isShowNav {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if !isShowNav {
+            self.navigationController?.navigationBar.isHidden = false
+        }
     }
     
     deinit {
@@ -77,26 +87,14 @@ class HYWebViewController: UIViewController {
 extension HYWebViewController {
     
     fileprivate func initLayout() {
-        
-        self.webTipLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view.snp.left).offset(20)
-            make.top.equalTo(self.view.snp.top).offset(10)
-            make.right.equalTo(self.view.snp.right).offset(-20)
-            make.height.equalTo(40)
-        }
-        
-        self.progressBar.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view.snp.left)
-            make.top.equalTo(self.view.snp.top)
-            make.right.equalTo(self.view.snp.right)
-            make.height.equalTo(2)
-        }
-        
-        self.webView.snp.makeConstraints { (make) in
-            make.left.equalTo(self.view.snp.left)
-            make.top.equalTo(self.progressBar.snp.bottom)
-            make.right.equalTo(self.view.snp.right)
-            make.bottom.equalTo(self.view.snp.bottom)
+        if isShowNav {
+            self.webTipLabel.frame = CGRect (x: 0, y: 10 + 64, width: view.frame.size.width, height: 40)
+            self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
+            self.webView.frame = CGRect (x: 0, y: 64, width: view.frame.size.width, height: view.frame.size.height)
+        }else {
+            self.webTipLabel.frame = CGRect (x: 0, y: 30, width: view.frame.size.width, height: 40)
+            self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
+            self.webView.frame = CGRect (x: 0, y: 20, width: view.frame.size.width, height: view.frame.size.height)
         }
     }
 }
@@ -155,7 +153,7 @@ extension HYWebViewController: WKNavigationDelegate {
     
     // 网页加载完成
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.title = webView.title
+        self.title = isShowNav ? webView.title : ""
         let host: String = (webView.url?.host)!
         self.webTipLabel.text = "网页由\(host)提供"
     }
@@ -188,10 +186,5 @@ extension HYWebViewController {
                 })
             }
         }
-    }
-    
-    /// 点击导航栏右侧更多事件
-    func clickedMoreBtnHandler() {
-        webDelegate?.clickedRightBarButtonHandler()
     }
 }

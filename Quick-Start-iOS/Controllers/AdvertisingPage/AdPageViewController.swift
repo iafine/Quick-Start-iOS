@@ -15,16 +15,16 @@ class AdPageViewController: HYWebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.webDelegate = self
-        let url: URL = URL (string: "https://baidu.com")!
-        self.webView.load(URLRequest (url: url))
+//        self.webDelegate = self
+//        let url: URL = URL (string: "https://baidu.com")!
+//        self.webView.load(URLRequest (url: url))
     }
 }
 
 // MARK: - HYWebViewControllerDelegate
-extension HYWebViewController: HYWebViewControllerDelegate {
-    
-    func clickedRightBarButtonHandler() {
+//extension HYWebViewController: HYWebViewControllerDelegate {
+
+//    func clickedRightBarButtonHandler() {
 //        let alertVC: UIAlertController = UIAlertController (title: "测试", message: "测试消息", preferredStyle: .actionSheet)
 //        let oneAction: UIAlertAction = UIAlertAction (title: "第一个", style: .default) { (alert) in
 //            print("one")
@@ -102,5 +102,5 @@ extension HYWebViewController: HYWebViewControllerDelegate {
 //        alertVC.addAction(action: threeAction)
 //        alertVC.addAction(action: cancelAction)
 //        self.present(alertVC, animated: true, completion: nil)
-    }
-}
+//    }
+//}
