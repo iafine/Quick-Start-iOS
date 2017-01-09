@@ -61,9 +61,18 @@ extension HYNavigationController {
 // MARK: - Private Methods
 extension HYNavigationController {
     fileprivate func setupNavigationBarAttributes() {
-        UINavigationBar.appearance().barTintColor = UIColor (red: 146/255, green: 185/255, blue: 74/255, alpha: 1.0)    // 背景颜色
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white] // 文字颜色
-        self.navigationBar.isTranslucent = false    // 取消导航栏默认透明效果
+        // 声明导航栏属性
+        let navTitleColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
+        let navBarFont = UIFont.boldSystemFont(ofSize: 16)
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navTitleColor, NSFontAttributeName:navBarFont]
+        UINavigationBar.appearance().tintColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
+        UINavigationBar.appearance().backIndicatorImage = UIImage (named: "back_indicator")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage (named: "back_indicator")
+
+        // UIBarButtonBar属性
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:navTitleColor, NSFontAttributeName:UIFont.systemFont(ofSize: 14)], for: .normal)
+        
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -2), for: .default)
     }
 }
