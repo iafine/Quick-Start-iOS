@@ -18,11 +18,15 @@ class HYWebViewController: UIViewController {
     /// 是否需要显示导航栏
     public var isShowNav: Bool = false
     
+    /// 网页视图
     fileprivate var webView: WKWebView = {
         let webView: WKWebView = WKWebView ()
+        //开启手势交互
+//        webView.allowsBackForwardNavigationGestures = true
         return webView
     }()
     
+    /// 进度条
     fileprivate var progressBar: UIProgressView = {
         let pro: UIProgressView = UIProgressView ()
         pro.progress = 0.0
@@ -31,16 +35,19 @@ class HYWebViewController: UIViewController {
         return pro
     }()
     
-    fileprivate var webTipLabel: UILabel = {
-        let label: UILabel = UILabel ()
-        label.textColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.clear
-        label.numberOfLines = 0
-        return label
+    /// 返回按钮
+    fileprivate var backBarButtonItem: UIBarButtonItem = {
+        let backItemImage = UIImage (named: "back_indicator")
+        let backButtonItem = UIBarButtonItem (image: backItemImage, style: .plain, target: self, action: #selector (clickedBackItemHandler))
+        return backButtonItem
     }()
     
+    /// 关闭按钮
+    fileprivate var closeBarButtonItem: UIBarButtonItem = {
+        let closeButtonItem = UIBarButtonItem (title: "关闭", style: .plain, target: self, action: #selector(clickedCloseItemHandler))
+        return closeButtonItem
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,9 +58,7 @@ class HYWebViewController: UIViewController {
         self.webView.navigationDelegate = self
         self.webView.load(URLRequest(url: requestUrl))
         
-        
         self.webView.addSubview(self.progressBar)
-        self.view.addSubview(self.webTipLabel)
         self.view.addSubview(self.webView)
         
         initLayout()
@@ -88,13 +93,23 @@ extension HYWebViewController {
     
     fileprivate func initLayout() {
         if isShowNav {
-            self.webTipLabel.frame = CGRect (x: 0, y: 10 + 64, width: view.frame.size.width, height: 40)
             self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
             self.webView.frame = CGRect (x: 0, y: 64, width: view.frame.size.width, height: view.frame.size.height)
         }else {
-            self.webTipLabel.frame = CGRect (x: 0, y: 30, width: view.frame.size.width, height: 40)
             self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
             self.webView.frame = CGRect (x: 0, y: 20, width: view.frame.size.width, height: view.frame.size.height)
+        }
+    }
+    
+    ///  根据网页加载更新导航栏提示
+    fileprivate func updateNavigationLeftItems() {
+        if self.webView.canGoBack {
+            let spaceButtonItem = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            spaceButtonItem.width = -6.5
+            self.navigationItem.leftBarButtonItems = [spaceButtonItem, backBarButtonItem, closeBarButtonItem]
+        }else {
+//            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+            self.navigationItem.leftBarButtonItem = self.backBarButtonItem
         }
     }
 }
@@ -133,9 +148,28 @@ extension HYWebViewController: WKUIDelegate {
 extension HYWebViewController: WKNavigationDelegate {
     
     // 网页是否可以跳转
-//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//        
-//    }
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {        
+        // 此代理中实现这个 解决网页某些点击不跳转的问题（跨域跳转问题）
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        
+        // 判断 request的类型
+        let requestType = navigationAction.navigationType
+        switch requestType {
+            case .backForward: print("backForward")
+            case .formResubmitted: print("formResubmitted")
+            case .formSubmitted: print("formSubmitted")
+            case .linkActivated: print("linkActivated")
+            case .reload: print("reload")
+            case .other: print("other")
+        }
+        
+        // 更新导航栏返回按钮
+        updateNavigationLeftItems()
+        
+        decisionHandler(.allow);
+    }
     
     // 网页开始加载
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -154,8 +188,6 @@ extension HYWebViewController: WKNavigationDelegate {
     // 网页加载完成
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.title = isShowNav ? webView.title : ""
-        let host: String = (webView.url?.host)!
-        self.webTipLabel.text = "网页由\(host)提供"
     }
     
     // 网页返回内容失败
@@ -171,6 +203,21 @@ extension HYWebViewController: WKNavigationDelegate {
 
 // MARK: - Events
 extension HYWebViewController {
+    
+    /// 点击返回事件
+    func clickedBackItemHandler() {
+        if self.webView.canGoBack {
+            self.webView.goBack()
+        }else {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    /// 点击关闭事件
+    func clickedCloseItemHandler() {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
     /// 进度条监听方法
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
@@ -187,4 +234,8 @@ extension HYWebViewController {
             }
         }
     }
+}
+
+// MARK: - Private Methods
+extension HYWebViewController {
 }
