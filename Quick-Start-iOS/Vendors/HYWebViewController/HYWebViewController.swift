@@ -96,13 +96,8 @@ extension HYWebViewController {
     }
     
     fileprivate func initLayout() {
-        if isShowNav {
-            self.progressBar.frame = CGRect (x: 0, y: 64, width: view.frame.size.width, height: 2)
-            self.webView.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        }else {
-            self.progressBar.frame = CGRect (x: 0, y: 20, width: view.frame.size.width, height: 2)
-            self.webView.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        }
+        self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
+        self.webView.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
     }
     
     ///  根据网页加载更新导航栏提示
@@ -244,7 +239,9 @@ extension HYWebViewController {
     
     /// 点击更多按钮事件
     func clickedMoreBtnHandler() {
-        print(currentRequestUrl)
+        UIApplication.hyScreenCapture { (captureImage) in
+            let image = captureImage
+        }
     }
 }
 

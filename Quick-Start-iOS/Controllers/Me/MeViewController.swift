@@ -89,7 +89,10 @@ extension MeViewController: UITableViewDataSource {
 
 extension MeViewController {
     @objc fileprivate func javascriptHandler() {
-        let webVC: HYWebTestController = HYWebTestController ()
-        self.navigationController?.pushViewController(webVC, animated: true)
+        UIApplication.hyScreenCapture { (captureImage) in
+            let image = captureImage
+        }
+//        let webVC: HYWebTestController = HYWebTestController ()
+//        self.navigationController?.pushViewController(webVC, animated: true)
     }
 }

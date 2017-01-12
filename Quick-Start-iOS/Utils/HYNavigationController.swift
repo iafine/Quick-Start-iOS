@@ -65,6 +65,7 @@ extension HYNavigationController {
         let navTitleColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
         let navBarFont = UIFont.boldSystemFont(ofSize: 16)
         
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navTitleColor, NSFontAttributeName:navBarFont]
         UINavigationBar.appearance().tintColor = UIColor (red: 0.322, green: 0.322, blue: 0.322, alpha: 1.0)
         UINavigationBar.appearance().backIndicatorImage = UIImage (named: "back_indicator")
