@@ -73,6 +73,6 @@ extension HYNavigationController {
         // UIBarButtonBar属性
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:navTitleColor, NSFontAttributeName:UIFont.systemFont(ofSize: 14)], for: .normal)
         
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -2), for: .default)
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0 , -60), for: .default)
     }
 }

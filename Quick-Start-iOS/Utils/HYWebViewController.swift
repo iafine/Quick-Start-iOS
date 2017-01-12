@@ -14,15 +14,16 @@ class HYWebViewController: UIViewController {
     
     /// 请求URL
     public var requestUrl: URL!
-    
     /// 是否需要显示导航栏
     public var isShowNav: Bool = false
+    /// 当前请求地址 (readonly)
+    fileprivate(set) public var currentRequestUrl: String!
     
     /// 网页视图
     fileprivate var webView: WKWebView = {
         let webView: WKWebView = WKWebView ()
         //开启手势交互
-//        webView.allowsBackForwardNavigationGestures = true
+        webView.allowsBackForwardNavigationGestures = true
         return webView
     }()
     
@@ -36,23 +37,24 @@ class HYWebViewController: UIViewController {
     }()
     
     /// 返回按钮
-    fileprivate var backBarButtonItem: UIBarButtonItem = {
-        let backItemImage = UIImage (named: "back_indicator")
-        let backButtonItem = UIBarButtonItem (image: backItemImage, style: .plain, target: self, action: #selector (clickedBackItemHandler))
-        return backButtonItem
-    }()
+    fileprivate var backBarButtonItem: UIBarButtonItem!
     
     /// 关闭按钮
-    fileprivate var closeBarButtonItem: UIBarButtonItem = {
-        let closeButtonItem = UIBarButtonItem (title: "关闭", style: .plain, target: self, action: #selector(clickedCloseItemHandler))
-        return closeButtonItem
-    }()
+    fileprivate var closeBarButtonItem: UIBarButtonItem!
 
+    deinit {
+        self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
+    }
+}
+
+// MARK: - LifeCycle
+extension HYWebViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (image: UIImage (named: "more"), style: UIBarButtonItemStyle.plain, target: self, action: #selector (clickedMoreBtnHandler))
         
         self.webView.uiDelegate = self
         self.webView.navigationDelegate = self
@@ -61,6 +63,7 @@ class HYWebViewController: UIViewController {
         self.webView.addSubview(self.progressBar)
         self.view.addSubview(self.webView)
         
+        initNavigationBackItems()
         initLayout()
         
         // 监听网页进度
@@ -74,42 +77,43 @@ class HYWebViewController: UIViewController {
             self.navigationController?.navigationBar.isHidden = true
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
         if !isShowNav {
             self.navigationController?.navigationBar.isHidden = false
         }
     }
     
-    deinit {
-        self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
+    fileprivate func initNavigationBackItems() {
+        /// 返回按钮
+        let backItemImage = UIImage (named: "back_indicator")
+        backBarButtonItem = UIBarButtonItem (image: backItemImage, style: .plain, target: self, action: #selector (clickedBackItemHandler))
+        
+        /// 关闭按钮
+        closeBarButtonItem = UIBarButtonItem (title: "关闭", style: .plain, target: self, action: #selector(clickedCloseItemHandler))
     }
-}
-
-// MARK: - LifeCycle
-extension HYWebViewController {
     
     fileprivate func initLayout() {
         if isShowNav {
-            self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
-            self.webView.frame = CGRect (x: 0, y: 64, width: view.frame.size.width, height: view.frame.size.height)
+            self.progressBar.frame = CGRect (x: 0, y: 64, width: view.frame.size.width, height: 2)
+            self.webView.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         }else {
-            self.progressBar.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: 2)
-            self.webView.frame = CGRect (x: 0, y: 20, width: view.frame.size.width, height: view.frame.size.height)
+            self.progressBar.frame = CGRect (x: 0, y: 20, width: view.frame.size.width, height: 2)
+            self.webView.frame = CGRect (x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         }
     }
     
     ///  根据网页加载更新导航栏提示
     fileprivate func updateNavigationLeftItems() {
-        if self.webView.canGoBack {
+        if webView.canGoBack {
             let spaceButtonItem = UIBarButtonItem (barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             spaceButtonItem.width = -6.5
-            self.navigationItem.leftBarButtonItems = [spaceButtonItem, backBarButtonItem, closeBarButtonItem]
+            navigationItem.setLeftBarButtonItems([backBarButtonItem, closeBarButtonItem], animated: true)
         }else {
-//            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-            self.navigationItem.leftBarButtonItem = self.backBarButtonItem
+            navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+            navigationItem.setLeftBarButtonItems([backBarButtonItem], animated: true)
         }
     }
 }
@@ -148,7 +152,10 @@ extension HYWebViewController: WKUIDelegate {
 extension HYWebViewController: WKNavigationDelegate {
     
     // 网页是否可以跳转
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {        
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        // 获取当前请求地址
+        currentRequestUrl = navigationAction.request.url?.absoluteString
+        
         // 此代理中实现这个 解决网页某些点击不跳转的问题（跨域跳转问题）
         if navigationAction.targetFrame == nil {
             webView.load(navigationAction.request)
@@ -233,6 +240,11 @@ extension HYWebViewController {
                 })
             }
         }
+    }
+    
+    /// 点击更多按钮事件
+    func clickedMoreBtnHandler() {
+        print(currentRequestUrl)
     }
 }
 
