@@ -14,8 +14,10 @@
 		687213CE1E23602B00A28160 /* HYWebSimpleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687213CD1E23602B00A28160 /* HYWebSimpleController.swift */; };
 		68840D731E27527A004372AC /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68840D721E27527A004372AC /* HYWebViewController.swift */; };
 		68840D761E2766EF004372AC /* HYWebHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68840D751E2766EF004372AC /* HYWebHelper.swift */; };
+		689C9D2B1E2C8F53005A1339 /* HYKeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */; };
 		689D0E871E1C93170071F2A1 /* HYWebTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689D0E861E1C93170071F2A1 /* HYWebTestController.swift */; };
 		689D0E9A1E1CEF660071F2A1 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 689D0E991E1CEF660071F2A1 /* www */; };
+		68F08F031E2E028300A16DA1 /* KeychainOperationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F08F021E2E028300A16DA1 /* KeychainOperationController.swift */; };
 		9603EA551DD95F1C00EBC9D4 /* HYFPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9603EA541DD95F1C00EBC9D4 /* HYFPSLabel.swift */; };
 		960534D51DD2BA4C0068C081 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960534D41DD2BA4C0068C081 /* LoginViewController.swift */; };
 		960534D81DD2BB150068C081 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960534D71DD2BB150068C081 /* LoginView.swift */; };
@@ -62,8 +64,11 @@
 		687213CD1E23602B00A28160 /* HYWebSimpleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebSimpleController.swift; path = WKWebViewTest/HYWebSimpleController.swift; sourceTree = "<group>"; };
 		68840D721E27527A004372AC /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYWebViewController.swift; sourceTree = "<group>"; };
 		68840D751E2766EF004372AC /* HYWebHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYWebHelper.swift; sourceTree = "<group>"; };
+		689C9D281E2C6BD3005A1339 /* Quick-Start-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick-Start-iOS.entitlements"; sourceTree = "<group>"; };
+		689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYKeychainHelper.swift; path = HYKeychainHelper/HYKeychainHelper.swift; sourceTree = "<group>"; };
 		689D0E861E1C93170071F2A1 /* HYWebTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebTestController.swift; path = WKWebViewTest/HYWebTestController.swift; sourceTree = "<group>"; };
 		689D0E991E1CEF660071F2A1 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		68F08F021E2E028300A16DA1 /* KeychainOperationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainOperationController.swift; path = Location/KeychainOperation/KeychainOperationController.swift; sourceTree = "<group>"; };
 		87565C35535F6A2116B3B0BE /* Pods-Quick-Start-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quick-Start-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Quick-Start-iOS/Pods-Quick-Start-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		9603EA541DD95F1C00EBC9D4 /* HYFPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYFPSLabel.swift; path = HYFPSLabel/HYFPSLabel.swift; sourceTree = "<group>"; };
 		960534D41DD2BA4C0068C081 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +160,14 @@
 			path = HYWebViewController;
 			sourceTree = "<group>";
 		};
+		689C9D291E2C8F08005A1339 /* HYKeychainHelper */ = {
+			isa = PBXGroup;
+			children = (
+				689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */,
+			);
+			name = HYKeychainHelper;
+			sourceTree = "<group>";
+		};
 		689D0E851E1C929C0071F2A1 /* WKWebViewTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +176,14 @@
 				687213CD1E23602B00A28160 /* HYWebSimpleController.swift */,
 			);
 			name = WKWebViewTest;
+			sourceTree = "<group>";
+		};
+		68F08F011E2E023300A16DA1 /* KeychainOperation */ = {
+			isa = PBXGroup;
+			children = (
+				68F08F021E2E028300A16DA1 /* KeychainOperationController.swift */,
+			);
+			name = KeychainOperation;
 			sourceTree = "<group>";
 		};
 		9603EA531DD95EC200EBC9D4 /* HYFPSLabel */ = {
@@ -266,6 +287,7 @@
 		965408DE1DAF5BA500F5D0F9 /* Quick-Start-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				689C9D281E2C6BD3005A1339 /* Quick-Start-iOS.entitlements */,
 				965408FA1DAF817200F5D0F9 /* Controllers */,
 				965408F31DAF7FE900F5D0F9 /* Models */,
 				96BC6ACA1DB0A9DD00D917E4 /* Utils */,
@@ -355,6 +377,7 @@
 		96B476991DBDF86B0065E726 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				68F08F011E2E023300A16DA1 /* KeychainOperation */,
 				9605D04B1DF6B3D3008ECA3B /* View */,
 				9605D0481DF6B1A7008ECA3B /* Protocol */,
 				9671B6061DD9DC92007E7796 /* AnimationPractice */,
@@ -375,6 +398,7 @@
 		96BC6A821DB05E8000D917E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				689C9D291E2C8F08005A1339 /* HYKeychainHelper */,
 				68840D711E27527A004372AC /* HYWebViewController */,
 				96CD4AA81DF656E90008582A /* HYNetwork */,
 				96F929341DEEB44A006B71EA /* HYRefresh */,
@@ -458,6 +482,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = WUJ6929DVQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -569,6 +598,7 @@
 				96BC6ACF1DB0B52200D917E4 /* LeftViewController.swift in Sources */,
 				966D3A8B1DFA93770009D798 /* LoadingPresenter.swift in Sources */,
 				96F929381DEEB44A006B71EA /* HYRefreshControl.swift in Sources */,
+				68F08F031E2E028300A16DA1 /* KeychainOperationController.swift in Sources */,
 				96C98AEB1E0A848B00B02CA7 /* UIDevice+Utils.swift in Sources */,
 				963BB5391E090DEE00F8C3E1 /* UIViewController+Utils.swift in Sources */,
 				96F9293A1DEEB44A006B71EA /* UIScrollView+HYRefresh.swift in Sources */,
@@ -585,6 +615,7 @@
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
 				966D3A891DFA7BE80009D798 /* ErrorPresenter.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
+				689C9D2B1E2C8F53005A1339 /* HYKeychainHelper.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,6 +738,7 @@
 			baseConfigurationReference = BC950D9B2325503F3968EA59 /* Pods-Quick-Start-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quick-Start-iOS/Quick-Start-iOS.entitlements";
 				DEVELOPMENT_TEAM = WUJ6929DVQ;
 				INFOPLIST_FILE = "Quick-Start-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -721,6 +753,7 @@
 			baseConfigurationReference = 87565C35535F6A2116B3B0BE /* Pods-Quick-Start-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quick-Start-iOS/Quick-Start-iOS.entitlements";
 				DEVELOPMENT_TEAM = WUJ6929DVQ;
 				INFOPLIST_FILE = "Quick-Start-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
