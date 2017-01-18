@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682CDD341E2F548C00657144 /* HYKeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682CDD331E2F548C00657144 /* HYKeychainHelper.swift */; };
 		6866D5521E1E37FE0094D26C /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5511E1E37FE0094D26C /* Plugin.swift */; };
 		6866D5551E1E3C970094D26C /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5531E1E3C970094D26C /* Console.swift */; };
 		6866D5561E1E3C970094D26C /* JSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6866D5541E1E3C970094D26C /* JSService.swift */; };
@@ -14,7 +15,7 @@
 		687213CE1E23602B00A28160 /* HYWebSimpleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687213CD1E23602B00A28160 /* HYWebSimpleController.swift */; };
 		68840D731E27527A004372AC /* HYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68840D721E27527A004372AC /* HYWebViewController.swift */; };
 		68840D761E2766EF004372AC /* HYWebHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68840D751E2766EF004372AC /* HYWebHelper.swift */; };
-		689C9D2B1E2C8F53005A1339 /* HYKeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */; };
+		689C9D2B1E2C8F53005A1339 /* HYKeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689C9D2A1E2C8F53005A1339 /* HYKeychainItem.swift */; };
 		689D0E871E1C93170071F2A1 /* HYWebTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689D0E861E1C93170071F2A1 /* HYWebTestController.swift */; };
 		689D0E9A1E1CEF660071F2A1 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 689D0E991E1CEF660071F2A1 /* www */; };
 		68F08F031E2E028300A16DA1 /* KeychainOperationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F08F021E2E028300A16DA1 /* KeychainOperationController.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		682CDD331E2F548C00657144 /* HYKeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYKeychainHelper.swift; path = HYKeychainHelper/HYKeychainHelper.swift; sourceTree = "<group>"; };
 		6866D5511E1E37FE0094D26C /* Plugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Plugin.swift; path = WKWebViewTest/Plugins/Plugin.swift; sourceTree = "<group>"; };
 		6866D5531E1E3C970094D26C /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Console.swift; path = WKWebViewTest/Plugins/Console.swift; sourceTree = "<group>"; };
 		6866D5541E1E3C970094D26C /* JSService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSService.swift; path = WKWebViewTest/Plugins/JSService.swift; sourceTree = "<group>"; };
@@ -65,7 +67,7 @@
 		68840D721E27527A004372AC /* HYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYWebViewController.swift; sourceTree = "<group>"; };
 		68840D751E2766EF004372AC /* HYWebHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYWebHelper.swift; sourceTree = "<group>"; };
 		689C9D281E2C6BD3005A1339 /* Quick-Start-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quick-Start-iOS.entitlements"; sourceTree = "<group>"; };
-		689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYKeychainHelper.swift; path = HYKeychainHelper/HYKeychainHelper.swift; sourceTree = "<group>"; };
+		689C9D2A1E2C8F53005A1339 /* HYKeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYKeychainItem.swift; path = HYKeychainHelper/HYKeychainItem.swift; sourceTree = "<group>"; };
 		689D0E861E1C93170071F2A1 /* HYWebTestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HYWebTestController.swift; path = WKWebViewTest/HYWebTestController.swift; sourceTree = "<group>"; };
 		689D0E991E1CEF660071F2A1 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		68F08F021E2E028300A16DA1 /* KeychainOperationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainOperationController.swift; path = Location/KeychainOperation/KeychainOperationController.swift; sourceTree = "<group>"; };
@@ -163,7 +165,8 @@
 		689C9D291E2C8F08005A1339 /* HYKeychainHelper */ = {
 			isa = PBXGroup;
 			children = (
-				689C9D2A1E2C8F53005A1339 /* HYKeychainHelper.swift */,
+				689C9D2A1E2C8F53005A1339 /* HYKeychainItem.swift */,
+				682CDD331E2F548C00657144 /* HYKeychainHelper.swift */,
 			);
 			name = HYKeychainHelper;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				960534DB1DD2BB3A0068C081 /* HomeView.swift in Sources */,
 				969DB1B31DFBAD4B00134E83 /* EmptyPresenter.swift in Sources */,
 				965408FE1DAF817200F5D0F9 /* HomeViewController.swift in Sources */,
+				682CDD341E2F548C00657144 /* HYKeychainHelper.swift in Sources */,
 				9605D0501DF6B55F008ECA3B /* ShakeImageView.swift in Sources */,
 				96CD4AAA1DF657210008582A /* User.swift in Sources */,
 				6866D5521E1E37FE0094D26C /* Plugin.swift in Sources */,
@@ -615,7 +619,7 @@
 				965408FF1DAF817200F5D0F9 /* MainTabBarController.swift in Sources */,
 				966D3A891DFA7BE80009D798 /* ErrorPresenter.swift in Sources */,
 				9665BDD21DB7443B00E395F9 /* AdHelper.swift in Sources */,
-				689C9D2B1E2C8F53005A1339 /* HYKeychainHelper.swift in Sources */,
+				689C9D2B1E2C8F53005A1339 /* HYKeychainItem.swift in Sources */,
 				96BC6ACD1DB0AA2800D917E4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

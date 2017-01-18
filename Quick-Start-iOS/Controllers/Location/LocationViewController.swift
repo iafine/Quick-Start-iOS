@@ -24,6 +24,13 @@ class LocationViewController: UIViewController, LoadingPresenter, ErrorPresenter
     
     // 存储展示数据数组
     var storiesArr: NSMutableArray = NSMutableArray ()
+    
+    // keychain
+//    let keychainHelper: HYKeychainHelper = HYKeychainHelper (service: "HYAppService", account: nil, accessGroup: nil)
+    
+    // keychain value
+    var keychainKeyArray = Array<String> ()
+    var keychainValueArray = Array<AnyObject> ()
 }
 
 // MARK: - LifeCycle
@@ -31,41 +38,30 @@ extension LocationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "消息"
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem (barButtonSystemItem: .add, target: self, action: #selector (clickedKeychainAddHandler))
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(self.tableView)
         
 //        presentLoading()
         
-        requestLatestNews()
+//        requestLatestNews()
     }
     
-    // 网络请求，以知乎日报API为例，URL：http://news-at.zhihu.com/api/4/news/latest
-    fileprivate func requestLatestNews() {
-        let url = URL (string: "http://news-at.zhihu.com/api/4/news/latest")
-        let request = URLRequest (url: url!)
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession (configuration: configuration)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.storiesArr.removeAllObjects()
-        let task = session.dataTask(with: request, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if error == nil {
-                do {
-                    let responseDict: NSDictionary = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! NSDictionary
-                    
-                    let stories: NSArray = responseDict.object(forKey: "stories") as! NSArray
-                    
-                    self.storiesArr.addObjects(from: stories as! [Any])
-                    // 主线程更新UI
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }catch{
-                }
-            }
-        })
-        task.resume()
+        // 查询keychain数据
+        do {
+//            let results: Dictionary<String, AnyObject> = try keychainHelper.queryItems()
+//            if results.values.count > 0 {
+//            }
+        }
+        catch {
+            fatalError("Error fetching password items - \(error)")
+        }
+        
+        tableView.reloadData()
     }
 }
 
@@ -76,14 +72,12 @@ extension LocationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.storiesArr.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        let dic: NSDictionary = self.storiesArr.object(at: indexPath.row) as! NSDictionary
-        
-        cell.textLabel?.text = dic.object(forKey: "title") as! String?
+//        cell.textLabel?.text = keychainValue["test"] as! String?
         return cell
     }
 }
@@ -104,5 +98,16 @@ extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - Events
+extension LocationViewController {
+    func clickedKeychainAddHandler() {
+        do {
+//            try keychainHelper.saveItem(value: "hyyy" as AnyObject, withKey: "name")
+        } catch {
+            fatalError("Error updating keychain - \(error)")
+        }
     }
 }
