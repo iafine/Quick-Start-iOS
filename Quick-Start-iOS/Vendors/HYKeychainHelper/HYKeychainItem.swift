@@ -17,43 +17,38 @@ enum KeychainError: Error {
 
 struct HYKeychainItem {
     
-    /// kSecAttrAccount
-    let account: String
-    
     /// kSecAttrService
-    let service: String
+    var service: String?
+    
+    /// kSecAttrAccount
+    var account: String?
     
     /// kSecAttrAccessGroup
-    let accessGroup: String?
+    var accessGroup: String?
     
-    /// kSecAttrLabel
-    let label: String?
+    var password: String?
+
+    var passwordData: Data?
     
-    let password: String?
-    
-    let passwordData: Data?
-    
-    init(service: String, account: String, accessGroup: String? = nil, label: String? = nil, password: String? = nil, passwordData: Data? = nil) {
+    init(service: String? = nil, account: String? = nil) {
         self.service = service
         self.account = account
-        self.accessGroup = accessGroup
-        self.label = label
-        self.password = password
-        self.passwordData = passwordData
     }
     
     /// save a keychain item.
     ///
     /// - Throws: unhandledError
-    func save() throws {
-        let encodedPassword = password?.data(using: String.Encoding.utf8)
+    mutating func save() throws {
+        if (password != nil) {
+            passwordData = password?.data(using: String.Encoding.utf8)
+        }
         
         do {
             // 检查keychain里面是否存在，如果存在，则更新
             try _ = queryPassword()
             
             var attributesToUpdate = [String : AnyObject]()
-            attributesToUpdate[kSecValueData as String] = encodedPassword as AnyObject?
+            attributesToUpdate[kSecValueData as String] = passwordData as AnyObject?
             let query = HYKeychainItem.keychainQuery(withService: service, account: account, accessGroup: accessGroup)
             let status = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
             guard status == noErr else {
@@ -62,7 +57,7 @@ struct HYKeychainItem {
         } catch KeychainError.itemNotFound {
             // 不存在的话，添加到keychain中
             var newItem = HYKeychainItem.keychainQuery(withService: service, account: account, accessGroup: accessGroup)
-            newItem[kSecValueData as String] = encodedPassword as AnyObject?
+            newItem[kSecValueData as String] = passwordData as AnyObject?
             
             let status = SecItemAdd(newItem as CFDictionary, nil)
             guard status == noErr else {
@@ -87,7 +82,7 @@ struct HYKeychainItem {
     ///
     /// - Returns: password
     /// - Throws: unhandledError
-    func queryPassword() throws -> String {
+    mutating func queryPassword() throws {
         var query = HYKeychainItem.keychainQuery(withService: service, account: account, accessGroup: accessGroup)
         query[kSecMatchLimit as String] = kSecMatchLimitOne
         query[kSecReturnAttributes as String] = kCFBooleanTrue
@@ -106,11 +101,13 @@ struct HYKeychainItem {
         }
         
         guard let existItem = queryResult as? [String : AnyObject],
-            let passwordData = existItem[kSecValueData as String] as? Data,
-            let password = String(data: passwordData, encoding: String.Encoding.utf8) else {
+            let queryPasswordData = existItem[kSecValueData as String] as? Data,
+            let queryPassword = String(data: queryPasswordData, encoding: String.Encoding.utf8) else {
             throw KeychainError.unexpectedItemData
         }
-        return password
+        password = queryPassword
+        passwordData = queryPasswordData
+        
     }
     
     /// query all keychain item
@@ -148,10 +145,13 @@ struct HYKeychainItem {
 
 // MARK: - Private Methods
 extension HYKeychainItem {
-    fileprivate static func keychainQuery(withService service: String, account: String? = nil, accessGroup: String? = nil) -> [String : AnyObject] {
+    fileprivate static func keychainQuery(withService service: String? = nil, account: String? = nil, accessGroup: String? = nil) -> [String : AnyObject] {
         var query = [String : AnyObject]()
         query[kSecClass as String] = kSecClassGenericPassword
-        query[kSecAttrService as String] = service as AnyObject?
+        
+        if let service = service {
+            query[kSecAttrService as String] = service as AnyObject?
+        }
         
         if let account = account {
             query[kSecAttrAccount as String] = account as AnyObject?
